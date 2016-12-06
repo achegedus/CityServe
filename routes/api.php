@@ -16,3 +16,20 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+
+Route::group(['middleware' => 'api'], function() {
+
+    Route::get('/churches', 'ChurchController@index');
+
+});
+
+
+Route::group(['middleware' => 'auth:api'], function() {
+
+    Route::get('/church/{id}', 'ChurchController@show');
+    Route::delete('church/{id}','ChurchController@destroy');
+    Route::put('church','ChurchController@store');
+    Route::post('church','ChurchController@store');
+
+});
