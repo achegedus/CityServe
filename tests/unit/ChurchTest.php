@@ -15,47 +15,46 @@ class ChurchTest extends TestCase
      */
     public function test_get_church_listing()
     {
-        factory(\App\Models\Church::class, 3)->create();
+        $church = factory(\App\Models\Church::class)->create();
 
-        $this->json('GET', '/churches')->seeJson(['data' => []]);
-
-
+        $this->json('GET', '/api/churches')->seeJson(['church' => $church->name]);
     }
 
     public function test_it_fetches_churches()
     {
-//        // Given
-//        factory(\App\Models\Church::class, 3)->create();
-//
-//        // When
-//        $churches = \App\Models\Church::all();
-//
-//        // Then
-//        $this->assertEquals(3, $churches->count());
+        $user = factory(\App\Models\User::class)->create();
+        $church = factory(\App\Models\Church::class)->create();
+
+        $this->json('GET', '/api/church/' . $church->id)->seeJson(['error' => 'Unauthenticated.']);
+
+        $this->seeStatusCode(401);
+
+        $this->actingAs($user, 'api')->json('GET', '/api/church/' . $church->id)->seeJson(['church' => $church->name]);
+
+        $this->seeStatusCode(200);
     }
 
-    public function test_it_has_contacts()
+    public function test_superadmin_can_create_a_church()
     {
-//        // Given
-//        factory(\App\Models\User::class, 3)->create();
-//
-//        factory(\App\Models\Church::class, 3)->create();
-//        $church = factory(\App\Models\Church::class)->create();
-//        $contact1 = factory(\App\Models\User::class)->create(['church_id' => $church->id]);
-//        $contact2 = factory(\App\Models\User::class)->create(['church_id' => $church->id]);
-//
-//        // When
-//        $findchurch = \App\Models\Church::find(4);
-//
-//        // Then
-//        $this->assertEquals(2, $findchurch->contacts->count());
-//        $this->assertEquals($contact1->name, $findchurch->contacts[0]->name);
-//        $this->assertEquals($contact1->address, $findchurch->contacts[0]->address);
-//        $this->assertEquals($contact1->address2, $findchurch->contacts[0]->address2);
-//        $this->assertEquals($contact1->city, $findchurch->contacts[0]->city);
-//        $this->assertEquals($contact1->state, $findchurch->contacts[0]->state);
-//        $this->assertEquals($contact1->zipcode, $findchurch->contacts[0]->zipcode);
-//        $this->assertEquals(0, $findchurch->contacts[0]->isSuperAdmin);
+        $user = factory(\App\Models\User::class)->create();
+
+        $church = factory(\App\Models\Church::class)->make();
+
+        $this->json('POST', '/api/church/', [
+            'name' => $church->name
+        ])->seeJson(['error' => 'Unauthenticated.']);
+
+        $this->seeStatusCode(401);
+
+        $this->actingAs($user, 'api')->json('POST', '/api/church/', [
+            'name' => $church->name,
+            'address' => $church->address,
+            'city' => $church->city,
+            'state' => $church->state,
+            'zipcode' => $church->zipcode
+        ])->seeJson(['church' => $church->name]);
+
+        $this->seeStatusCode(200);
     }
 
 
