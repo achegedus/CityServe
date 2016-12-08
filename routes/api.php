@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth:api'], function() {
 
     Route::get('/church/{id}', 'ChurchController@show');
     Route::delete('church/{id}','ChurchController@destroy');
-    Route::put('church','ChurchController@store');
+    Route::put('church/{id}','ChurchController@update');
     Route::post('church','ChurchController@store');
 
 });
