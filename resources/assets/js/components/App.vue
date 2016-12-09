@@ -22,6 +22,8 @@
 
 <script>
 
+    import {loginUrl} from '../config'
+
     export default{
         data(){
             return{
@@ -45,7 +47,7 @@
                     scope: ''
                 }
 
-                this.$http.post('http://localhost:8888/oauth/token', postData)
+                this.$http.post(loginUrl, postData)
                     .then(response => {
                         console.log(response);
                     });
