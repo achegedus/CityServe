@@ -41,7 +41,7 @@
                 const postData = {
                     grant_type: 'password',
                     client_id: '2',
-                    client_secret: 'BwyEqTnXN3CtTyN68Y00pGr7cjh824P8SsMyk2SN',
+                    client_secret: '1muM0tPjA8KM6pICDSX2qhBwbREVpbsNCy0soCrR',
                     username: this.login.email,
                     password: this.login.password,
                     scope: ''
@@ -50,6 +50,16 @@
                 this.$http.post(loginUrl, postData)
                     .then(response => {
                         console.log(response);
+
+                        const header = {
+                            'Accept': 'application/json',
+                            'Authorization': 'Bearer ' + response.body.access_token,
+                        }
+
+                        this.$http.get('http://localhost:8888/api/user', {headers: header})
+                            .then(response => {
+                                console.log(response);
+                            });
                     });
             }
         }
