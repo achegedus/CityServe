@@ -20,3 +20,4 @@ bootstrap/cache/
 /.idea
 
 database.sqlite
+env.js

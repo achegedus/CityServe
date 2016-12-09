@@ -19,16 +19,32 @@ Vue.use(VueResource);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const App = Vue.component('App', require('./components/App.vue'));
+import LoginPage from './pages/LoginPage.vue';
+import DashboardPage from './pages/DashboardPage.vue';
 
 const routes = [
-    {path: '/', component: App, name: 'home'}
+    {path: '/', component: LoginPage, name: 'login'},
+    {path: '/dashboard', component: DashboardPage, name: 'dashboard', meta: {requiresAuth: true }}
 ];
 
 const router = new VueRouter({
     mode: 'history',
     routes
 });
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth) {
+        const authUser = JSON.parse(window.localStorage.getItem('authUser'))
+        if (authUser && authUser.access_token) {
+            next()
+        }
+        else {
+            next({name: 'home'})
+        }
+    }
+    next()
+})
+
 
 new Vue({
     router
