@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Church;
 use App\Transformers\ChurchTransformer;
 use EllipseSynergie\ApiResponse\Contracts\Response;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 
 class ChurchController extends Controller
@@ -46,13 +47,15 @@ class ChurchController extends Controller
     }
 
 
-    public function update($id, Request $request)
+    public function update(Church $church, Request $request)
     {
-        //Get the church
-        $church = Church::find($request->church_id);
-        if (!$church) {
-            return $this->response->errorNotFound('Church Not Found');
-        }
+//        $id = $this->route('id');
+//
+//        //Get the church
+//        $church = Church::find($id);
+//        if (!$church) {
+//            return $this->response->errorNotFound('Church Not Found');
+//        }
 
         try {
             $this->authorize('update', $church);
@@ -60,7 +63,6 @@ class ChurchController extends Controller
             return $this->response->errorForbidden('Not authorized to update a church');
         }
 
-        $church->id = $request->input('church_id');
         $church->name = $request->input('name');
         $church->address = $request->input('address');
         $church->address2 = $request->input('address2');
@@ -78,15 +80,22 @@ class ChurchController extends Controller
 
     public function store(Request $request)
     {
-        $church = new Church;
-
         try {
-            $this->authorize('create', $church);
-        } catch (\Exception $ex) {
+            $this->authorize('create');
+        } catch (AuthorizationException $ex) {
             return $this->response->errorForbidden('Not authorized to create a church');
         }
 
-        $church->id = $request->input('church_id');
+        $this->validate($request, [
+            'name' => 'required|max:64',
+            'address' => 'required',
+            'city' => 'required|max:64',
+            'state' => 'required|max:2',
+            'zipcode' => 'required|max:9'
+        ]);
+
+        $church = new Church;
+
         $church->name = $request->input('name');
         $church->address = $request->input('address');
         $church->address2 = $request->input('address2');

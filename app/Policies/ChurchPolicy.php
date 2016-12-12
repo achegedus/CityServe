@@ -30,7 +30,7 @@ class ChurchPolicy
      */
     public function create(User $user)
     {
-        return $user->isSuperAdmin;
+        return $user->isSuperAdmin();
     }
 
     /**
@@ -42,7 +42,7 @@ class ChurchPolicy
      */
     public function update(User $user, Church $church)
     {
-        return $user->isSuperAdmin;
+        return $user->isSuperAdmin();
     }
 
     /**
@@ -54,6 +54,6 @@ class ChurchPolicy
      */
     public function delete(User $user, Church $church)
     {
-        return $user->isSuperAdmin;
+        return $user->isSuperAdmin();
     }
 }

@@ -22,7 +22,7 @@ class ChurchTest extends TestCase
 
     public function test_it_fetches_churches()
     {
-        $user = factory(\App\Models\User::class)->create(['isSuperAdmin' => true]);
+        $user = factory(\App\Models\User::class)->create();
         $church = factory(\App\Models\Church::class)->create();
 
         $this->json('GET', '/api/church/' . $church->id)->seeJson(['error' => 'Unauthenticated.']);
@@ -51,7 +51,8 @@ class ChurchTest extends TestCase
         ])->seeJson(['message' => 'Not authorized to create a church']);
         $this->seeStatusCode(403);
 
-        $user = factory(\App\Models\User::class)->create(['isSuperAdmin' => true]);
+        $user = factory(\App\Models\User::class)->create();
+        $user->roles()->attach(1);
         $this->actingAs($user, 'api')->json('POST', '/api/church/', [
             'name' => $church->name,
             'address' => $church->address,
@@ -66,22 +67,35 @@ class ChurchTest extends TestCase
     public function test_super_admin_can_update_a_church()
     {
         $user = factory(\App\Models\User::class)->create();
-        $church = factory(\App\Models\Church::class)->make();
+        $church = factory(\App\Models\Church::class)->create();
 
         $this->json('PUT', '/api/church/' . $church->id, [
             'name' => "ABC CHURCH",
-        ])->dump()->seeJson(['error' => 'Unauthenticated.']);
+            'address' => $church->address,
+            'city' => $church->city,
+            'state' => $church->state,
+            'zipcode' => $church->zipcode
+        ])->seeJson(['error' => 'Unauthenticated.']);
         $this->seeStatusCode(401);
 
         $this->actingAs($user, 'api')->json('PUT', '/api/church/' . $church->id, [
             'name' => "ABC CHURCH",
-        ])->seeJson(['message' => 'Not authorized to create a church']);
+            'address' => $church->address,
+            'city' => $church->city,
+            'state' => $church->state,
+            'zipcode' => $church->zipcode
+        ])->seeJson(['message' => 'Not authorized to update a church']);
         $this->seeStatusCode(403);
 
-        $user = factory(\App\Models\User::class)->create(['isSuperAdmin' => true]);
+        $user = factory(\App\Models\User::class)->create();
+        $user->roles()->attach(1);
         $this->actingAs($user, 'api')->json('PUT', '/api/church/' . $church->id, [
             'name' => "ABC CHURCH",
-        ])->seeJson(['church' => $church->name]);
+            'address' => $church->address,
+            'city' => $church->city,
+            'state' => $church->state,
+            'zipcode' => $church->zipcode
+        ])->seeJson(['church' => "ABC CHURCH"]);
         $this->seeStatusCode(200);
     }
 

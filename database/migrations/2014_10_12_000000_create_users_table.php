@@ -19,8 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone')->nullable();
-            $table->boolean('isSuperAdmin')->default(false);
-            $table->boolean('isChurchPrimary')->default(false);
             $table->integer('church_id')->unsigned()->default(0);
             $table->rememberToken();
             $table->timestamps();

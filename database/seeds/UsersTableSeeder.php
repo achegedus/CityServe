@@ -16,8 +16,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'adam@heged.us',
             'password' => bcrypt('asdfasdf'),
             'phone' => '(814)933-8336',
-            'isSuperAdmin' => true,
-            'isChurchPrimary' => false
        ]);
     }
 }
