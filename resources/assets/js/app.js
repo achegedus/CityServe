@@ -13,6 +13,10 @@ var VueResource = require('vue-resource');
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
+
+import App from './Application.vue'
+Vue.component('app', App)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

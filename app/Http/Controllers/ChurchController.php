@@ -81,6 +81,7 @@ class ChurchController extends Controller
     public function store(Request $request)
     {
         try {
+            echo "IN";
             $this->authorize('create');
         } catch (AuthorizationException $ex) {
             return $this->response->errorForbidden('Not authorized to create a church');
