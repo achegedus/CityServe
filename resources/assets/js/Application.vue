@@ -1,9 +1,13 @@
 <template>
 
     <div>
-        <top-menu></top-menu>
+        <home-header></home-header>
 
-        <router-view></router-view>
+        <div class="container content">
+            <router-view></router-view>
+        </div>
+
+        <home-footer></home-footer>
     </div>
 
 </template>
@@ -16,14 +20,23 @@
 </style>
 
 
-
 <script>
 
-    import TopMenu from './components/TopMenu.vue'
+    import { mapState } from 'vuex'
+    import TopMenu from './components/admin/TopMenu.vue'
+
+    import HomeHeader from './components/HomeHeader.vue'
+    import HomeFooter from './components/HomeFooter.vue'
 
     export default {
         components: {
-            TopMenu
+            TopMenu, HomeHeader, HomeFooter
+        },
+
+        computed: {
+            ...mapState({
+                userStore: state => state.userStore
+            })
         },
 
         created() {

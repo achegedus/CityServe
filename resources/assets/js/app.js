@@ -23,18 +23,24 @@ Vue.component('app', App)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import LoginPage from './pages/LoginPage.vue';
-import DashboardPage from './pages/DashboardPage.vue';
+import LoginPage from './pages/admin/LoginPage.vue';
+import DashboardPage from './pages/admin/DashboardPage.vue';
+import ChurchesPage from './pages/admin/ChurchesPage.vue';
+import store from './store';
+
 
 const routes = [
-    {path: '/', component: LoginPage, name: 'login'},
-    {path: '/dashboard', component: DashboardPage, name: 'dashboard', meta: {requiresAuth: true }}
+    {path: '/admin', component: LoginPage, name: 'admin-login'},
+    {path: '/admin/dashboard', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
+    {path: '/admin/churches', component: ChurchesPage, name: 'admin-churches-page', meta: {requiresAuth: true }}
 ];
+
 
 const router = new VueRouter({
     mode: 'history',
     routes
 });
+
 
 router.beforeEach((to, from, next) => {
     if (to.meta.requiresAuth) {
@@ -51,5 +57,5 @@ router.beforeEach((to, from, next) => {
 
 
 new Vue({
-    router
+    router, store
 }).$mount('#app');

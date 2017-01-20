@@ -3,8 +3,7 @@ import Vuex from 'vuex'
 
 import userStore from './components/user/userStore'
 
-Vue.use('vuex')
-
+Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
