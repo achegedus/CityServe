@@ -12,4 +12,9 @@ class Church extends Model
     {
         return $this->hasMany('App\Models\User');
     }
+
+    public function people()
+    {
+        return $this->hasMany('App\Models\Person');
+    }
 }

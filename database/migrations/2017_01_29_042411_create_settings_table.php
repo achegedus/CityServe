@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupLeadersTable extends Migration
+class CreateSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateGroupLeadersTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_leaders', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('volunteer_id');
-            $table->integer('church_id');
-            $table->integer('project_id');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateGroupLeadersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_leaders');
+        Schema::dropIfExists('settings');
     }
 }

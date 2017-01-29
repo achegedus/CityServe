@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GroupType extends Model
+class Requester extends Model
 {
     //
 
     // Relationships
-    public function groups()
+    public function project()
     {
-        return $this->hasMany('App\Models\Group');
+        return $this->hasOne('App\Models\Project');
     }
+
 }

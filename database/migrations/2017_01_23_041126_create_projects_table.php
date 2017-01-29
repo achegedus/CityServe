@@ -15,9 +15,9 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('requester');
-            $table->string('contact_name');
-            $table->string('contact_phone',12);
+            $table->integer('requester_id');
+            $table->string('event_contact_name');
+            $table->string('event_contact_phone',12);
             $table->string('address');
             $table->string('secondary_address')->nullable();
             $table->string('city');
