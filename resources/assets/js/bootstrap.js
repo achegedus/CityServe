@@ -16,7 +16,7 @@ window.$ = window.jQuery = require('jquery');
  */
 
 window.Vue = require('vue');
-require('vue-resource');
+window.axios = require('axios');
 require('vue-router');
 
 /**
@@ -25,11 +25,9 @@ require('vue-router');
  * included with Laravel will automatically verify the header's value.
  */
 
-Vue.http.interceptors.push((request, next) => {
-    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-
-    next();
-});
+window.axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest'
+};
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
