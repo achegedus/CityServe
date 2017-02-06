@@ -7,7 +7,7 @@ use League\Fractal\TransformerAbstract;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
-class ChurchTransformer extends TransformerAbstract
+class GroupTransformer extends TransformerAbstract
 {
     /**
      * List of resources possible to include
@@ -35,12 +35,9 @@ class ChurchTransformer extends TransformerAbstract
 
             'id' => (int) $resource->id,
 			'name' => $resource->name,
-			'address' => $resource->address,
-			'secondary_address' => $resource->address2,
-			'city' => $resource->city,
-			'state' => $resource->state,
-			'zipcode' => $resource->zipcode,
-			'url' => $resource->url,
+			'number_of_people' => (int) $resource->members,
+			'group_type_id' => (int) $resource->group_type_id,
+			'person_id' => (int) $resource->person_id,
 			'created_at' => $resource->created_at,
 			'updated_at' => $resource->updated_at,
 			

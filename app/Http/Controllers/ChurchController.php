@@ -4,23 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Church;
 use App\Transformers\ChurchTransformer;
-use EllipseSynergie\ApiResponse\Contracts\Response;
+use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 
 class ChurchController extends Controller
 {
-    protected $response;
-
-    /**
-     * ChurchController constructor.
-     * @param Response $response
-     */
-    public function __construct(Response $response)
-    {
-        $this->response = $response;
-    }
-
 
     /**
      * Return church collection
@@ -31,36 +20,41 @@ class ChurchController extends Controller
         $churches = Church::all();
 
         // return a collection of churches
-        return $this->response->withCollection($churches, new ChurchTransformer());
+        return Fractal::collection($churches, new ChurchTransformer());
     }
 
 
     public function show($id)
     {
-        //Get the task
-        $task = Church::find($id);
-        if (!$task) {
-            return $this->response->errorNotFound('Church Not Found');
+        // get the church
+        $church = Church::find($id);
+
+        // check if it exists
+        if (!$church) {
+            return response()->json([
+                'error' => [
+                    'message' => 'That church was not found.',
+                    'code' => 100
+                ]
+            ], 404);
         }
-        // Return a single task
-        return $this->response->withItem($task, new ChurchTransformer());
+
+        // response
+        return Fractal::collection($church, new ChurchTransformer());
     }
 
 
     public function update(Church $church, Request $request)
     {
-//        $id = $this->route('id');
-//
-//        //Get the church
-//        $church = Church::find($id);
-//        if (!$church) {
-//            return $this->response->errorNotFound('Church Not Found');
-//        }
-
         try {
             $this->authorize('update', $church);
         } catch (\Exception $ex) {
-            return $this->response->errorForbidden('Not authorized to update a church');
+            return response()->json([
+                'error' => [
+                    'message' => 'Not authorized to update a church.',
+                    'code' => 100
+                ]
+            ], 500);
         }
 
         $church->name = $request->input('name');
@@ -70,10 +64,16 @@ class ChurchController extends Controller
         $church->state = $request->input('state');
         $church->zipcode = $request->input('zipcode');
 
+        // save church
         if($church->save()) {
-            return $this->response->withItem($church, new  ChurchTransformer());
+            return Fractal::collection($church, new ChurchTransformer());
         } else {
-            return $this->response->errorInternalError('Could not updated/created a church');
+            return response()->json([
+                'error' => [
+                    'message' => 'Could not update church.',
+                    'code' => 100
+                ]
+            ], 500);
         }
     }
 
@@ -81,10 +81,14 @@ class ChurchController extends Controller
     public function store(Request $request)
     {
         try {
-            echo "IN";
             $this->authorize('create');
-        } catch (AuthorizationException $ex) {
-            return $this->response->errorForbidden('Not authorized to create a church');
+        } catch (\Exception $ex) {
+            return response()->json([
+                'error' => [
+                    'message' => 'Not authorized to create a church.',
+                    'code' => 100
+                ]
+            ], 500);
         }
 
         $this->validate($request, [
@@ -104,10 +108,16 @@ class ChurchController extends Controller
         $church->state = $request->input('state');
         $church->zipcode = $request->input('zipcode');
 
+        // save church
         if($church->save()) {
-            return $this->response->withItem($church, new  ChurchTransformer());
+            return Fractal::collection($church, new ChurchTransformer());
         } else {
-            return $this->response->errorInternalError('Could not updated/created a church');
+            return response()->json([
+                'error' => [
+                    'message' => 'Could not create church.',
+                    'code' => 100
+                ]
+            ], 500);
         }
     }
 }

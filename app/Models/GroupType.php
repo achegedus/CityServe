@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class GroupType extends Model
 {
     //
+    protected $fillable = ['name'];
+
 
     // Relationships
     public function groups()

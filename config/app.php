@@ -162,7 +162,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -179,8 +178,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Laravel\Tinker\TinkerServiceProvider::class
-
+        Laravel\Tinker\TinkerServiceProvider::class,
+        Cyvelnet\Laravel5Fractal\Laravel5FractalServiceProvider::class,
     ],
 
     /*
@@ -228,7 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Fractal' => Cyvelnet\Laravel5Fractal\Facades\Fractal::class
     ],
 
 ];

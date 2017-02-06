@@ -61,7 +61,7 @@
 
                 const authUser = {}
 
-                this.$http.post(loginUrl, postData)
+                this.axios.post(loginUrl, postData)
                     .then(response => {
                         if (response.status === 200) {
                             console.log(response);
@@ -71,16 +71,16 @@
                             // store the credentials
                             window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
-                            this.$http.get(userUrl, {headers: getHeader()})
+                            this.axios.get(userUrl, {headers: getHeader()})
                                 .then(response => {
                                     console.log(response);
 
-                                    authUser.email = response.body.email
-                                    authUser.name = response.body.name
-                                    authUser.isSuperAdmin = response.body.isSuperAdmin
-                                    authUser.isChurchPrimary = response.body.isChurchPrimary
-                                    authUser.phone = response.body.phone
-                                    authUser.church_id = response.body.church_id
+                                    authUser.email = response.data.email
+                                    authUser.name = response.data.name
+                                    authUser.isSuperAdmin = response.data.isSuperAdmin
+                                    authUser.isChurchPrimary = response.data.isChurchPrimary
+                                    authUser.phone = response.data.phone
+                                    authUser.church_id = response.data.church_id
 
                                     window.localStorage.setItem('authUser', JSON.stringify(authUser));
 

@@ -16,7 +16,6 @@ window.$ = window.jQuery = require('jquery');
  */
 
 window.Vue = require('vue');
-window.axios = require('axios');
 require('vue-router');
 
 /**
@@ -25,7 +24,10 @@ require('vue-router');
  * included with Laravel will automatically verify the header's value.
  */
 
+window.axios = require('axios');
+
 window.axios.defaults.headers.common = {
+    'X-CSRF-TOKEN': window.Laravel.csrfToken,
     'X-Requested-With': 'XMLHttpRequest'
 };
 

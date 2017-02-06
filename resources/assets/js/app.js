@@ -8,10 +8,10 @@
 require('./bootstrap');
 
 var VueRouter = require('vue-router');
-var VueResource = require('vue-resource');
+var VueAxios = require('vue-axios');
 
 Vue.use(VueRouter);
-Vue.use(VueResource);
+Vue.use(VueAxios, axios);
 
 
 import App from './Application.vue'
