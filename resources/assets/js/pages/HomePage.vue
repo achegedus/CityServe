@@ -1,30 +1,21 @@
 <template>
-
     <div>
-        <h3>Dashboard</h3>
+asdfasdfa
     </div>
-
 </template>
 
 
 <style>
 
-
 </style>
 
 
 <script>
-
     export default{
         data(){
             return{
                 msg:'hello vue'
             }
-        },
-
-        components:{
-
         }
     }
-
 </script>

@@ -19,14 +19,12 @@ Route::get('/user', function (Request $request) {
 
 
 Route::group(['middleware' => 'api'], function() {
-
     Route::get('/churches', 'ChurchController@index');
-
 });
 
 
 Route::group(['middleware' => 'auth:api'], function() {
-
+    // churches
     Route::get('/church/{id}', 'ChurchController@show');
     Route::delete('church/{id}','ChurchController@destroy');
     Route::put('church/{id}','ChurchController@update');

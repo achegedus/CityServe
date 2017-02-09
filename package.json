@@ -19,9 +19,9 @@
   },
   "dependencies": {
     "auth0-js": "^7.6.0",
+    "vue-axios": "^1.2.2",
     "vue-moment": "^2.0.2",
     "vue-router": "^2.1.1",
-    "vue-axios": "^1.2.2",
-    "vuex": "^2.1.1"
+    "vuex": "^2.1.2"
   }
 }

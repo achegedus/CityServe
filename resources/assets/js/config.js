@@ -4,7 +4,7 @@
 
 export const apiDomain = 'http://localhost:8888/';
 export const loginUrl = apiDomain + 'oauth/token';
-export const userUrl = apiDomain + '/api/user';
+export const userUrl = apiDomain + 'api/user';
 
 
 export const getHeader = function() {

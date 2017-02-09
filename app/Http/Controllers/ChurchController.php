@@ -7,6 +7,7 @@ use App\Transformers\ChurchTransformer;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ChurchController extends Controller
 {
@@ -44,8 +45,10 @@ class ChurchController extends Controller
     }
 
 
-    public function update(Church $church, Request $request)
+    public function update($id, Request $request)
     {
+        $church = Church::findOrFail($id);
+
         try {
             $this->authorize('update', $church);
         } catch (\Exception $ex) {
@@ -57,16 +60,10 @@ class ChurchController extends Controller
             ], 500);
         }
 
-        $church->name = $request->input('name');
-        $church->address = $request->input('address');
-        $church->address2 = $request->input('address2');
-        $church->city = $request->input('city');
-        $church->state = $request->input('state');
-        $church->zipcode = $request->input('zipcode');
 
         // save church
-        if($church->save()) {
-            return Fractal::collection($church, new ChurchTransformer());
+        if($church->update($request->all())) {
+            return Fractal::item($church, new ChurchTransformer());
         } else {
             return response()->json([
                 'error' => [
@@ -78,10 +75,27 @@ class ChurchController extends Controller
     }
 
 
+    public function destroy($id) {
+        $church = Church::findOrFail($id);
+        if ($church) {
+            $church->delete();
+            return response()->json([], 200);
+        } else {
+            return response()->json([
+                'error' => [
+                    'message' => 'Church not found.',
+                    'code' => 200
+                ]
+            ], 500);
+        }
+
+    }
+
+
     public function store(Request $request)
     {
         try {
-            $this->authorize('create');
+            $this->authorize('create', Church::class);
         } catch (\Exception $ex) {
             return response()->json([
                 'error' => [
@@ -99,18 +113,11 @@ class ChurchController extends Controller
             'zipcode' => 'required|max:9'
         ]);
 
-        $church = new Church;
-
-        $church->name = $request->input('name');
-        $church->address = $request->input('address');
-        $church->address2 = $request->input('address2');
-        $church->city = $request->input('city');
-        $church->state = $request->input('state');
-        $church->zipcode = $request->input('zipcode');
+        $church = Church::create($request->all());
 
         // save church
-        if($church->save()) {
-            return Fractal::collection($church, new ChurchTransformer());
+        if($church) {
+            return Fractal::item($church, new ChurchTransformer());
         } else {
             return response()->json([
                 'error' => [

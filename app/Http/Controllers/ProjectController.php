@@ -69,55 +69,8 @@ class ProjectController extends Controller
             ], 500);
         }
 
-        $project->requester_id = $request->input('requester_id');
-        $project->event_contact_name = $request->input('event_contact_name');
-        $project->event_contact_phone = $request->input('event_contact_phone');
-        $project->address = $request->input('address');
-        $project->secondary_address = $request->input('secondary_address');
-        $project->city = $request->input('city');
-        $project->state = $request->input('state');
-        $project->zipcode = $request->input('zipcode');
-        $project-> = $request->input('');
-
-
-        'city' => $resource->city,
-        'state' => $resource->state,
-        'zipcode' => $resource->zipcode,
-        'phone' => $resource->phone,
-        'directions' => $resource->directions,
-        'parking' => $resource->parking,
-        'description' => $resource->description,
-        'day' => $resource->day,
-        'time' => (int) $resource->time,
-        'numVolunteers' => (int) $resource->numVolunteers,
-        'family' => (bool) $resource->family,
-        'howUsed' => $resource->howUsed,
-        'skills' => $resource->skills,
-        'materialsRequesterWill' => $resource->materialsRequesterWill,
-        'materialsRequesterCannot' => $resource->materialsRequesterCannot,
-        'materialsCityServe' => $resource->materialsCityServe,
-        'evaluated' => (bool) $resource->evaluated,
-        'approved' => (bool) $resource->approved,
-        'assigned' => (bool) $resource->assigned,
-        'evaluator_id' => (int) $resource->evaluator_id,
-        'category_id' => (int) $resource->category_id,
-        'volunteers_needed' => (int) $resource->volunteers_needed,
-        'notes' => $resource->notes,
-        'coordinator_id' => (int) $resource->coordinator_id,
-        'confirmed' => (bool) $resource->confirmed,
-        'short_description' => $resource->short_description,
-        'created_at' => $resource->created_at,
-        'updated_at' => $resource->updated_at,
-
-        $project->name = $request->input('name');
-        $church->address = $request->input('address');
-        $church->address2 = $request->input('address2');
-        $church->city = $request->input('city');
-        $church->state = $request->input('state');
-        $church->zipcode = $request->input('zipcode');
-
         // save church
-        if ($project->save()) {
+        if( $project->update($request->all())) {
             return Fractal::collection($project, new ProjectTransformer());
         } else {
             return response()->json([
@@ -155,17 +108,10 @@ class ProjectController extends Controller
             'zipcode' => 'required|max:9'
         ]);
 
-        $project = new Project();
-
-        $church->name = $request->input('name');
-        $church->address = $request->input('address');
-        $church->address2 = $request->input('address2');
-        $church->city = $request->input('city');
-        $church->state = $request->input('state');
-        $church->zipcode = $request->input('zipcode');
+        $project = Project::create($request->all());
 
         // save church
-        if ($project->save()) {
+        if ($project) {
             return Fractal::collection($project, new ProjectTransformer());
         } else {
             return response()->json([

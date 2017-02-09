@@ -1,13 +1,21 @@
 <template>
 
     <div>
-        <home-header></home-header>
+        <div v-if="$route.name.indexOf('admin') == -1">
+            <home-header></home-header>
 
-        <div class="container content">
-            <router-view></router-view>
+            <div class="container content">
+                <router-view></router-view>
+            </div>
+
+            <home-footer v-if="$route.name.indexOf('admin') == -1"></home-footer>
         </div>
-
-        <home-footer></home-footer>
+        <div v-else>
+            <top-menu></top-menu>
+            <div class="container">
+                <router-view></router-view>
+            </div>
+        </div>
     </div>
 
 </template>
@@ -15,7 +23,6 @@
 
 <style>
 
-    body { padding-top: 70px; }
 
 </style>
 
@@ -40,7 +47,8 @@
         },
 
         created() {
-            console.log('i was created')
+            const userObj = JSON.parse(window.localStorage.getItem('authUser'))
+            this.$store.dispatch('setUserObject', userObj)
         }
 
     }

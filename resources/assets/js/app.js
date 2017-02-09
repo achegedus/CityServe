@@ -23,16 +23,24 @@ Vue.component('app', App)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import HomePage from './pages/HomePage.vue';
+
 import LoginPage from './pages/admin/LoginPage.vue';
 import DashboardPage from './pages/admin/DashboardPage.vue';
 import ChurchesPage from './pages/admin/ChurchesPage.vue';
+import ProjectsPage from './pages/admin/ProjectsPage.vue';
+import PeoplePage from './pages/admin/PeoplePage.vue';
+
 import store from './store';
 
 
 const routes = [
+    {path: '/', componenet: HomePage, name: 'home-page'},
     {path: '/admin', component: LoginPage, name: 'admin-login'},
     {path: '/admin/dashboard', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
-    {path: '/admin/churches', component: ChurchesPage, name: 'admin-churches-page', meta: {requiresAuth: true }}
+    {path: '/admin/churches', component: ChurchesPage, name: 'admin-churches-page', meta: {requiresAuth: true }},
+    {path: '/admin/projects', component: ProjectsPage, name: 'admin-projects-page', meta: {requiresAuth: true }},
+    {path: '/admin/people', component: PeoplePage, name: 'admin-people-page', meta: {requiresAuth: true }}
 ];
 
 
@@ -49,7 +57,7 @@ router.beforeEach((to, from, next) => {
             next()
         }
         else {
-            next({name: 'home'})
+            next({name: 'admin-login'})
         }
     }
     next()
