@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <h3>Churches</h3>
+        <h3>Churches <router-link class="small" :to="{ name: 'admin-church-new-page' }">Create new</router-link></h3>
 
         <table class="table">
             <thead>
@@ -15,7 +15,7 @@
 
             <tbody>
                 <tr v-for="church in this.churches">
-                    <td>{{ church.name }}</td>
+                    <td><router-link :to="{ name: 'admin-church-edit-page', params: {churchID: church.id }}">{{ church.name }}</router-link></td>
                     <td>{{ church.address }}</td>
                     <td>{{ church.city }}</td>
                     <td></td>

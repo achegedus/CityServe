@@ -9,9 +9,11 @@ require('./bootstrap');
 
 var VueRouter = require('vue-router');
 var VueAxios = require('vue-axios');
+var VeeValidate = require('vee-validate');
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+Vue.use(VeeValidate);
 
 
 import App from './Application.vue'
@@ -27,9 +29,22 @@ import HomePage from './pages/HomePage.vue';
 
 import LoginPage from './pages/admin/LoginPage.vue';
 import DashboardPage from './pages/admin/DashboardPage.vue';
-import ChurchesPage from './pages/admin/ChurchesPage.vue';
-import ProjectsPage from './pages/admin/ProjectsPage.vue';
-import PeoplePage from './pages/admin/PeoplePage.vue';
+
+import ChurchesPage from './pages/admin/churches/ChurchesPage.vue';
+import ChurchEditPage from './pages/admin/churches/EditChurchPage.vue';
+import ChurchNewPage from './pages/admin/churches/NewChurchPage.vue';
+
+import ProjectsPage from './pages/admin/projects/ProjectsPage.vue';
+import ProjectEditPage from './pages/admin/projects/EditProjectPage.vue';
+import ProjectNewPage from './pages/admin/projects/NewProjectPage.vue';
+
+import PeoplePage from './pages/admin/people/PeoplePage.vue';
+import PersonEditPage from './pages/admin/people/EditPersonPage.vue';
+import PersonNewPage from './pages/admin/people/NewPersonPage.vue';
+
+import UsersPage from './pages/admin/users/UsersPage.vue';
+import UserEditPage from './pages/admin/users/EditUserPage.vue';
+import UserNewPage from './pages/admin/users/NewUserPage.vue';
 
 import store from './store';
 
@@ -38,9 +53,23 @@ const routes = [
     {path: '/', componenet: HomePage, name: 'home-page'},
     {path: '/admin', component: LoginPage, name: 'admin-login'},
     {path: '/admin/dashboard', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
+
+    {path: '/admin/users', component: UsersPage, name: 'admin-users-page', meta: {requiresAuth: true }},
+    {path: '/admin/user/new', component: UserNewPage, name: 'admin-user-new-page', meta: {requiresAuth: true }},
+    {path: '/admin/user/:userID/edit', component: UserEditPage, name: 'admin-user-edit-page', meta: {requiresAuth: true }},
+
     {path: '/admin/churches', component: ChurchesPage, name: 'admin-churches-page', meta: {requiresAuth: true }},
+    {path: '/admin/church/new', component: ChurchNewPage, name: 'admin-church-new-page', meta: {requiresAuth: true }},
+    {path: '/admin/church/:churchID/edit', component: ChurchEditPage, name: 'admin-church-edit-page', meta: {requiresAuth: true }},
+
+    {path: '/admin/people', component: PeoplePage, name: 'admin-people-page', meta: {requiresAuth: true }},
+    {path: '/admin/person/new', component: PersonNewPage, name: 'admin-person-new-page', meta: {requiresAuth: true }},
+    {path: '/admin/person/:personID/edit', component: PersonEditPage, name: 'admin-person-edit-page', meta: {requiresAuth: true }},
+
     {path: '/admin/projects', component: ProjectsPage, name: 'admin-projects-page', meta: {requiresAuth: true }},
-    {path: '/admin/people', component: PeoplePage, name: 'admin-people-page', meta: {requiresAuth: true }}
+    {path: '/admin/project/new', component: ProjectNewPage, name: 'admin-project-new-page', meta: {requiresAuth: true }},
+    {path: '/admin/project/:projectID/edit', component: ProjectEditPage, name: 'admin-project-edit-page', meta: {requiresAuth: true }},
+
 ];
 
 
@@ -54,6 +83,8 @@ router.beforeEach((to, from, next) => {
     if (to.meta.requiresAuth) {
         const authUser = JSON.parse(window.localStorage.getItem('authUser'))
         if (authUser && authUser.access_token) {
+            const tokenData = JSON.parse(window.localStorage.getItem('authUser'));
+            Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + tokenData.access_token;
             next()
         }
         else {

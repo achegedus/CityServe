@@ -1,0 +1,78 @@
+<template>
+    <div>
+        <h3>Update User</h3>
+        <form @submit.prevent="validateBeforeSubmit">
+            <user-form :user="this.user"></user-form>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-error">Update User</button>
+            </div>
+        </form>
+    </div>
+</template>
+
+
+<style>
+
+</style>
+
+
+<script>
+    import UserForm from './components/UserForm.vue'
+
+    export default{
+        data(){
+            return{
+                user: {}
+            }
+        },
+
+        components: {
+            UserForm
+        },
+
+        methods: {
+            fetchUser: function() {
+                this.axios.get('/api/user/' + this.$route.params.userID)
+                .then((response) => {
+                    this.user = response.data
+                });
+            },
+
+            validateBeforeSubmit(e) {
+                this.$validator.validateAll();
+                if (!this.errors.any()) {
+                    this.saveUser()
+                }
+            },
+
+            saveUser: function() {
+                var self = this;
+
+                const postData = {
+                    name: this.user.name,
+                    address: this.user.email,
+                    address2: this.user.password,
+                    city: this.user.phone,
+                    state: this.user.church_id
+                }
+
+                this.axios.put('/api/user/' + this.$route.params.userID, postData)
+                .then((response) => {
+                    console.log('Updated');
+                    self.$router.push({ name: 'admin-users-page'})
+                })
+                .catch((error) => {
+                    console.log('An error occurred');
+                    console.log(error);
+                });
+
+            }
+        },
+
+        mounted: function() {
+            this.fetchUser();
+        }
+
+    }
+</script>

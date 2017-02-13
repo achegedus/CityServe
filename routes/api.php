@@ -30,4 +30,25 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::put('church/{id}','ChurchController@update');
     Route::post('church','ChurchController@store');
 
+    // projects
+    Route::get('/projects', 'ProjectController@index');
+    Route::get('/project/{id}', 'ProjectController@show');
+    Route::delete('project/{id}','ProjectController@destroy');
+    Route::put('project/{id}','ProjectController@update');
+    Route::post('project','ProjectController@store');
+
+    // people
+    Route::get('/people', 'PersonController@index');
+    Route::get('/people/{id}', 'PersonController@show');
+    Route::delete('person/{id}','PersonController@destroy');
+    Route::put('person/{id}','PersonController@update');
+    Route::post('person','PersonController@store');
+
+    // users
+    Route::get('/users', 'UserController@index');
+    Route::get('/user/{id}', 'UserController@show');
+    Route::delete('user/{id}','UserController@destroy');
+    Route::put('user/{id}','UserController@update');
+    Route::post('user','UserController@store');
+
 });

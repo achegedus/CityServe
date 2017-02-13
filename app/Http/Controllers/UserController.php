@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Church;
-use App\Transformers\ChurchTransformer;
+use App\Models\User;
+use App\Transformers\UserTransformer;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ChurchController extends Controller
+class UserController extends Controller
 {
 
     /**
@@ -17,44 +17,55 @@ class ChurchController extends Controller
      */
     public function index()
     {
+        try {
+            $this->authorize('viewlist', User::class);
+        } catch (\Exception $ex) {
+            return response()->json([
+                'error' => [
+                    'message' => 'Not authorized to access this resource.',
+                    'code' => 100
+                ]
+            ], 500);
+        }
+
         // get all churches
-        $churches = Church::all();
+        $users = User::all();
 
         // return a collection of churches
-        return Fractal::collection($churches, new ChurchTransformer());
+        return Fractal::collection($users, new UserTransformer());
     }
 
 
     public function show($id)
     {
         // get the church
-        $church = Church::find($id);
+        $user = User::find($id);
 
         // check if it exists
-        if (!$church) {
+        if (!$user) {
             return response()->json([
                 'error' => [
-                    'message' => 'That church was not found.',
+                    'message' => 'That user was not found.',
                     'code' => 100
                 ]
             ], 404);
         }
 
         // response
-        return Fractal::item($church, new ChurchTransformer());
+        return Fractal::item($user, new UserTransformer());
     }
 
 
     public function update($id, Request $request)
     {
-        $church = Church::findOrFail($id);
+        $user = User::findOrFail($id);
 
         try {
-            $this->authorize('update', $church);
+            $this->authorize('update', $user);
         } catch (\Exception $ex) {
             return response()->json([
                 'error' => [
-                    'message' => 'Not authorized to update a church.',
+                    'message' => 'Not authorized to update a user.',
                     'code' => 100
                 ]
             ], 500);
@@ -62,12 +73,12 @@ class ChurchController extends Controller
 
 
         // save church
-        if($church->update($request->all())) {
-            return Fractal::item($church, new ChurchTransformer());
+        if($user->update($request->all())) {
+            return Fractal::item($user, new UserTransformer());
         } else {
             return response()->json([
                 'error' => [
-                    'message' => 'Could not update church.',
+                    'message' => 'Could not update user.',
                     'code' => 100
                 ]
             ], 500);
@@ -76,14 +87,14 @@ class ChurchController extends Controller
 
 
     public function destroy($id) {
-        $church = Church::findOrFail($id);
-        if ($church) {
-            $church->delete();
+        $user = User::findOrFail($id);
+        if ($user) {
+            $user->delete();
             return response()->json([], 200);
         } else {
             return response()->json([
                 'error' => [
-                    'message' => 'Church not found.',
+                    'message' => 'User not found.',
                     'code' => 200
                 ]
             ], 500);
@@ -95,11 +106,11 @@ class ChurchController extends Controller
     public function store(Request $request)
     {
         try {
-            $this->authorize('create', Church::class);
+            $this->authorize('create', User::class);
         } catch (\Exception $ex) {
             return response()->json([
                 'error' => [
-                    'message' => 'Not authorized to create a church.',
+                    'message' => 'Not authorized to create a user.',
                     'code' => 100
                 ]
             ], 500);
@@ -113,15 +124,15 @@ class ChurchController extends Controller
             'zipcode' => 'required|max:9'
         ]);
 
-        $church = Church::create($request->all());
+        $user = User::create($request->all());
 
-        // save church
-        if($church) {
-            return Fractal::item($church, new ChurchTransformer());
+        // save user
+        if($user) {
+            return Fractal::item($user, new UserTransformer());
         } else {
             return response()->json([
                 'error' => [
-                    'message' => 'Could not create church.',
+                    'message' => 'Could not create user.',
                     'code' => 100
                 ]
             ], 500);
