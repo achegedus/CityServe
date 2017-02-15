@@ -20,4 +20,16 @@ class ExampleTest extends DuskTestCase
                     ->assertSee('Laravel');
         });
     }
+
+    /**
+     * Creates the application.
+     *
+     * Needs to be implemented by subclasses.
+     *
+     * @return \Symfony\Component\HttpKernel\HttpKernelInterface
+     */
+    public function createApplication()
+    {
+        // TODO: Implement createApplication() method.
+    }
 }

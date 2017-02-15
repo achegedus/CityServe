@@ -44,13 +44,11 @@
                 var self = this;
 
                 const postData = {
-                    name: this.church.name,
-                    address: this.church.address,
-                    address2: this.church.address2,
-                    city: this.church.city,
-                    state: this.church.state,
-                    zipcode: this.church.zipcode,
-                    url: this.church.url
+                    name: this.user.name,
+                    email: this.user.email,
+                    password: this.user.password,
+                    phone: this.user.phone,
+                    church_id: this.user.church_id
                 }
 
                 this.axios.post('/api/user', postData)

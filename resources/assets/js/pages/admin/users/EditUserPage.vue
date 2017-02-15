@@ -51,10 +51,10 @@
 
                 const postData = {
                     name: this.user.name,
-                    address: this.user.email,
-                    address2: this.user.password,
-                    city: this.user.phone,
-                    state: this.user.church_id
+                    email: this.user.email,
+                    password: this.user.password,
+                    phone: this.user.phone,
+                    church_id: this.user.church_id
                 }
 
                 this.axios.put('/api/user/' + this.$route.params.userID, postData)
