@@ -10,7 +10,8 @@
         "laravel/passport": "^2.0",
         "laravel/tinker": "^1.0",
         "laravel/dusk": "^1.0",
-        "cyvelnet/laravel5-fractal": "^2.0"
+        "cyvelnet/laravel5-fractal": "^2.0",
+        "laravel/browser-kit-testing": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -29,8 +30,13 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
-        ]
+            "tests/TestCase.php",
+            "tests/BrowserKitTestCase.php",
+            "tests/helpers"
+        ],
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     },
     "scripts": {
         "post-root-package-install": [

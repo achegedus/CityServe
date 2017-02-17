@@ -9,7 +9,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ChurchController extends Controller
+class ChurchController extends ApiController
 {
 
     /**
@@ -25,6 +25,10 @@ class ChurchController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function show($id)
     {
         // get the church
@@ -32,12 +36,7 @@ class ChurchController extends Controller
 
         // check if it exists
         if (!$church) {
-            return response()->json([
-                'error' => [
-                    'message' => 'That church was not found.',
-                    'code' => 100
-                ]
-            ], 404);
+            $this->respondNotFound('Church was not found.');
         }
 
         // response
@@ -45,6 +44,11 @@ class ChurchController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update($id, Request $request)
     {
         $church = Church::findOrFail($id);
@@ -52,57 +56,44 @@ class ChurchController extends Controller
         try {
             $this->authorize('update', $church);
         } catch (\Exception $ex) {
-            return response()->json([
-                'error' => [
-                    'message' => 'Not authorized to update a church.',
-                    'code' => 100
-                ]
-            ], 500);
+            $this->respondNotAuthorized('Not authorized to update a church.');
         }
-
 
         // save church
         if($church->update($request->all())) {
             return Fractal::item($church, new ChurchTransformer());
         } else {
-            return response()->json([
-                'error' => [
-                    'message' => 'Could not update church.',
-                    'code' => 100
-                ]
-            ], 500);
+            $this->respondInternalError('Church was not updated.');
         }
     }
 
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function destroy($id) {
-        $church = Church::findOrFail($id);
+        $church = Church::find($id);
+
         if ($church) {
             $church->delete();
-            return response()->json([], 200);
         } else {
-            return response()->json([
-                'error' => [
-                    'message' => 'Church not found.',
-                    'code' => 200
-                ]
-            ], 500);
+            $this->respondNotFound('Church not found.');
         }
 
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         try {
             $this->authorize('create', Church::class);
         } catch (\Exception $ex) {
-            return response()->json([
-                'error' => [
-                    'message' => 'Not authorized to create a church.',
-                    'code' => 100
-                ]
-            ], 500);
+            $this->respondNotAuthorized('Not authorized to create a church.');
         }
 
         $this->validate($request, [
@@ -119,12 +110,7 @@ class ChurchController extends Controller
         if($church) {
             return Fractal::item($church, new ChurchTransformer());
         } else {
-            return response()->json([
-                'error' => [
-                    'message' => 'Could not create church.',
-                    'code' => 100
-                ]
-            ], 500);
+            $this->respondInternalError('Church was not created.');
         }
     }
 }

@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
  * Class ProjectController
  * @package App\Http\Controllers
  */
-class ProjectController extends Controller
+class ProjectController extends ApiController
 {
 
     /**

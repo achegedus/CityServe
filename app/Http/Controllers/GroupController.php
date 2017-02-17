@@ -7,7 +7,7 @@ use App\Transformers\GroupTransformer;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Http\Request;
 
-class GroupController extends Controller
+class GroupController extends ApiController
 {
     /**
      * Return church collection

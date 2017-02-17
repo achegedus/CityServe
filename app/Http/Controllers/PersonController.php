@@ -7,7 +7,7 @@ use App\Transformers\PersonTransformer;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Http\Request;
 
-class PersonController extends Controller
+class PersonController extends ApiController
 {
     /**
      * @return mixed

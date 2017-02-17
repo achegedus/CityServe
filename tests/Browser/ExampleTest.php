@@ -1,35 +1,23 @@
 <?php
 
-namespace Tests\Browser;
+namespace Tests\Feature;
 
-
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\DuskTestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends DuskTestCase
+class ExampleTest extends TestCase
 {
     /**
-     * A basic browser test example.
+     * A basic test example.
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testBasicTest()
     {
-        $this->browse(function ($browser) {
-            $browser->visit('/')
-                    ->assertSee('Laravel');
-        });
-    }
+        $response = $this->get('/');
 
-    /**
-     * Creates the application.
-     *
-     * Needs to be implemented by subclasses.
-     *
-     * @return \Symfony\Component\HttpKernel\HttpKernelInterface
-     */
-    public function createApplication()
-    {
-        // TODO: Implement createApplication() method.
+        $response->assertStatus(200);
     }
 }
