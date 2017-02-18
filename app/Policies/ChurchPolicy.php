@@ -30,7 +30,6 @@ class ChurchPolicy
      */
     public function create(User $user)
     {
-        dd($user);
         return $user->isSuperAdmin();
     }
 

@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <h3>Projects <router-link class="small" :to="{ name: 'admin-church-new-page' }">Create new</router-link></h3>
+        <h3>Projects <router-link class="small" :to="{ name: 'admin-project-new-page' }">Create new</router-link></h3>
 
         <table class="table">
             <thead>
