@@ -1,14 +1,12 @@
 <template>
     <div>
         <h3>Create Project</h3>
-        <form @submit.prevent="validateBeforeSubmit">
-            <project-form :project="this.project"></project-form>
-            <approval-form :project="this.project"></approval-form>
+        <project-form :project="this.project"></project-form>
+        <approval-form :project="this.project"></approval-form>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-error">Create Project</button>
-            </div>
-        </form>
+        <div class="form-group">
+            <button type="submit" class="btn btn-error" @click="submitForm">Create Project</button>
+        </div>
     </div>
 </template>
 <style>
@@ -18,6 +16,7 @@
 
     import ProjectForm from './components/ProjectForm.vue'
     import ApprovalForm from './components/ApprovalForm.vue'
+    import bus from '../../../bus.js'
 
     export default{
         data(){
@@ -31,6 +30,16 @@
         },
 
         methods: {
+
+            validateChild() {
+                bus.$emit('approval_validate');
+            },
+
+            submitForm(e) {
+                // Validate All returns a promise and provides the validation result.
+                this.validateChild();
+                console.log(this.errors);
+            },
 
             validateBeforeSubmit(e) {
                 this.$validator.validateAll();
@@ -60,6 +69,7 @@
                     event_city: this.project.event_city,
                     event_state: this.project.event_state,
                     event_zipcode: this.project.event_zipcode,
+                    event_phone: this.project.event_phone,
                     directions: this.project.directions,
                     parking: this.project.parking,
                     description: this.project.description,
@@ -71,7 +81,7 @@
                     skills: this.project.skills,
                     materialsRequesterWill: this.project.materialsRequesterWill,
                     materialsRequesterCannot: this.project.materialsRequesterCannot,
-                    materialsCityServe: this.project.materialsCityServe,
+                    materialsCityServe: this.project.materialsRequesterWill,
                     evaluated: this.project.evaluated,
                     approved: this.project.approved,
                     assigned: this.project.assigned,
@@ -95,6 +105,21 @@
                 });
 
             }
+        },
+
+        created() {
+            bus.$on('errors-changed', (errors) => {
+                this.errors.clear();
+                errors.forEach(e => {
+                    this.errors.add(e.field, e.msg, e.rule, e.scope);
+                });
+            });
+
+            bus.$on('submit-project-response', this.saveProject);
+        },
+
+        beforeDestroy() {
+            bus.$off('submit-project-response', this.saveChurch);
         }
 
     }

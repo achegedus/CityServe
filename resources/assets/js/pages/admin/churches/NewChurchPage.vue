@@ -37,10 +37,6 @@
                 bus.$emit('validate');
             },
 
-            clearChild() {
-                bus.$emit('clear');
-            },
-
             submitForm(e) {
                 // Validate All returns a promise and provides the validation result.
                 this.validateChild();

@@ -16,8 +16,8 @@
             <tbody>
             <tr v-for="project in this.projects">
                 <td><router-link :to="{ name: 'admin-project-edit-page', params: {projectID: project.id }}">{{ project.id }}</router-link></td>
-                <td>{{ project.address }}</td>
-                <td>{{ project.requester_id }}</td>
+                <td>{{ project.event_address }}</td>
+                <td>{{ project.requester_contact_name }}</td>
                 <td>{{ project.day }}</td>
                 <td></td>
             </tr>

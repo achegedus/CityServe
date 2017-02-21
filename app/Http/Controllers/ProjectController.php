@@ -90,36 +90,45 @@ class ProjectController extends ApiController
     public function store(Request $request)
     {
         try {
-            $this->authorize('create');
+            $this->authorize('create', Project::class);
         } catch (\Exception $ex) {
-            return response()->json([
-                'error' => [
-                    'message' => 'Not authorized to create a project.',
-                    'code' => 100
-                ]
-            ], 500);
+            $this->respondNotAuthorized('Not authorized to create a project.');
         }
 
         $this->validate($request, [
-            'name' => 'required|max:64',
-            'address' => 'required',
-            'city' => 'required|max:64',
-            'state' => 'required|max:2',
-            'zipcode' => 'required|max:9'
+            'requester_contact_name' => 'required',
+            'requester_address' => 'required',
+            'requester_city' => 'required',
+            'requester_state' => 'required',
+            'requester_zipcode' => 'required',
+            'requester_phone' => 'required',
+            'requester_email' => 'required',
+            'event_contact_name' => 'required',
+            'event_contact_phone' => 'required',
+            'event_address' => 'required',
+            'event_city' => 'required',
+            'event_state' => 'required',
+            'event_zipcode' => 'required',
+            'event_phone' => 'required',
+            'directions' => 'required',
+            'parking' => 'required',
+            'description' => 'required',
+            'day' => 'required',
+            'time' => 'required',
+            'numVolunteers' => 'required',
+            'howUsed' => 'required',
+            'skills' => 'required',
+            'materialsRequesterWill' => 'required',
+            'materialsRequesterCannot' => 'required',
         ]);
 
         $project = Project::create($request->all());
 
         // save church
-        if ($project) {
-            return Fractal::collection($project, new ProjectTransformer());
+        if($project) {
+            return Fractal::item($project, new ProjectTransformer());
         } else {
-            return response()->json([
-                'error' => [
-                    'message' => 'Could not create church.',
-                    'code' => 100
-                ]
-            ], 500);
+            $this->respondInternalError('Project was not created.');
         }
     }
 }

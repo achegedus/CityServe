@@ -19,7 +19,7 @@ class ProjectPolicy
      */
     public function view(User $user, Project $project)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class ProjectPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -42,7 +42,7 @@ class ProjectPolicy
      */
     public function update(User $user, Project $project)
     {
-        //
+        return $user->isSuperAdmin();
     }
 
     /**
@@ -54,6 +54,6 @@ class ProjectPolicy
      */
     public function delete(User $user, Project $project)
     {
-        //
+        return $user->isSuperAdmin();
     }
 }
