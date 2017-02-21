@@ -6,12 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Requester extends Model
 {
-    //
 
-    // Relationships
-    public function project()
-    {
-        return $this->hasOne('App\Models\Project');
-    }
 
 }

@@ -1,13 +1,11 @@
 <template>
     <div>
         <h3>Update Church</h3>
-        <form @submit.prevent="validateBeforeSubmit">
-            <church-form :church="this.church"></church-form>
+        <church-form :church="this.church"></church-form>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-error">Create Church</button>
-            </div>
-        </form>
+        <div class="form-group">
+            <button type="submit" class="btn btn-error" @click="submitForm">Create Church</button>
+        </div>
     </div>
 </template>
 
@@ -19,6 +17,7 @@
 
 <script>
     import ChurchForm from './components/ChurchForm.vue'
+    import bus from '../../../bus.js'
 
     export default{
         data(){
@@ -34,11 +33,18 @@
 
         methods: {
 
-            validateBeforeSubmit(e) {
-                this.$validator.validateAll();
-                if (!this.errors.any()) {
-                    this.saveChurch()
-                }
+            validateChild() {
+                bus.$emit('validate');
+            },
+
+            clearChild() {
+                bus.$emit('clear');
+            },
+
+            submitForm(e) {
+                // Validate All returns a promise and provides the validation result.
+                this.validateChild();
+                console.log(this.errors);
             },
 
             saveChurch: function() {
@@ -67,8 +73,23 @@
             }
         },
 
+        created() {
+            bus.$on('errors-changed', (errors) => {
+                this.errors.clear();
+                errors.forEach(e => {
+                    this.errors.add(e.field, e.msg, e.rule, e.scope);
+                });
+            });
+
+            bus.$on('submit-church-response', this.saveChurch);
+        },
+
         mounted: function() {
 
+        },
+
+        beforeDestroy() {
+            bus.$off('submit-church-response', this.saveChurch);
         }
 
     }

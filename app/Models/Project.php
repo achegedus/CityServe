@@ -11,10 +11,6 @@ class Project extends Model
 
 
     // Relationships
-    public function requester()
-    {
-        return $this->belongsTo('App\Models\Requester');
-    }
 
     public function category()
     {

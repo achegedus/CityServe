@@ -1,22 +1,22 @@
 <template>
     <div>
         <h1>Requester Information</h1>
-        <div class="form-group" :class="{'has-error': errors.has('project.organization_name') }" >
-            <label for="organization_name">Organization Name</label>
-            <input name="organization_name" v-validate data-vv-rules="required" type="text" class="form-control" v-model="project.organization_name">
-            <span v-show="errors.has('organization_name')">{{ errors.first('organization_name') }}</span>
+        <div class="form-group" :class="{'has-error': errors.has('project.requester_org_name') }" >
+            <label for="requester_org_name">Organization Name</label>
+            <input name="requester_org_name" v-validate data-vv-rules="required" type="text" class="form-control" v-model="project.requester_org_name">
+            <span v-show="errors.has('requester_org_name')">{{ errors.first('requester_org_name') }}</span>
         </div>
 
-        <div class="form-group" :class="{'has-error': errors.has('project.name') }" >
-            <label for="name">Name</label>
-            <input name="name" v-validate data-vv-rules="required" type="text" class="form-control" v-model="project.name">
-            <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
+        <div class="form-group" :class="{'has-error': errors.has('project.requester_contact_name') }" >
+            <label for="requester_contact_name">Name</label>
+            <input name="requester_contact_name" v-validate data-vv-rules="required" type="text" class="form-control" v-model="project.requester_contact_name">
+            <span v-show="errors.has('requester_contact_name')">{{ errors.first('requester_contact_name') }}</span>
         </div>
 
-        <div class="form-group" :class="{'has-error': errors.has('project.email') }" >
-            <label for="email">Email</label>
-            <input name="email" v-validate data-vv-rules="required|email"  type="text" class="form-control" v-model="project.email">
-            <span v-show="errors.has('email')">{{ errors.first('email') }}</span>
+        <div class="form-group" :class="{'has-error': errors.has('project.requester_email') }" >
+            <label for="requester_email">Email</label>
+            <input name="requester_email" v-validate data-vv-rules="required|email"  type="text" class="form-control" v-model="project.requester_email">
+            <span v-show="errors.has('erequester_emailmail')">{{ errors.first('requester_email') }}</span>
         </div>
 
         <div class="form-group" :class="{'has-error': errors.has('project.requester_address') }" >
@@ -44,26 +44,20 @@
         </div>
 
         <div class="form-group">
-            <label for="phone">Phone</label>
-            <input name="phone" type="text" class="form-control" v-model="project.phone">
-            <span v-show="errors.has('phone')">{{ errors.first('phone') }}</span>
-        </div>
-
-        <div class="form-group" :class="{'has-error': errors.has('project.requester_church_id') }" >
-            <label for="day">Church</label>
-            <select name="day" class="form-control" v-validate data-vv-rules="required">
-                <option>Select One</option>
-            </select>
-            <span v-show="errors.has('parking')">{{ errors.first('parking') }}</span>
+            <label for="requester_phone">Phone</label>
+            <input name="requester_phone" type="text" class="form-control" v-model="project.requester_phone">
+            <span v-show="errors.has('requester_phone')">{{ errors.first('requester_phone') }}</span>
         </div>
 
         <div class="form-group">
-            <label for="other">Other</label>
+            <label for="other">Church</label>
             <input name="other" type="text" class="form-control" v-model="project.other">
             <span v-show="errors.has('other')">{{ errors.first('other') }}</span>
         </div>
 
+
         <h1>Event Point of Contact</h1>
+
         <div class="form-group" :class="{'has-error': errors.has('project.event_contact_name') }" >
             <label for="event_contact_name">Event Contact Name</label>
             <input name="event_contact_name" v-validate data-vv-rules="required" type="text" class="form-control" v-model="project.event_contact_name">
@@ -113,7 +107,9 @@
             <span v-show="errors.has('phone')">{{ errors.first('phone') }}</span>
         </div>
 
+
         <h1>Project Information</h1>
+
         <div class="form-group" :class="{'has-error': errors.has('project.description') }" >
             <label for="description">Description</label>
             <textarea name="description" type="text" class="form-control" v-model="project.description"></textarea>
