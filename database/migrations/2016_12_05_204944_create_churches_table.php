@@ -22,7 +22,8 @@ class CreateChurchesTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('zipcode');
-            $table->string('url');
+            $table->string('url')->nullable();
+            $table->string('phone');
             $table->timestamps();
         });
     }

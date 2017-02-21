@@ -18,6 +18,7 @@
                     <router-link tag="li" :to="{name:'admin-dashboard'}" active-class="active"><a>Dashboard</a></router-link>
                     <router-link tag="li" :to="{name:'admin-churches-page'}" active-class="active"><a>Churches</a></router-link>
                     <router-link tag="li" :to="{name:'admin-projects-page'}" active-class="active"><a>Projects</a></router-link>
+                    <router-link tag="li" :to="{name:'admin-groups-page'}" active-class="active"><a>Groups</a></router-link>
                     <router-link tag="li" :to="{name:'admin-people-page'}" active-class="active"><a>People</a></router-link>
                     <router-link tag="li" :to="{name:'admin-users-page'}" active-class="active"><a>Users</a></router-link>
                 </ul>

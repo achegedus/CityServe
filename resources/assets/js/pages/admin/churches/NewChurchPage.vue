@@ -57,7 +57,8 @@
                     city: this.church.city,
                     state: this.church.state,
                     zipcode: this.church.zipcode,
-                    url: this.church.url
+                    url: this.church.url,
+                    phone: this.church.phone
                 }
 
                 this.axios.post('/api/church/', postData)
