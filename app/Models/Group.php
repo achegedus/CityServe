@@ -11,7 +11,7 @@ class Group extends Model
 
 
     // Relationships
-    public function group()
+    public function groupType()
     {
         return $this->belongsTo('App\Models\GroupType');
     }
@@ -20,4 +20,10 @@ class Group extends Model
     {
         return $this->hasOne('App\Models\Person');
     }
+
+    public function project()
+    {
+        return $this->belongsTo('App\Models\Project');
+    }
+
 }

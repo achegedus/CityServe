@@ -47,7 +47,8 @@ import UserEditPage from './pages/admin/users/EditUserPage.vue';
 import UserNewPage from './pages/admin/users/NewUserPage.vue';
 
 import GroupsPage from './pages/admin/groups/GroupsPage.vue';
-
+import GroupEditPage from './pages/admin/groups/EditGroupPage.vue';
+import GroupNewPage from './pages/admin/groups/NewGroupPage.vue';
 
 import store from './store';
 
@@ -74,7 +75,8 @@ const routes = [
     {path: '/admin/project/:projectID/edit', component: ProjectEditPage, name: 'admin-project-edit-page', meta: {requiresAuth: true }},
 
     {path: '/admin/groups', component: GroupsPage, name: 'admin-groups-page', meta: {requiresAuth: true }},
-
+    {path: '/admin/group/new', component: GroupNewPage, name: 'admin-group-new-page', meta: {requiresAuth: true }},
+    {path: '/admin/group/:groupID/edit', component: GroupEditPage, name: 'admin-group-edit-page', meta: {requiresAuth: true }}
 ];
 
 

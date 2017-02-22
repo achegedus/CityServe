@@ -16,6 +16,11 @@ class Person extends Model
         return $this->belongsTo('App\Models\Group');
     }
 
+    public function project()
+    {
+        return $this->belongsTo('App\Models\Project');
+    }
+
     public function church()
     {
         return $this->belongsTo('App\Models\Church');

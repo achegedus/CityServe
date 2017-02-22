@@ -18,7 +18,7 @@
                     <td><router-link :to="{ name: 'admin-church-edit-page', params: {churchID: church.id }}">{{ church.name }}</router-link></td>
                     <td>{{ church.address }}</td>
                     <td>{{ church.city }}</td>
-                    <td></td>
+                    <td>{{ church.phone | phone}}</td>
                 </tr>
             </tbody>
         </table>
@@ -41,6 +41,13 @@
             return{
                 msg:'hello vue',
                 churches: []
+            }
+        },
+
+        filters: {
+            phone: function (value) {
+                return value.replace(/[^0-9]/g, '')
+                    .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
             }
         },
 

@@ -41,6 +41,7 @@ class ChurchTransformer extends TransformerAbstract
 			'state' => $resource->state,
 			'zipcode' => $resource->zipcode,
 			'url' => $resource->url,
+            'phone' => $resource->phone,
 			'created_at' => $resource->created_at,
 			'updated_at' => $resource->updated_at,
 			

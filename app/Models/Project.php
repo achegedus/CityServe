@@ -17,8 +17,19 @@ class Project extends Model
         return $this->belongsTo('App\Models\ProjectCategory');
     }
 
+    public function groups()
+    {
+        return $this->hasMany('App\Models\Group');
+    }
+
+    public function people()
+    {
+        return $this->hasMany('App\Models\Person');
+    }
+
     public function volunteers()
     {
-        // TODO: figure out the volunteer relationship
+//        return count($this->people) + count($this->groups);
+        return count($this->groups);
     }
 }

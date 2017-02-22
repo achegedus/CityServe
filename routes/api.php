@@ -51,4 +51,11 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::put('user/{id}','UserController@update');
     Route::post('user','UserController@store');
 
+    // groups
+    Route::get('/groups', 'GroupController@index');
+    Route::get('/group/{id}', 'GroupController@show');
+    Route::delete('group/{id}','GroupController@destroy');
+    Route::put('group/{id}','GroupController@update');
+    Route::post('group','GroupController@store');
+
 });

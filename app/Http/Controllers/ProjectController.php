@@ -47,31 +47,32 @@ class ProjectController extends ApiController
         }
 
         // response
-        return Fractal::collection($project, new ProjectTransformer());
+        return Fractal::item($project, new ProjectTransformer());
     }
 
 
     /**
-     * @param Project $project
      * @param Request $request
+     * @param $project_id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Project $project, Request $request)
+    public function update(Request $request, $project_id)
     {
+        $project = Project::find($project_id);
+
+        if (!$project) {
+            return $this->respondNotFound('Project does not exist.');
+        }
+
         try {
-            $this->authorize('update', $project);
+            $this->authorize('create', Project::class);
         } catch (\Exception $ex) {
-            return response()->json([
-                'error' => [
-                    'message' => 'Not authorized to update a project.',
-                    'code' => 100
-                ]
-            ], 500);
+            $this->respondNotAuthorized('Not authorized to create a project.');
         }
 
         // save church
         if( $project->update($request->all())) {
-            return Fractal::collection($project, new ProjectTransformer());
+            return Fractal::item($project, new ProjectTransformer());
         } else {
             return response()->json([
                 'error' => [

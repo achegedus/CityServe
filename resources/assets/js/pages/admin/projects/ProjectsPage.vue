@@ -9,7 +9,9 @@
                 <th>ID</th>
                 <th>Address</th>
                 <th>Requester</th>
+                <th>Phone</th>
                 <th>Day</th>
+                <th>Volunteers</th>
             </tr>
             </thead>
 
@@ -18,8 +20,9 @@
                 <td><router-link :to="{ name: 'admin-project-edit-page', params: {projectID: project.id }}">{{ project.id }}</router-link></td>
                 <td>{{ project.event_address }}</td>
                 <td>{{ project.requester_contact_name }}</td>
-                <td>{{ project.day }}</td>
-                <td></td>
+                <td>{{ project.requester_phone | phone }}</td>
+                <td>{{ project.day | capitalize }}</td>
+                <td>{{ project.volunteers + "/" + project.numVolunteers}}</td>
             </tr>
             </tbody>
         </table>
@@ -41,6 +44,19 @@
         data(){
             return{
                 projects: []
+            }
+        },
+
+        filters: {
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            },
+
+            phone: function (value) {
+                return value.replace(/[^0-9]/g, '')
+                    .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
             }
         },
 

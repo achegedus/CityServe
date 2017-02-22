@@ -1,11 +1,11 @@
 <template>
     <div>
-        <h3>Create Project</h3>
+        <h3>Edit Project</h3>
         <project-form :project="this.project"></project-form>
         <approval-form :project="this.project"></approval-form>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-error" @click="submitForm">Create Project</button>
+            <button type="submit" class="btn btn-error" @click="submitForm">Update Project</button>
         </div>
     </div>
 </template>
@@ -33,6 +33,13 @@
 
             validateChild() {
                 bus.$emit('approval_validate');
+            },
+
+            fetchProject() {
+                this.axios.get('/api/project/' + this.$route.params.projectID)
+                .then((response) => {
+                    this.project = response.data
+                });
             },
 
             submitForm(e) {
@@ -81,7 +88,7 @@
                     skills: this.project.skills,
                     materialsRequesterWill: this.project.materialsRequesterWill,
                     materialsRequesterCannot: this.project.materialsRequesterCannot,
-                    materialsCityServe: this.project.materialsCityServe,
+                    materialsCityServe: this.project.materialsRequesterWill,
                     evaluated: this.project.evaluated,
                     approved: this.project.approved,
                     assigned: this.project.assigned,
@@ -94,7 +101,7 @@
                     short_description: this.project.short_description
                 }
 
-                this.axios.post('/api/project', postData)
+                this.axios.put('/api/project/' + this.$route.params.projectID, postData)
                 .then((response) => {
                     console.log('Updated');
                     self.$router.push({ name: 'admin-projects-page'})
@@ -116,6 +123,10 @@
             });
 
             bus.$on('submit-project-response', this.saveProject);
+        },
+
+        mounted () {
+            this.fetchProject()
         },
 
         beforeDestroy() {

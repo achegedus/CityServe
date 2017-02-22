@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Church extends Model
 {
     //
-    protected $fillable = ['address', 'address2', 'city', 'state', 'zipcode', 'name', 'url'];
+    protected $fillable = ['address', 'address2', 'city', 'state', 'zipcode', 'name', 'url', 'phone'];
 
 
     public function contacts()
