@@ -58,4 +58,11 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::put('group/{id}','GroupController@update');
     Route::post('group','GroupController@store');
 
+    // group_types
+    Route::get('/group_types', 'GroupTypeController@index');
+    Route::get('/group_type/{id}', 'GroupTypeController@show');
+    Route::delete('group_type/{id}','GroupTypeController@destroy');
+    Route::put('group_type/{id}','GroupTypeController@update');
+    Route::post('group_types','GroupTypeController@store');
+
 });

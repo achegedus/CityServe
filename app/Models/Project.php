@@ -30,6 +30,6 @@ class Project extends Model
     public function volunteers()
     {
 //        return count($this->people) + count($this->groups);
-        return count($this->groups);
+        return count($this->people);
     }
 }

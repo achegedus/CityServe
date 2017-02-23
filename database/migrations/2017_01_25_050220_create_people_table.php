@@ -26,6 +26,7 @@ class CreatePeopleTable extends Migration
             $table->integer('church_id');
             $table->string('other');
             $table->string('materials');
+            $table->integer('project_id');
             $table->timestamps();
         });
     }

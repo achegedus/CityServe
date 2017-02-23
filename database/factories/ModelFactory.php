@@ -24,6 +24,35 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
 });
 
 
+$factory->define(App\Models\Person::class, function (Faker\Generator $faker) {
+    return [
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'address' => $faker->streetAddress,
+        'city' => $faker->city,
+        'state' => $faker->stateAbbr,
+        'zipcode' => $faker->postcode,
+        'email' => $faker->email,
+        'phone' => $faker->regexify('[1-9]{10}'),
+        'church_id' => $faker->numberBetween(1,5),
+        'project_id' => $faker->numberBetween(1,10),
+        'other' => "None",
+        'materials' => $faker->paragraph(2)
+    ];
+});
+
+
+$factory->define(App\Models\Group::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->catchPhrase,
+        'members' => $faker->numberBetween(3,20),
+        'group_type_id' => $faker->numberBetween(1,5),
+        'person_id' => $faker->numberBetween(1,15),
+        'project_id' => $faker->numberBetween(1,10),
+    ];
+});
+
+
 $factory->define(App\Models\Church::class, function (Faker\Generator $faker) {
    return [
        'name' => $faker->company,
@@ -31,6 +60,42 @@ $factory->define(App\Models\Church::class, function (Faker\Generator $faker) {
        'address2' => $faker->secondaryAddress,
        'city' => $faker->city,
        'state' => $faker->stateAbbr,
-       'zipcode' => '16801'
+       'zipcode' => $faker->postcode,
+       'url' => $faker->url,
+       'phone' => $faker->regexify('[1-9]{10}')
    ];
+});
+
+
+$factory->define(App\Models\Project::class, function (Faker\Generator $faker) {
+    return [
+        'requester_org_name' => $faker->company,
+        'requester_contact_name' => $faker->name,
+        'requester_address' => $faker->streetAddress,
+        'requester_city' => $faker->city,
+        'requester_state' => $faker->stateAbbr,
+        'requester_zipcode' => $faker->postcode,
+        'requester_phone' => $faker->regexify('[1-9]{10}'),
+        'requester_email' => $faker->email,
+        'requester_church' => $faker->company,
+        'event_contact_name' => $faker->name,
+        'event_contact_phone' => $faker->regexify('[1-9]{10}'),
+        'event_address' => $faker->streetAddress,
+        'event_city' => $faker->city,
+        'event_state' => $faker->stateAbbr,
+        'event_zipcode' => $faker->postcode,
+        'event_phone' => $faker->regexify('[1-9]{10}'),
+        'directions' => $faker->paragraph(6),
+        'parking' => $faker->paragraph(4),
+        'description' => $faker->paragraph(8),
+        'day' => $faker->randomElement(['saturday' ,'sunday']),
+        'time' => (string) $faker->numberBetween(5, 16),
+        'numVolunteers' => $faker->numberBetween(1, 15),
+        'family' => $faker->boolean(),
+        'howUsed' => $faker->paragraph(3),
+        'skills' => $faker->paragraph(2),
+        'materialsRequesterWill' => $faker->paragraph(2),
+        'materialsRequesterCannot' => $faker->paragraph(1),
+        'materialsCityServe' => $faker->paragraph(1)
+    ];
 });

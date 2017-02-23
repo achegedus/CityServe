@@ -9,6 +9,7 @@
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Email</th>
+                <th>Phone</th>
                 <th>Church</th>
             </tr>
             </thead>
@@ -18,6 +19,7 @@
                 <td><router-link :to="{ name: 'admin-person-edit-page', params: {projectID: person.id }}">{{ person.first_name }}</router-link></td>
                 <td>{{ person.last_name }}</td>
                 <td>{{ person.email }}</td>
+                <td>{{ person.phone | phone }}</td>
                 <td>{{ person.church_id }}</td>
                 <td></td>
             </tr>
@@ -41,6 +43,13 @@
         data(){
             return{
                 people: []
+            }
+        },
+
+        filters: {
+            phone: function (value) {
+                return value.replace(/[^0-9]/g, '')
+                    .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
             }
         },
 

@@ -2,7 +2,7 @@
     <div>
         <h3>Update Group</h3>
         <form @submit.prevent="validateBeforeSubmit">
-            <church-form :church="this.group"></church-form>
+            <group-form :group="this.group"></group-form>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-error">Update Group</button>

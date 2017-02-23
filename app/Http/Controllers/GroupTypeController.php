@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Group;
+use App\Models\GroupType;
 use App\Transformers\GroupTransformer;
+use App\Transformers\GroupTypeTransformer;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Http\Request;
 
-class GroupController extends ApiController
+class GroupTypeController extends ApiController
 {
     /**
      * Return church collection
@@ -15,30 +16,25 @@ class GroupController extends ApiController
     public function index()
     {
         // get all churches
-        $groups = Group::all();
+        $groups = GroupType::all();
 
         // return a collection of churches
-        return Fractal::collection($groups, new GroupTransformer());
+        return Fractal::collection($groups, new GroupTypeTransformer());
     }
 
 
     public function show($id)
     {
         // get the church
-        $group = Group::find($id);
+        $group_type = GroupType::find($id);
 
         // check if it exists
-        if (!$group) {
-            return response()->json([
-                'error' => [
-                    'message' => 'That group was not found.',
-                    'code' => 100
-                ]
-            ], 404);
+        if (!$group_type) {
+            $this->respondNotFound('Group type does not exist');
         }
 
         // response
-        return Fractal::item($group, new GroupTransformer());
+        return Fractal::item($group_type, new GroupTypeTransformer());
     }
 
 

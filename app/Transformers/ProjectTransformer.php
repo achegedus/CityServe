@@ -75,6 +75,8 @@ class ProjectTransformer extends TransformerAbstract
 			'short_description' => $resource->short_description,
 			'created_at' => $resource->created_at,
 			'updated_at' => $resource->updated_at,
+
+            'volunteers' => $resource->volunteers()
         ];
     }
 }
