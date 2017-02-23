@@ -3,15 +3,15 @@
     <div class="header">
         <div class="container">
             <!-- Logo -->
-            <a class="logo" href="index.html">
-                <img src="/cityserve.jpeg" alt="Logo">
-            </a>
+            <router-link class="logo" :to="{ name: 'home-page' }"><img src="/cityserve.jpeg" alt="Logo"></router-link>
             <!-- End Logo -->
 
             <!-- Topbar -->
             <div class="topbar">
                 <ul class="loginbar pull-right">
-                    <li><a href="page_login.html">Login</a></li>
+                    <li v-if="!loggedIn"><router-link :to="{ name: 'login' }">Login</router-link></li>
+                    <li v-if="loggedIn"><a v-on:click="handleLogout">Logout</a></li>
+                    <li v-if="isAdmin"><router-link :to="{ name: 'admin-dashboard' }">Admin</router-link></li>
                 </ul>
             </div>
             <!-- End Topbar -->
@@ -142,6 +142,7 @@
 
 
 <script>
+    import { mapState } from 'vuex'
 
     export default{
         data(){
@@ -150,8 +151,40 @@
             }
         },
 
-        components:{
+        computed: {
+            ...mapState({
+                userStore: state => state.userStore
+            }),
 
+            username() {
+                if (this.userStore.authUser)
+                    return this.userStore.authUser.name
+                else
+                    return false
+            },
+
+            isAdmin() {
+                if (this.userStore.authUser)
+                    return this.userStore.authUser.isSuperAdmin
+                else
+                    return false
+            },
+
+            loggedIn() {
+                if (this.userStore.authUser)
+                    return true
+                else
+                    return false
+            }
+        },
+
+
+        methods: {
+            handleLogout() {
+                this.$store.dispatch('clearAuthUser')
+                window.localStorage.removeItem('authUser')
+                this.$router.push({name: 'home-page'})
+            }
         }
     }
 

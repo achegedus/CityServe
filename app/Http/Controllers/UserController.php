@@ -20,12 +20,7 @@ class UserController extends ApiController
         try {
             $this->authorize('viewlist', User::class);
         } catch (\Exception $ex) {
-            return response()->json([
-                'error' => [
-                    'message' => 'Not authorized to access this resource.',
-                    'code' => 100
-                ]
-            ], 500);
+            return $this->respondNotAuthorized();
         }
 
         // get all churches
@@ -36,6 +31,22 @@ class UserController extends ApiController
     }
 
 
+    /**
+     * Returns current user profile
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function profile(Request $request)
+    {
+        // get the church
+        $user = $request->user();
+
+        // response
+        return Fractal::item($user, new UserTransformer());
+    }
+
+
     public function show($id)
     {
         // get the church
@@ -43,12 +54,7 @@ class UserController extends ApiController
 
         // check if it exists
         if (!$user) {
-            return response()->json([
-                'error' => [
-                    'message' => 'That user was not found.',
-                    'code' => 100
-                ]
-            ], 404);
+            return $this->respondNotFound('User does not exist.');
         }
 
         // response
@@ -58,48 +64,44 @@ class UserController extends ApiController
 
     public function update($id, Request $request)
     {
-        $user = User::findOrFail($id);
+        $user = User::find($id);
+
+        // check if it exists
+        if (!$user) {
+            return $this->respondNotFound('User does not exist.');
+        }
 
         try {
             $this->authorize('update', $user);
         } catch (\Exception $ex) {
-            return response()->json([
-                'error' => [
-                    'message' => 'Not authorized to update a user.',
-                    'code' => 100
-                ]
-            ], 500);
+            return $this->respondNotAuthorized();
         }
-
 
         // save church
         if($user->update($request->all())) {
             return Fractal::item($user, new UserTransformer());
         } else {
-            return response()->json([
-                'error' => [
-                    'message' => 'Could not update user.',
-                    'code' => 100
-                ]
-            ], 500);
+            return $this->respondWithError('Could not update user.');
         }
     }
 
 
     public function destroy($id) {
-        $user = User::findOrFail($id);
-        if ($user) {
-            $user->delete();
-            return response()->json([], 200);
-        } else {
-            return response()->json([
-                'error' => [
-                    'message' => 'User not found.',
-                    'code' => 200
-                ]
-            ], 500);
+        $user = User::find($id);
+
+        // check if it exists
+        if (!$user) {
+            return $this->respondNotFound('User does not exist.');
         }
 
+        try {
+            $this->authorize('delete', $user);
+        } catch (\Exception $ex) {
+            return $this->respondNotAuthorized();
+        }
+
+        $user->delete();
+        return $this->respondOk();
     }
 
 
@@ -108,12 +110,7 @@ class UserController extends ApiController
         try {
             $this->authorize('create', User::class);
         } catch (\Exception $ex) {
-            return response()->json([
-                'error' => [
-                    'message' => 'Not authorized to create a user.',
-                    'code' => 100
-                ]
-            ], 500);
+            return $this->respondNotAuthorized();
         }
 
         $this->validate($request, [
@@ -130,12 +127,7 @@ class UserController extends ApiController
         if($user) {
             return Fractal::item($user, new UserTransformer());
         } else {
-            return response()->json([
-                'error' => [
-                    'message' => 'Could not create user.',
-                    'code' => 100
-                ]
-            ], 500);
+            return $this->respondWithError('Could not create user.');
         }
     }
 }

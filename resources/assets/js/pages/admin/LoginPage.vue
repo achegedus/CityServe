@@ -78,6 +78,7 @@
                                     authUser.email = response.data.email
                                     authUser.name = response.data.name
                                     authUser.isSuperAdmin = response.data.isSuperAdmin
+                                    authUser.isReviewer = response.data.isReviewer
                                     authUser.isChurchPrimary = response.data.isChurchPrimary
                                     authUser.phone = response.data.phone
                                     authUser.church_id = response.data.church_id
@@ -88,7 +89,7 @@
                                     this.$store.dispatch('setUserObject', authUser)
 
                                     // redirect
-                                    this.$router.push({name: 'admin-dashboard'})
+                                    this.$router.push({name: 'home-page'})
                             });
                         }
                     });

@@ -14,11 +14,13 @@
 Route::get('/', function() {
     return view('welcome');
 });
+//
+//Route::get('/app/{catchall?}', function () {
+//    return response()->view('welcome');
+//})->where('catchall', '(.*)');
+//
+//Route::get('/admin/{catchall?}', function () {
+//    return response()->view('welcome');
+//})->where('catchall', '(.*)');
+////Auth::routes();
 
-Route::get('/app/{catchall?}', function () {
-    return response()->view('welcome');
-})->where('catchall', '(.*)');
-
-Route::get('/admin/{catchall?}', function () {
-    return response()->view('welcome');
-})->where('catchall', '(.*)');

@@ -32,15 +32,16 @@ class UserTransformer extends TransformerAbstract
     public function transform($resource)
     {
         return [
-
             'id' => (int) $resource->id,
 			'name' => $resource->name,
 			'email' => $resource->email,
 			'phone' => $resource->phone,
 			'church_id' => (int) $resource->church_id,
+            'isSuperAdmin' => $resource->isSuperAdmin(),
+            'isReviewer' => $resource->isReviewer(),
+            'isAdmin' => $resource->isAdmin(),
 			'created_at' => $resource->created_at,
 			'updated_at' => $resource->updated_at,
-			
         ];
     }
 }

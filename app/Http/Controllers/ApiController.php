@@ -74,6 +74,15 @@ class ApiController extends Controller
     }
 
     /**
+     * @param string $message
+     * @return mixed
+     */
+    public function respondOk($message = '')
+    {
+        return $this->setStatusCode(200)->respondWithError($message);
+    }
+
+    /**
      * @param mixed $data
      * @param array $headers
      * @return mixed

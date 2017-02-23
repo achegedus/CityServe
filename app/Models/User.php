@@ -47,6 +47,14 @@ class User extends Authenticatable
 
     // Methods
 
+    public function isAdmin()
+    {
+        if ($this->isSuperAdmin() || $this->isReviewer())
+            return true;
+        else
+            return false;
+    }
+
     public function isSuperAdmin()
     {
         if ($this->roles->where('name', 'SuperAdmin')->first())

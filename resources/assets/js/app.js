@@ -55,8 +55,10 @@ import store from './store';
 
 const routes = [
     {path: '/', componenet: HomePage, name: 'home-page'},
-    {path: '/admin', component: LoginPage, name: 'admin-login'},
-    {path: '/admin/dashboard', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
+    {path: '/login', component: LoginPage, name: 'login'},
+
+
+    {path: '/admin', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
 
     {path: '/admin/users', component: UsersPage, name: 'admin-users-page', meta: {requiresAuth: true }},
     {path: '/admin/user/new', component: UserNewPage, name: 'admin-user-new-page', meta: {requiresAuth: true }},
@@ -81,7 +83,6 @@ const routes = [
 
 
 const router = new VueRouter({
-    mode: 'history',
     routes
 });
 
@@ -95,7 +96,7 @@ router.beforeEach((to, from, next) => {
             next()
         }
         else {
-            next({name: 'admin-login'})
+            next({name: 'login'})
         }
     }
     next()

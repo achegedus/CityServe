@@ -9,22 +9,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">CityServe Administration</a>
+                <router-link class="navbar-brand" :to="{ name: 'admin-dashboard' }">CityServe Administration</router-link>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <router-link tag="li" :to="{name:'admin-dashboard'}" active-class="active"><a>Dashboard</a></router-link>
-                    <router-link tag="li" :to="{name:'admin-churches-page'}" active-class="active"><a>Churches</a></router-link>
+                    <router-link tag="li" :to="{name:'admin-churches-page'}" active-class="active" v-if="isSuperAdmin"><a>Churches</a></router-link>
                     <router-link tag="li" :to="{name:'admin-projects-page'}" active-class="active"><a>Projects</a></router-link>
-                    <router-link tag="li" :to="{name:'admin-groups-page'}" active-class="active"><a>Groups</a></router-link>
-                    <router-link tag="li" :to="{name:'admin-people-page'}" active-class="active"><a>People</a></router-link>
-                    <router-link tag="li" :to="{name:'admin-users-page'}" active-class="active"><a>Users</a></router-link>
+                    <router-link tag="li" :to="{name:'admin-groups-page'}" active-class="active" v-if="isSuperAdmin"><a>Groups</a></router-link>
+                    <router-link tag="li" :to="{name:'admin-people-page'}" active-class="active" v-if="isSuperAdmin"><a>People</a></router-link>
+                    <router-link tag="li" :to="{name:'admin-users-page'}" active-class="active" v-if="isSuperAdmin"><a>Users</a></router-link>
                 </ul>
 
                 <ul v-if="loggedIn" class="nav navbar-nav navbar-right">
                     <li><p class="navbar-text">{{username}}</p></li>
+                    <li><p class="navbar-text"><router-link :to="{ name: 'home-page' }">Home</router-link></p></li>
                     <li><button type="button" class="btn btn-default navbar-btn" v-on:click.prevent="handleLogout">Logout</button></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -69,8 +70,21 @@
                     return true
                 else
                     return false
-            }
+            },
 
+            isReviewer() {
+                if (this.userStore.authUser)
+                    return this.userStore.authUser.isReviewer
+                else
+                    return false
+            },
+
+            isSuperAdmin() {
+                if (this.userStore.authUser)
+                    return this.userStore.authUser.isSuperAdmin
+                else
+                    return false
+            }
         },
 
 
@@ -78,7 +92,7 @@
             handleLogout() {
                 this.$store.dispatch('clearAuthUser')
                 window.localStorage.removeItem('authUser')
-                this.$router.push({name: 'admin-login'})
+                this.$router.push({name: 'home-page'})
             }
         }
     }

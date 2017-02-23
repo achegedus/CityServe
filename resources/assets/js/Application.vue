@@ -8,7 +8,7 @@
                 <router-view></router-view>
             </div>
 
-            <home-footer v-if="$route.name.indexOf('admin') == -1"></home-footer>
+            <home-footer></home-footer>
         </div>
         <div v-else>
             <top-menu></top-menu>
