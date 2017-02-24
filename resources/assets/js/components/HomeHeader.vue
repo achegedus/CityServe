@@ -3,7 +3,7 @@
     <div class="header">
         <div class="container">
             <!-- Logo -->
-            <router-link class="logo" :to="{ name: 'home-page' }"><img src="/cityserve.jpeg" alt="Logo"></router-link>
+            <router-link class="logo" :to="{ name: 'home-page' }"><img src="/CityServeNoHammer.png" alt="Logo"></router-link>
             <!-- End Logo -->
 
             <!-- Topbar -->

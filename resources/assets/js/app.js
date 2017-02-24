@@ -54,7 +54,7 @@ import store from './store';
 
 
 const routes = [
-    {path: '/', componenet: HomePage, name: 'home-page'},
+    {path: '/', component: HomePage, name: 'home-page'},
     {path: '/login', component: LoginPage, name: 'login'},
 
 

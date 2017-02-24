@@ -4,9 +4,7 @@
         <div v-if="$route.name.indexOf('admin') == -1">
             <home-header></home-header>
 
-            <div class="container content">
                 <router-view></router-view>
-            </div>
 
             <home-footer></home-footer>
         </div>
@@ -32,8 +30,8 @@
     import { mapState } from 'vuex'
     import TopMenu from './components/admin/TopMenu.vue'
 
-    import HomeHeader from './components/HomeHeader.vue'
-    import HomeFooter from './components/HomeFooter.vue'
+    import HomeHeader from './components/HomeHeader2.vue'
+    import HomeFooter from './components/HomeFooter2.vue'
 
     export default {
         components: {

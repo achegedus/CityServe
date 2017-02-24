@@ -21,7 +21,7 @@
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 
         <!-- CSS Header and Footer -->
-        <link rel="stylesheet" href="/assets/css/headers/header-default.css">
+        <link rel="stylesheet" href="/assets/css/headers/header-v6.css">
         <link rel="stylesheet" href="/assets/css/footers/footer-v1.css">
 
         <!-- CSS Implementing Plugins -->
@@ -42,7 +42,7 @@
         </script>
     </head>
 
-    <body>
+    <body class="header-fixed">
         <div class="wrapper">
             <div id="app">
                 <app></app>
