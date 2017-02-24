@@ -15,7 +15,8 @@
     "lodash": "^4.16.2",
     "vue": "^2.1.10",
     "vue-router": "^2.1.1",
-    "vue-template-compiler": "^2.1.10"
+    "vue-template-compiler": "^2.1.10",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
   },
   "dependencies": {
     "auth0-js": "^7.6.0",

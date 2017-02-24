@@ -22,12 +22,14 @@
 
         <!-- CSS Header and Footer -->
         <link rel="stylesheet" href="/assets/css/headers/header-v6.css">
-        <link rel="stylesheet" href="/assets/css/footers/footer-v1.css">
+        <link rel="stylesheet" href="assets/css/footers/footer-v7.css">
 
         <!-- CSS Implementing Plugins -->
         <link rel="stylesheet" href="/assets/plugins/animate.css">
         <link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css">
         <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="assets/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css">
+        <link rel="stylesheet" href="assets/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css">
 
         <!-- CSS Theme -->
         <link rel="stylesheet" href="/assets/css/theme-colors/orange.css">

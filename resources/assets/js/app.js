@@ -26,6 +26,10 @@ Vue.component('app', App)
  */
 
 import HomePage from './pages/HomePage.vue';
+import FAQPage from './pages/FAQPage.vue';
+import HistoryPage from './pages/HistoryPage.vue';
+import AboutUsPage from './pages/AboutUsPage.vue';
+import ContactUsPage from './pages/ContactUsPage.vue';
 
 import LoginPage from './pages/admin/LoginPage.vue';
 import DashboardPage from './pages/admin/DashboardPage.vue';
@@ -56,7 +60,10 @@ import store from './store';
 const routes = [
     {path: '/', component: HomePage, name: 'home-page'},
     {path: '/login', component: LoginPage, name: 'login'},
-
+    {path: '/faq', component: FAQPage, name: 'faq'},
+    {path: '/history', component: HistoryPage, name: 'history'},
+    {path: '/about', component: AboutUsPage, name: 'about'},
+    {path: '/contact', component: ContactUsPage, name: 'contact'},
 
     {path: '/admin', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
 
@@ -81,15 +88,13 @@ const routes = [
     {path: '/admin/group/:groupID/edit', component: GroupEditPage, name: 'admin-group-edit-page', meta: {requiresAuth: true }}
 ];
 
-
 const router = new VueRouter({
     routes
 });
 
-
 router.beforeEach((to, from, next) => {
     if (to.meta.requiresAuth) {
-        const authUser = JSON.parse(window.localStorage.getItem('authUser'))
+        const authUser = JSON.parse(window.localStorage.getItem('authUser'));
         if (authUser && authUser.access_token) {
             const tokenData = JSON.parse(window.localStorage.getItem('authUser'));
             Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + tokenData.access_token;
@@ -100,7 +105,7 @@ router.beforeEach((to, from, next) => {
         }
     }
     next()
-})
+});
 
 
 new Vue({
