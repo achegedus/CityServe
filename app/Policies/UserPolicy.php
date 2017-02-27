@@ -31,7 +31,11 @@ class UserPolicy
     public function view(User $user, User $view_user)
     {
 //        return $user->isSuperAdmin();
-        return true;
+        if ($user->isSuperAdmin() || ($user->id === $view_user->id)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

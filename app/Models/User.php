@@ -42,7 +42,8 @@ class User extends Authenticatable
     {
         $out = [];
         foreach ($this->roles as $role) {
-            $out[] = $role->name;
+            $thisRole = ['id' => $role->id, 'name' => $role->name];
+            $out[] = $thisRole;
         }
         return $out;
     }

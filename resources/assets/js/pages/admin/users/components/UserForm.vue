@@ -38,8 +38,13 @@
 
         <div class="form-group" :class="{'has-error': errors.has('user.church_id') }" >
             <label for="roles">Roles</label>
-            <select multiple name="selectedroles[]" v-model="selected_roles" options="roles">
-            </select>
+            <multiselect
+                    v-model="user.selected_roles"
+                    :options="roles"
+                    label="name"
+                    :multiple="true"
+                    track-by="id">
+            </multiselect>
             <span v-show="errors.has('roles')">{{ errors.first('roles') }}</span>
         </div>
 
@@ -58,21 +63,12 @@
         data(){
             return{
                 churches: [],
-                roles: []
+                roles: [],
+                selectedRoles: []
             }
         },
 
         components: {  },
-
-
-        computed: {
-            // a computed getter
-            selected_roles: function () {
-                // `this` points to the vm instance
-                return this.user.selected_roles
-            }
-        },
-
 
         methods: {
             fetchChurches: function() {
@@ -93,7 +89,6 @@
         mounted: function() {
             this.fetchChurches();
             this.fetchRoles();
-            this.user_roles = this.userRoles
         }
     }
 </script>

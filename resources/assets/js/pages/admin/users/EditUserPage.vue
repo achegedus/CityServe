@@ -55,7 +55,8 @@
                     email: this.user.email,
                     password: this.user.password,
                     phone: this.user.phone,
-                    church_id: this.user.church_id
+                    church_id: this.user.church_id,
+                    roles: this.user.selected_roles
                 }
 
                 this.axios.put('/api/user/' + this.$route.params.userID, postData)

@@ -72,7 +72,7 @@
             });
         </script>
 
-        <script src="https://unpkg.com/vue-select@latest"></script>
+        <script src="https://cdn.jsdelivr.net/vue.multiselect/2.0.0-beta.13/vue-multiselect.min.js"></script>
         <script src="/js/app.js"></script>
 
 

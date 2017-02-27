@@ -18,7 +18,7 @@ Vue.use(VeeValidate);
 
 import App from './Application.vue'
 Vue.component('app', App)
-Vue.component('v-select', VueSelect.VueSelect);
+Vue.component('Multiselect', VueMultiselect.default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
