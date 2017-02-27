@@ -72,6 +72,7 @@
             });
         </script>
 
+        <script src="https://unpkg.com/vue-select@latest"></script>
         <script src="/js/app.js"></script>
 
 

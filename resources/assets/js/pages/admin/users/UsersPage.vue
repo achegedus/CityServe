@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <h3>Admin Users <router-link class="small" :to="{ name: 'admin-user-new-page' }">Create new</router-link></h3>
+        <h3>User Accounts <router-link class="small" :to="{ name: 'admin-user-new-page' }">Create new</router-link></h3>
 
         <table class="table">
             <thead>
@@ -17,9 +17,8 @@
             <tr v-for="user in this.users">
                 <td><router-link :to="{ name: 'admin-user-edit-page', params: {userID: user.id }}">{{ user.email }}</router-link></td>
                 <td>{{ user.name }}</td>
-                <td>{{ user.church_id }}</td>
-                <td>{{ user.phone }}</td>
-                <td></td>
+                <td>{{ user.church.name }}</td>
+                <td>{{ rolesString(user.roles.data) }}</td>
             </tr>
             </tbody>
         </table>
@@ -51,6 +50,14 @@
                     this.users = response.data.data
                 })
 
+            },
+
+            rolesString: function(roles) {
+                var out = '';
+                roles.forEach(function(element) {
+                    out = out + element.name + ', ';
+                });
+                return out.substring(0, out.length - 2);
             }
         },
 

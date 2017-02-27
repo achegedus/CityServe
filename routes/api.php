@@ -61,4 +61,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::put('group_type/{id}','GroupTypeController@update');
     Route::post('group_types','GroupTypeController@store');
 
+    // roles
+    Route::get('/roles', 'RoleController@index');
+
 });

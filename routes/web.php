@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function() {
+# Vue
+Route::any('{all}', function () {
     return view('welcome');
-});
+})
+    ->where(['all' => '.*']);
+
+
+//Route::get('/', function() {
+//    return view('welcome');
+//});
 //
 //Route::get('/app/{catchall?}', function () {
 //    return response()->view('welcome');

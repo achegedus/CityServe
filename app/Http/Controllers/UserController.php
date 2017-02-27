@@ -24,10 +24,10 @@ class UserController extends ApiController
         }
 
         // get all churches
-        $users = User::all();
+        $users = User::with('church')->get();
 
         // return a collection of churches
-        return Fractal::collection($users, new UserTransformer());
+        return Fractal::includes(['church', 'roles'])->collection($users, new UserTransformer());
     }
 
 
@@ -50,7 +50,7 @@ class UserController extends ApiController
     public function show($id)
     {
         // get the church
-        $user = User::find($id);
+        $user = User::with('church', 'roles')->find($id);
 
         // check if it exists
         if (!$user) {
@@ -58,7 +58,7 @@ class UserController extends ApiController
         }
 
         // response
-        return Fractal::item($user, new UserTransformer());
+        return Fractal::includes(['church', 'roles'])->item($user, new UserTransformer());
     }
 
 

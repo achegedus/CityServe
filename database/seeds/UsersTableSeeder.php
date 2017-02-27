@@ -12,17 +12,40 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Adam Hegedus',
+            'first_name' => 'Adam',
+            'last_name' => 'Hegedus',
             'email' => 'adam@heged.us',
             'password' => bcrypt('asdfasdf'),
-            'phone' => '(814)933-8336',
+            'phone' => '8149338336',
+            'address' => '121 Kaywood Drive',
+            'city' => 'Boalsburg',
+            'state' => 'PA',
+            'zipcode' => '16827',
+
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Adam Hegedus Test',
+            'first_name' => 'Adam',
+            'last_name' => 'Hegedus',
             'email' => 'adam@adamhegedus.com',
             'password' => bcrypt('asdfasdf'),
-            'phone' => '(814)933-8336',
+            'phone' => '8149338336',
+            'address' => '121 Kaywood Drive',
+            'city' => 'Boalsburg',
+            'state' => 'PA',
+            'zipcode' => '16827',
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'Adam',
+            'last_name' => 'Hegedus',
+            'email' => 'achegedus@gmail.com',
+            'password' => bcrypt('asdfasdf'),
+            'phone' => '8149338336',
+            'address' => '121 Kaywood Drive',
+            'city' => 'Boalsburg',
+            'state' => 'PA',
+            'zipcode' => '16827',
         ]);
 
         DB::table('role_user')->insert([
@@ -33,6 +56,11 @@ class UsersTableSeeder extends Seeder
         DB::table('role_user')->insert([
             'user_id' => 2,
             'role_id' => 2
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => 3,
+            'role_id' => 4
         ]);
     }
 }

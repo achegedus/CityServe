@@ -20,11 +20,14 @@
   },
   "dependencies": {
     "auth0-js": "^7.6.0",
+    "bcryptjs": "^2.4.3",
+    "install": "^0.8.7",
+    "npm": "^4.3.0",
     "vee-validate": "^2.0.0-beta.22",
     "vue-axios": "^1.2.2",
     "vue-moment": "^2.0.2",
+    "vue-multiselect": "^2.0.0-beta.14",
     "vue-router": "^2.1.1",
-    "vuex": "^2.1.2",
-    "bcryptjs": "^2.4.3"
+    "vuex": "^2.1.2"
   }
 }

@@ -11,19 +11,12 @@ class TestDataSeeder extends Seeder
      */
     public function run()
     {
-        //
-
         DB::table('churches')->truncate();
         DB::table('projects')->truncate();
-        DB::table('people')->truncate();
+        DB::table('groups')->truncate();
 
         factory(App\Models\Church::class, 5)->create();
-
         factory(App\Models\Project::class, 10)->create();
-
-        factory(App\Models\Person::class, 15)->create();
-
         factory(App\Models\Group::class, 5)->create();
-
     }
 }

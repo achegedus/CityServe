@@ -18,6 +18,7 @@ Vue.use(VeeValidate);
 
 import App from './Application.vue'
 Vue.component('app', App)
+Vue.component('v-select', VueSelect.VueSelect);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -26,10 +27,6 @@ Vue.component('app', App)
  */
 
 import HomePage from './pages/HomePage.vue';
-import FAQPage from './pages/FAQPage.vue';
-import HistoryPage from './pages/HistoryPage.vue';
-import AboutUsPage from './pages/AboutUsPage.vue';
-import ContactUsPage from './pages/ContactUsPage.vue';
 
 import LoginPage from './pages/admin/LoginPage.vue';
 import DashboardPage from './pages/admin/DashboardPage.vue';
@@ -60,10 +57,6 @@ import store from './store';
 const routes = [
     {path: '/', component: HomePage, name: 'home-page'},
     {path: '/login', component: LoginPage, name: 'login'},
-    {path: '/faq', component: FAQPage, name: 'faq'},
-    {path: '/history', component: HistoryPage, name: 'history'},
-    {path: '/about', component: AboutUsPage, name: 'about'},
-    {path: '/contact', component: ContactUsPage, name: 'contact'},
 
     {path: '/admin', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
 
@@ -89,6 +82,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+    mode: 'history',
     routes
 });
 

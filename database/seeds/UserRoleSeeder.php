@@ -31,18 +31,9 @@ class UserRoleSeeder extends Seeder
         ]);
 
         DB::table('roles')->insert([
-            'name' => 'ProjectSubmitter',
-            'description' => 'Submitter of a work project. Projects submitted will require approval.'
-        ]);
-
-        DB::table('roles')->insert([
             'name' => 'Volunteer',
             'description' => 'Person signed up to work on a project.'
         ]);
 
-        DB::table('roles')->insert([
-            'name' => 'VolunteerGroupContact',
-            'description' => 'Contact person for a volunteer group sign up.'
-        ]);
     }
 }

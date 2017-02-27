@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'church_id', 'address', 'city', 'state', 'zipcode', 'email', 'password'
     ];
 
     /**
@@ -36,6 +36,15 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany('App\Models\Role');
+    }
+
+    public function selected_roles()
+    {
+        $out = [];
+        foreach ($this->roles as $role) {
+            $out[] = $role->name;
+        }
+        return $out;
     }
 
 

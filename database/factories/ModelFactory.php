@@ -16,16 +16,6 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10)
-    ];
-});
-
-
-$factory->define(App\Models\Person::class, function (Faker\Generator $faker) {
-    return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'address' => $faker->streetAddress,
@@ -33,11 +23,9 @@ $factory->define(App\Models\Person::class, function (Faker\Generator $faker) {
         'state' => $faker->stateAbbr,
         'zipcode' => $faker->postcode,
         'email' => $faker->email,
-        'phone' => $faker->regexify('[1-9]{10}'),
+        'password' => $password ?: $password = bcrypt('secret'),
         'church_id' => $faker->numberBetween(1,5),
-        'project_id' => $faker->numberBetween(1,10),
-        'other' => "None",
-        'materials' => $faker->paragraph(2)
+        'remember_token' => str_random(10)
     ];
 });
 

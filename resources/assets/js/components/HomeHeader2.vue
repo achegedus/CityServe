@@ -32,7 +32,7 @@
                         <ul class="nav navbar-nav">
                             <!-- Home -->
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="/">
                                     Home
                                 </a>
                             </li>
@@ -40,7 +40,7 @@
 
                             <!-- Pages -->
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="#about">
                                     About
                                 </a>
                             </li>
@@ -48,7 +48,7 @@
 
                             <!-- Blog -->
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="#faq">
                                     FAQ
                                 </a>
                             </li>
@@ -56,7 +56,7 @@
 
                             <!-- Blog -->
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="#churches">
                                     Churches
                                 </a>
                             </li>
@@ -78,13 +78,23 @@
                             </li>
                             <!-- End Portfolio -->
 
-                            <!-- Features -->
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                    Login
-                                </a>
+                            <!-- Login -->
+                            <li class="dropdown" v-if="!loggedIn">
+                                <router-link :to="{ name: 'login' }">Login</router-link>
                             </li>
-                            <!-- End Features -->
+                            <!-- End Login -->
+
+                            <!-- Logout -->
+                            <li class="dropdown" v-if="loggedIn">
+                                <a v-on:click="handleLogout">Logout</a>
+                            </li>
+                            <!-- End Logout -->
+
+                            <!-- Admin -->
+                            <li class="dropdown" v-if="isAdmin">
+                                <router-link :to="{ name: 'admin-dashboard' }">Admin</router-link>
+                            </li>
+                            <!-- End Admin -->
 
                         </ul>
                     </div>

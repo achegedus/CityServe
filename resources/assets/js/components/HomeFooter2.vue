@@ -5,10 +5,10 @@
             <div class="row contacts-in">
                 <div class="col-md-6 md-margin-bottom-40">
                     <ul class="list-unstyled">
-                        <li><i class="fa fa-home"></i> 5B Streat, City 50987 New Town US</li>
-                        <li><i class="fa fa-phone"></i> 1(800) 220 084</li>
-                        <li><i class="fa fa-envelope"></i> <a href="info@example.com">info@example.com</a></li>
-                        <li><i class="fa fa-globe"></i> <a href="http://htmlstream.com">www.htmlstream.com</a></li>
+                        <li><i class="fa fa-home"></i> 201 Harvest Fields Drive, Boalsburg, PA 16827</li>
+                        <li><i class="fa fa-phone"></i> (814)238-0822 ext. 20</li>
+                        <li><i class="fa fa-envelope"></i> <a href="info@sc-cityserve.org">info@sc-cityserve.org</a></li>
+                        <li><i class="fa fa-globe"></i> <a href="http://htmlstream.com">www.sc-cityserve.org</a></li>
                     </ul>
                 </div>
 
@@ -60,8 +60,6 @@
                 <li><a href="#" data-original-title="Facebook" class="social_facebook rounded-x"></a></li>
                 <li><a href="#" data-original-title="Twitter" class="social_twitter rounded-x"></a></li>
                 <li><a href="#" data-original-title="Goole Plus" class="social_googleplus rounded-x"></a></li>
-                <li><a href="#" data-original-title="Pinterest" class="social_pintrest rounded-x"></a></li>
-                <li><a href="#" data-original-title="Linkedin" class="social_linkedin rounded-x"></a></li>
             </ul>
             <a href="#top"><i class="fa fa-angle-double-up back-to-top"></i></a>
         </div>

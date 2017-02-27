@@ -23,7 +23,7 @@
     export default{
         data(){
             return{
-                user: {}
+                user: {},
             }
         },
 
@@ -33,9 +33,10 @@
 
         methods: {
             fetchUser: function() {
+                var self = this
                 this.axios.get('/api/user/' + this.$route.params.userID)
                 .then((response) => {
-                    this.user = response.data
+                    self.user = response.data
                 });
             },
 

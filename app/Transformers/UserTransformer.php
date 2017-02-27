@@ -14,7 +14,7 @@ class UserTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $availableIncludes = [];
+    protected $availableIncludes = ['church', 'roles'];
 
     /**
      * List of resources to automatically include
@@ -33,15 +33,40 @@ class UserTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $resource->id,
-			'name' => $resource->name,
+			'first_name' => $resource->first_name,
+            'last_name' => $resource->last_name,
+            'name' => $resource->first_name . ' ' . $resource->last_name,
 			'email' => $resource->email,
 			'phone' => $resource->phone,
 			'church_id' => (int) $resource->church_id,
             'isSuperAdmin' => $resource->isSuperAdmin(),
             'isReviewer' => $resource->isReviewer(),
             'isAdmin' => $resource->isAdmin(),
+            'selected_roles' => $resource->selected_roles(),
 			'created_at' => $resource->created_at,
 			'updated_at' => $resource->updated_at,
         ];
+    }
+
+    /**
+     * Include Author
+     *
+     */
+    public function includeChurch($resource)
+    {
+        $church = $resource->church;
+
+        return $this->item($church, new ChurchTransformer());
+    }
+
+    /**
+     * Include Author
+     *
+     */
+    public function includeRoles($resource)
+    {
+        $filters = $resource->roles;
+
+        return $this->collection($filters, new RoleTransformer());
     }
 }
