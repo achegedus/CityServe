@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupTypesTable extends Migration
+class CreateProjectUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateGroupTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_types', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+        Schema::create('project_user', function (Blueprint $table) {
+            $table->string('project_id');
+            $table->string('user_id');
+            $table->integer('volunteer_count')->default(1);
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateGroupTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_types');
+        Schema::dropIfExists('project_user');
     }
 }

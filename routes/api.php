@@ -32,12 +32,10 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::put('project/{id}','ProjectController@update');
     Route::post('project','ProjectController@store');
 
-    // people
-    Route::get('/people', 'PersonController@index');
-    Route::get('/people/{id}', 'PersonController@show');
-    Route::delete('person/{id}','PersonController@destroy');
-    Route::put('person/{id}','PersonController@update');
-    Route::post('person','PersonController@store');
+    // Project Volunteers
+    Route::get('/project/{id}/volunteers', 'ProjectController@project_volunteers');
+    Route::post('/project/{project_id}/volunteer', 'ProjectController@store_project_volunteer');
+    Route::delete('/project/{project_id}/volunteer/{user_id}', 'ProjectController@delete_project_volunteer');
 
     // users
     Route::get('/users', 'UserController@index');

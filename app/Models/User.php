@@ -38,6 +38,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Role');
     }
 
+    public function projects()
+    {
+        return $this->belongsToMany('App\Models\Project');
+    }
+
     public function selected_roles()
     {
         $out = [];

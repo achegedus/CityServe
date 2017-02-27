@@ -11,7 +11,7 @@ class Group extends Model
 
 
     // Relationships
-    public function groupType()
+    public function group_type()
     {
         return $this->belongsTo('App\Models\GroupType');
     }

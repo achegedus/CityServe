@@ -16,7 +16,7 @@
             <tbody>
             <tr v-for="group in this.groups">
                 <td><router-link :to="{ name: 'admin-group-edit-page', params: {groupID: group.id }}">{{ group.name }}</router-link></td>
-                <td>{{ group.group_type_id }}</td>
+                <td>{{ group.group_type.name }}</td>
                 <td>{{ group.person_id }}</td>
                 <td>{{ group.members }}</td>
             </tr>

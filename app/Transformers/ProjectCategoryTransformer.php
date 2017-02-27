@@ -7,7 +7,7 @@ use League\Fractal\TransformerAbstract;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
-class GroupTypeTransformer extends TransformerAbstract
+class ProjectCategoryTransformer extends TransformerAbstract
 {
     /**
      * List of resources possible to include
@@ -32,6 +32,7 @@ class GroupTypeTransformer extends TransformerAbstract
     public function transform($resource)
     {
         return [
+
             'id' => $resource->id,
 			'name' => $resource->name
         ];

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Project extends Model
 {
@@ -22,14 +23,18 @@ class Project extends Model
         return $this->hasMany('App\Models\Group');
     }
 
-    public function people()
+    public function users()
     {
-        return $this->hasMany('App\Models\Person');
+        return $this->belongsToMany('App\Models\User');
     }
 
     public function volunteers()
     {
-//        return count($this->people) + count($this->groups);
-        return count($this->people);
+        $users_count = DB::table('project_user')
+            ->select(DB::raw('sum (volunteer_count) as count'))
+            ->where('project_id', '=', $this->id)
+            ->first();
+
+        return (int)$users_count->count;
     }
 }

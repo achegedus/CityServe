@@ -27117,6 +27117,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -27135,7 +27154,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.errors.errors.length == 0) {
                 __WEBPACK_IMPORTED_MODULE_0__bus_js__["a" /* default */].$emit('project_validate');
             }
-        }
+        },
+
+        getVolunteers() {
+            this.axios.get('/api/project/' + this.$route.params.projectID + '/volunteers').then(response => {
+                this.project = response.data;
+            });
+        },
+
+        getCategories() {}
     },
 
     created() {
@@ -27912,7 +27939,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49526,7 +49553,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           }
         }
       }
-    }, [_vm._v(_vm._s(group.name))])], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(group.group_type_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(group.person_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(group.members))])])
+    }, [_vm._v(_vm._s(group.name))])], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(group.group_type.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(group.person_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(group.members))])])
   }))])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Group Type")]), _vm._v(" "), _c('th', [_vm._v("Leader")]), _vm._v(" "), _c('th', [_vm._v("Members")])])])
@@ -49625,7 +49652,11 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h1', [_vm._v("Administrative Review")]), _vm._v(" "), _c('div', {
+  return _c('div', [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h1', [_vm._v("Administrative Review")]), _vm._v(" "), _c('div', {
     staticClass: "checkbox"
   }, [_c('label', [_c('input', {
     directives: [{
@@ -49658,7 +49689,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("\n            Project has been evaluated\n        ")])]), _vm._v(" "), _c('div', {
+  }), _vm._v("\n                    Project has been evaluated\n                ")])]), _vm._v(" "), _c('div', {
     staticClass: "checkbox"
   }, [_c('label', [_c('input', {
     directives: [{
@@ -49691,7 +49722,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("\n            Project has been approved\n        ")])]), _vm._v(" "), _c('div', {
+  }), _vm._v("\n                    Project has been approved\n                ")])]), _vm._v(" "), _c('div', {
     staticClass: "checkbox"
   }, [_c('label', [_c('input', {
     directives: [{
@@ -49724,7 +49755,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("\n            Project has been assigned\n        ")])]), _vm._v(" "), _c('div', {
+  }), _vm._v("\n                    Project has been assigned\n                ")])]), _vm._v(" "), _c('div', {
     staticClass: "checkbox"
   }, [_c('label', [_c('input', {
     directives: [{
@@ -49757,7 +49788,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("\n            Volunteers still needed\n        ")])]), _vm._v(" "), _c('div', {
+  }), _vm._v("\n                    Volunteers still needed\n                ")])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
       'has-error': _vm.errors.has('project.coordinator_id')
@@ -49816,7 +49847,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("\n            Confirmed\n        ")])]), _vm._v(" "), _c('div', {
+  }), _vm._v("\n                    Confirmed\n                ")])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
       'has-error': _vm.errors.has('project.evaluator_id')
@@ -49825,7 +49856,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "time"
     }
-  }, [_vm._v("Evaluated by")]), _vm._v(" "), _c('select', {
+  }, [_vm._v("Evaluator")]), _vm._v(" "), _c('select', {
     directives: [{
       name: "validate",
       rawName: "v-validate"
@@ -49946,8 +49977,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.errors.has('short_description')),
       expression: "errors.has('short_description')"
     }]
-  }, [_vm._v(_vm._s(_vm.errors.first('short_description')))])])])
-},staticRenderFns: []}
+  }, [_vm._v(_vm._s(_vm.errors.first('short_description')))])])]), _vm._v(" "), _vm._m(0)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h1', [_vm._v("Volunteers")]), _vm._v(" "), _c('table', {
+    staticClass: "table"
+  }, [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Email")]), _vm._v(" "), _c('th', [_vm._v("#")]), _vm._v(" "), _c('th')])])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

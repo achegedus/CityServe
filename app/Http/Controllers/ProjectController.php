@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Transformers\ProjectTransformer;
+use App\Transformers\UserTransformer;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Http\Request;
 
@@ -20,10 +21,10 @@ class ProjectController extends ApiController
     public function index()
     {
         // get all churches
-        $projects = Project::all();
+        $projects = Project::with('category')->get();
 
         // return a collection of churches
-        return Fractal::collection($projects, new ProjectTransformer());
+        return Fractal::includes(['project_category'])->collection($projects, new ProjectTransformer());
     }
 
 
@@ -131,5 +132,17 @@ class ProjectController extends ApiController
         } else {
             $this->respondInternalError('Project was not created.');
         }
+    }
+
+
+    public function project_volunteers($project_id)
+    {
+        $users = Project::find($project_id)->users;
+
+        if (!$users) {
+            return $this->respondNotFound('No volunteers found.');
+        }
+
+        return Fractal::collection($users, new UserTransformer());
     }
 }

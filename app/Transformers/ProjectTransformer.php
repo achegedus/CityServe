@@ -14,7 +14,7 @@ class ProjectTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $availableIncludes = [];
+    protected $availableIncludes = ['project_category'];
 
     /**
      * List of resources to automatically include
@@ -78,5 +78,16 @@ class ProjectTransformer extends TransformerAbstract
 
             'volunteers' => $resource->volunteers()
         ];
+    }
+
+    /**
+     * Include Author
+     *
+     */
+    public function includeProjectCategory($resource)
+    {
+        if ($cat = $resource->category) {
+            return $this->item($cat, new ProjectCategoryTransformer());
+        }
     }
 }

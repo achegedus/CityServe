@@ -15,10 +15,10 @@ class GroupController extends ApiController
     public function index()
     {
         // get all churches
-        $groups = Group::all();
+        $groups = Group::with('group_type')->get();
 
         // return a collection of churches
-        return Fractal::collection($groups, new GroupTransformer());
+        return Fractal::includes(['group_type'])->collection($groups, new GroupTransformer());
     }
 
 

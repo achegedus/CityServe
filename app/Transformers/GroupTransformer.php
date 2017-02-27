@@ -14,7 +14,7 @@ class GroupTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $availableIncludes = [];
+    protected $availableIncludes = ['group_type'];
 
     /**
      * List of resources to automatically include
@@ -42,7 +42,14 @@ class GroupTransformer extends TransformerAbstract
             'members' => (int) $resource->members,
 			'created_at' => $resource->created_at,
 			'updated_at' => $resource->updated_at,
-			
         ];
+    }
+
+
+    public function includeGroupType($resource)
+    {
+        $gt = $resource->group_type;
+
+        return $this->item($gt, new GroupTypeTransformer());
     }
 }
