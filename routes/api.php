@@ -33,14 +33,15 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('project','ProjectController@store');
 
     // Project Volunteers
+    Route::get('/volunteers', 'UserController@getVolunteers');
     Route::get('/project/{id}/volunteers', 'ProjectController@project_volunteers');
-    Route::post('/project/{project_id}/volunteer', 'ProjectController@store_project_volunteer');
+    Route::post('/project/{project_id}/volunteer/{user_id}', 'ProjectController@store_project_volunteer');
     Route::delete('/project/{project_id}/volunteer/{user_id}', 'ProjectController@delete_project_volunteer');
 
     // Project Groups
     Route::get('/project/{id}/groups', 'ProjectController@project_groups');
-    Route::post('/project/{project_id}/group', 'ProjectController@store_project_group');
-    Route::delete('/project/{project_id}/group/{user_id}', 'ProjectController@delete_project_group');
+    Route::post('/project/{project_id}/group/{group_id}', 'ProjectController@store_project_group');
+    Route::delete('/project/{project_id}/group/{group_id}', 'ProjectController@delete_project_group');
 
     // users
     Route::get('/users', 'UserController@index');

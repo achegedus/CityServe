@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use App\Models\Project;
+use App\Models\User;
 use App\Transformers\GroupTransformer;
 use App\Transformers\ProjectTransformer;
 use App\Transformers\UserTransformer;
@@ -136,6 +138,10 @@ class ProjectController extends ApiController
     }
 
 
+    /**
+     * @param $project_id
+     * @return mixed
+     */
     public function project_volunteers($project_id)
     {
         $users = Project::find($project_id)->users;
@@ -148,6 +154,56 @@ class ProjectController extends ApiController
     }
 
 
+    /**
+     * @param $project_id
+     * @param $user_id
+     * @return mixed
+     */
+    public function store_project_volunteer($project_id, $user_id)
+    {
+        $project = Project::find($project_id);
+
+        if (!$project) {
+            return $this->respondNotFound('Project does not exist.');
+        }
+
+        $user = User::find($user_id);
+
+        if (!$user) {
+            return $this->respondNotFound('User does not exist.');
+        }
+
+        $project->users()->save($user);
+    }
+
+
+    /**
+     * @param $project_id
+     * @param $user_id
+     * @return mixed
+     */
+    public function delete_project_volunteer($project_id, $user_id)
+    {
+        $project = Project::find($project_id);
+
+        if (!$project) {
+            return $this->respondNotFound('Project does not exist.');
+        }
+
+        $user = User::find($user_id);
+
+        if (!$user) {
+            return $this->respondNotFound('User does not exist.');
+        }
+
+        $project->users()->detach($user);
+    }
+
+
+    /**
+     * @param $project_id
+     * @return mixed
+     */
     public function project_groups($project_id)
     {
         $users = Project::find($project_id)->groups;
@@ -157,5 +213,51 @@ class ProjectController extends ApiController
         }
 
         return Fractal::collection($users, new GroupTransformer());
+    }
+
+
+    /**
+     * @param $project_id
+     * @param $user_id
+     * @return mixed
+     */
+    public function store_project_group($project_id, $group_id)
+    {
+        $project = Project::find($project_id);
+
+        if (!$project) {
+            return $this->respondNotFound('Project does not exist.');
+        }
+
+        $group = Group::find($group_id);
+
+        if (!$group) {
+            return $this->respondNotFound('Group does not exist.');
+        }
+
+        $project->groups()->save($group);
+    }
+
+
+    /**
+     * @param $project_id
+     * @param $user_id
+     * @return mixed
+     */
+    public function delete_project_group($project_id, $group_id)
+    {
+        $project = Project::find($project_id);
+
+        if (!$project) {
+            return $this->respondNotFound('Project does not exist.');
+        }
+
+        $group = User::find($group_id);
+
+        if (!$group) {
+            return $this->respondNotFound('Group does not exist.');
+        }
+
+        $project->groups()->detach($group);
     }
 }

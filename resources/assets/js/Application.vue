@@ -30,8 +30,8 @@
     import { mapState } from 'vuex'
     import TopMenu from './components/admin/TopMenu.vue'
 
-    import HomeHeader from './components/HomeHeader2.vue'
-    import HomeFooter from './components/HomeFooter2.vue'
+    import HomeHeader from './components/HomeHeader.vue'
+    import HomeFooter from './components/HomeFooter.vue'
 
     export default {
         components: {

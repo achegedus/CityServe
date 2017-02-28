@@ -78,37 +78,32 @@
             </div>
 
             <div class="col-md-6">
-                <h1>Volunteers</h1>
-                <table class="table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>#</th>
-                        <th></th>
-                    </tr>
+                <h1>Volunteers ( of {{ project.numVolunteers }})</h1>
 
-                    <tr v-for="vol in this.volunteers">
-                        <td>{{ vol.first_name + ' ' + vol.last_name }}</td>
-                        <td>{{ vol.email }}</td>
-                        <td>1</td>
-                    </tr>
-                </table>
+                <h3>People</h3>
+                <multiselect
+                    v-model="volunteers"
+                    :options="all_volunteers"
+                    label="first_name"
+                    :custom-label="first_last_name"
+                    :multiple="true"
+                    @select="addVolunteer"
+                    placeholder="Select a volunteer"
+                    @remove="removeVolunteer"
+                    track-by="id">
+                </multiselect>
 
-                <h1>Groups</h1>
-                <table class="table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Contact Email</th>
-                        <th>#</th>
-                        <th></th>
-                    </tr>
-
-                    <tr v-for="group in this.groups">
-                        <td>{{ group.name }}</td>
-                        <td>{{ group.user.email }}</td>
-                        <td>{{ group.number_of_people }}</td>
-                    </tr>
-                </table>
+                <h3>Groups</h3>
+                <multiselect
+                    v-model="groups"
+                    :options="all_groups"
+                    label="name"
+                    :multiple="true"
+                    placeholder="Select a group"
+                    @select="addGroup"
+                    @remove="removeGroup"
+                    track-by="id">
+                </multiselect>
             </div>
         </div>
 
@@ -129,7 +124,9 @@
         data(){
             return{
                 volunteers: [],
-                groups: []
+                groups: [],
+                all_volunteers: [],
+                all_groups: []
             }
         },
 
@@ -141,18 +138,65 @@
                 }
             },
 
-            getVolunteers() {
+            getAssignedVolunteers() {
                 this.axios.get('/api/project/' + this.$route.params.projectID + '/volunteers')
                 .then((response) => {
                     this.volunteers = response.data.data
                 });
             },
 
-            getGroups() {
+            getAssignedGroups() {
                 this.axios.get('/api/project/' + this.$route.params.projectID + '/groups')
                 .then((response) => {
                     this.groups = response.data.data
                 });
+            },
+
+            getAllGroups() {
+                this.axios.get('/api/groups')
+                .then((response) => {
+                    this.all_groups = response.data.data
+                });
+            },
+
+            getAllVolunteers() {
+                this.axios.get('/api/volunteers')
+                .then((response) => {
+                    this.all_volunteers = response.data.data
+                });
+            },
+
+            addVolunteer(user) {
+                this.axios.post('/api/project/' + this.$route.params.projectID + '/volunteer/' + user.id)
+                .then((response) => {
+
+                });
+            },
+
+            addGroup(group) {
+                this.axios.post('/api/project/' + this.$route.params.projectID + '/group/' + group.id)
+                .then((response) => {
+
+                });
+            },
+
+            removeVolunteer(user) {
+                this.axios.delete('/api/project/' + this.$route.params.projectID + '/volunteer/' + user.id)
+                .then((response) => {
+
+                });
+            },
+
+            removeGroup(group) {
+                this.axios.delete('/api/project/' + this.$route.params.projectID + '/group/' + group.id)
+                .then((response) => {
+
+                });
+            },
+
+
+            first_last_name ({ first_name, last_name }) {
+                return `${first_name} ${last_name}`
             },
 
             getCategories() {
@@ -166,8 +210,10 @@
                 bus.$emit('errors-changed', value);
             });
 
-            this.getVolunteers()
-            this.getGroups()
+            this.getAssignedVolunteers()
+            this.getAssignedGroups()
+            this.getAllVolunteers()
+            this.getAllGroups()
         },
 
         beforeDestroy() {

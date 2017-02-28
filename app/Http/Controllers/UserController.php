@@ -31,6 +31,22 @@ class UserController extends ApiController
     }
 
 
+    public function getVolunteers()
+    {
+        try {
+            $this->authorize('viewlist', User::class);
+        } catch (\Exception $ex) {
+            return $this->respondNotAuthorized();
+        }
+
+        // get all churches
+        $users = User::with('church')->whereHas('roles', function($query) { $query->where('role_id','=',4); })->get();
+
+        // return a collection of churches
+        return Fractal::includes(['church', 'roles'])->collection($users, new UserTransformer());
+    }
+
+
     /**
      * Returns current user profile
      *

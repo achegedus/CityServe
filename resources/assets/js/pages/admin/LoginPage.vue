@@ -1,26 +1,56 @@
 <template>
+    <div >
+        <form v-on:submit.prevent="handleLoginFormSubmit()" id="sky-form2" class="sky-form">
+            <header>Login form</header>
 
-    <form v-on:submit.prevent="handleLoginFormSubmit()" >
-        <div class="form-group">
-            <label for="inputEmail">Email address</label>
-            <input type="text" class="form-control" v-model="login.email" placeholder="Email">
-        </div>
-        <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" v-model="login.password" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-default">Login</button>
-    </form>
+            <fieldset>
+                <section>
+                    <div class="row">
+                        <label class="label col col-4">E-mail</label>
+                        <div class="col col-8">
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input v-model="login.email" type="email" name="email">
+                            </label>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row">
+                        <label class="label col col-4">Password</label>
+                        <div class="col col-8">
+                            <label class="input">
+                                <i class="icon-append fa fa-lock"></i>
+                                <input v-model="login.password" type="password" name="password">
+                            </label>
+                            <div class="note"><a href="#sky-form2" class="modal-opener">Forgot password?</a></div>
+                        </div>
+                    </div>
+                </section>
 
+                <section>
+                    <div class="row">
+                        <div class="col col-4"></div>
+                        <div class="col col-8">
+                            <label class="checkbox"><input type="checkbox" name="remember" checked><i></i>Keep me logged in</label>
+                        </div>
+                    </div>
+                </section>
+            </fieldset>
+            <footer>
+                <button type="submit" class="btn-u">Log in</button>
+                <a href="#" class="btn-u btn-u-default">Register</a>
+            </footer>
+        </form>
+    </div>
 </template>
 
 
 <style>
-
-    body{
-        background-color:#ffffff;
+    #loginForm {
+        padding-top: 150px;
+        padding-bottom: 50px;
     }
-
 </style>
 
 

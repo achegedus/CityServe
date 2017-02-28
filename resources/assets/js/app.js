@@ -29,6 +29,7 @@ Vue.component('Multiselect', VueMultiselect.default)
 import HomePage from './pages/HomePage.vue';
 
 import LoginPage from './pages/admin/LoginPage.vue';
+import RegisterPage from './components/Register.vue';
 import DashboardPage from './pages/admin/DashboardPage.vue';
 
 import ChurchesPage from './pages/admin/churches/ChurchesPage.vue';
@@ -57,6 +58,7 @@ import store from './store';
 const routes = [
     {path: '/', component: HomePage, name: 'home-page'},
     {path: '/login', component: LoginPage, name: 'login'},
+    {path: '/register', component: RegisterPage, name: 'register'},
 
     {path: '/admin', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
 

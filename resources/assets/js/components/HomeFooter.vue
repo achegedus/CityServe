@@ -1,67 +1,70 @@
 <template>
-    <!--=== Default Footer ===-->
-    <!--=== Footer Version 1 ===-->
-    <div class="footer-v1">
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <!-- About -->
-                    <div class="col-md-3 md-margin-bottom-40">
-                        <p>We seek to partner with local organizations to serve residents and human service agencies in the Centre Region. Several local congregations send their people out to serve in the community. While we might not be able to meet every need, it is our privilege to serve as many people in the Centre Region as possible.</p>
-                    </div><!--/col-md-3-->
-                    <!-- End About -->
+    <!--=== Footer v7 ===-->
+    <section id="footer-v7" class="contacts-section">
+        <div class="container content-lg">
+            <div class="row contacts-in">
+                <div class="col-md-6 md-margin-bottom-40">
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-home"></i> 201 Harvest Fields Drive, Boalsburg, PA 16827</li>
+                        <li><i class="fa fa-phone"></i> (814)238-0822 ext. 20</li>
+                        <li><i class="fa fa-envelope"></i> <a href="info@sc-cityserve.org">info@sc-cityserve.org</a></li>
+                        <li><i class="fa fa-globe"></i> <a href="http://htmlstream.com">www.sc-cityserve.org</a></li>
+                    </ul>
+                </div>
 
-                    <!-- Latest -->
-                    <div class="col-md-3 md-margin-bottom-40">
-                        <div class="posts">
-                            <div class="headline"><h2>Latest Posts</h2></div>
-                            <ul class="list-unstyled latest-list">
-                                <li>
-                                    <a href="#">Incredible content</a>
-                                    <small>May 8, 2014</small>
-                                </li>
-                                <li>
-                                    <a href="#">Best shoots</a>
-                                    <small>June 23, 2014</small>
-                                </li>
-                                <li>
-                                    <a href="#">New Terms and Conditions</a>
-                                    <small>September 15, 2014</small>
-                                </li>
-                            </ul>
+                <div class="col-md-6">
+                    <form action="assets/php/sky-forms-pro/demo-contacts-process.php" method="post" id="sky-form3" class="sky-form">
+                        <fieldset>
+                            <label>Name</label>
+                            <div class="row">
+                                <div class="col-md-7 margin-bottom-20 col-md-offset-0">
+                                    <div>
+                                        <input type="text" name="name" id="name" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label>Email <span class="color-red">*</span></label>
+                            <div class="row">
+                                <div class="col-md-7 margin-bottom-20 col-md-offset-0">
+                                    <div>
+                                        <input type="text" name="email" id="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label>Message</label>
+                            <div class="row">
+                                <div class="col-md-11 margin-bottom-20 col-md-offset-0">
+                                    <div>
+                                        <textarea rows="8" name="message" id="message" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p><button type="submit" class="btn-u btn-brd btn-brd-hover btn-u-dark">Send Message</button></p>
+                        </fieldset>
+
+                        <div class="message">
+                            <i class="rounded-x fa fa-check"></i>
+                            <p>Your message was successfully sent!</p>
                         </div>
-                    </div><!--/col-md-3-->
-                    <!-- End Latest -->
-
-                    <!-- Link List -->
-                    <div class="col-md-3 md-margin-bottom-40">
-                        <div class="headline"><h2>Useful Links</h2></div>
-                        <ul class="list-unstyled link-list">
-                            <li><a href="#">About us</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Portfolio</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Latest jobs</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Community</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Contact us</a><i class="fa fa-angle-right"></i></li>
-                        </ul>
-                    </div><!--/col-md-3-->
-                    <!-- End Link List -->
-
-                    <!-- Address -->
-                    <div class="col-md-3 map-img md-margin-bottom-40">
-                        <div class="headline"><h2>Contact Us</h2></div>
-                        <address class="md-margin-bottom-40">
-                            CityServe <br />
-                            201 Harvest Fields Drive <br />
-                            Boalsburg, PA 16827 <br />
-                            Phone: (814) 238-0822 <br />
-                            Email: <a href="mailto:info@sc-cityserve.org" class="">info@sc-cityserve.org</a>
-                        </address>
-                    </div><!--/col-md-3-->
-                    <!-- End Address -->
+                    </form>
                 </div>
             </div>
-        </div><!--/footer-->
-    <!--=== End Default Footer ===-->
+        </div>
+
+        <div class="copyright-section">
+            <p>2017 &copy; All Rights Reserved</p>
+            <ul class="social-icons">
+                <li><a href="#" data-original-title="Facebook" class="social_facebook rounded-x"></a></li>
+                <li><a href="#" data-original-title="Twitter" class="social_twitter rounded-x"></a></li>
+                <li><a href="#" data-original-title="Goole Plus" class="social_googleplus rounded-x"></a></li>
+            </ul>
+            <a href="#top"><i class="fa fa-angle-double-up back-to-top"></i></a>
+        </div>
+    </section>
+    <!--=== End Footer v7 ===-->
 </template>
 
 
