@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public function projects()
     {
-        return $this->belongsToMany('App\Models\Project');
+        return $this->morphToMany('App\Models\Project', 'volunteer');
     }
 
     public function selected_roles()
@@ -51,6 +51,11 @@ class User extends Authenticatable
             $out[] = $thisRole;
         }
         return $out;
+    }
+
+    public function groups()
+    {
+        return $this->hasMany('App\Models\Group');
     }
 
 

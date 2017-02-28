@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Transformers\GroupTransformer;
 use App\Transformers\ProjectTransformer;
 use App\Transformers\UserTransformer;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
@@ -144,5 +145,17 @@ class ProjectController extends ApiController
         }
 
         return Fractal::collection($users, new UserTransformer());
+    }
+
+
+    public function project_groups($project_id)
+    {
+        $users = Project::find($project_id)->groups;
+
+        if (!$users) {
+            return $this->respondNotFound('No groups found.');
+        }
+
+        return Fractal::collection($users, new GroupTransformer());
     }
 }

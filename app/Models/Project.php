@@ -20,21 +20,21 @@ class Project extends Model
 
     public function groups()
     {
-        return $this->hasMany('App\Models\Group');
+        return $this->morphedByMany('App\Models\Group', 'volunteer');
     }
 
     public function users()
     {
-        return $this->belongsToMany('App\Models\User');
+        return $this->morphedByMany('App\Models\User', 'volunteer');
     }
 
-    public function volunteers()
-    {
-        $users_count = DB::table('project_user')
-            ->select(DB::raw('sum (volunteer_count) as count'))
-            ->where('project_id', '=', $this->id)
-            ->first();
-
-        return (int)$users_count->count;
-    }
+//    public function volunteers()
+//    {
+//        $users_count = DB::table('project_user')
+//            ->select(DB::raw('sum (volunteer_count) as count'))
+//            ->where('project_id', '=', $this->id)
+//            ->first();
+//
+//        return (int)$users_count->count;
+//    }
 }

@@ -11,6 +11,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->truncate();
+
         DB::table('users')->insert([
             'first_name' => 'Adam',
             'last_name' => 'Hegedus',
@@ -21,6 +23,7 @@ class UsersTableSeeder extends Seeder
             'city' => 'Boalsburg',
             'state' => 'PA',
             'zipcode' => '16827',
+            'church_id' => 1
 
         ]);
 
@@ -34,6 +37,7 @@ class UsersTableSeeder extends Seeder
             'city' => 'Boalsburg',
             'state' => 'PA',
             'zipcode' => '16827',
+            'church_id' => 2
         ]);
 
         DB::table('users')->insert([
@@ -46,7 +50,10 @@ class UsersTableSeeder extends Seeder
             'city' => 'Boalsburg',
             'state' => 'PA',
             'zipcode' => '16827',
+            'church_id' => 3
         ]);
+
+        DB::table('role_user')->truncate();
 
         DB::table('role_user')->insert([
             'user_id' => 1,

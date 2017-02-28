@@ -16,14 +16,14 @@ class Group extends Model
         return $this->belongsTo('App\Models\GroupType');
     }
 
-    public function contact()
+    public function user()
     {
-        return $this->hasOne('App\Models\Person');
+        return $this->belongsTo('App\Models\User');
     }
 
-    public function project()
+    public function projects()
     {
-        return $this->belongsTo('App\Models\Project');
+        return $this->morphToMany('App\Models\Project', 'volunteer');
     }
 
 }

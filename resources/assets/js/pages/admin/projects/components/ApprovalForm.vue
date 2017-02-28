@@ -86,6 +86,28 @@
                         <th>#</th>
                         <th></th>
                     </tr>
+
+                    <tr v-for="vol in this.volunteers">
+                        <td>{{ vol.first_name + ' ' + vol.last_name }}</td>
+                        <td>{{ vol.email }}</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+
+                <h1>Groups</h1>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact Email</th>
+                        <th>#</th>
+                        <th></th>
+                    </tr>
+
+                    <tr v-for="group in this.groups">
+                        <td>{{ group.name }}</td>
+                        <td>{{ group.user.email }}</td>
+                        <td>{{ group.number_of_people }}</td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -106,7 +128,8 @@
 
         data(){
             return{
-                msg:'hello vue'
+                volunteers: [],
+                groups: []
             }
         },
 
@@ -121,7 +144,14 @@
             getVolunteers() {
                 this.axios.get('/api/project/' + this.$route.params.projectID + '/volunteers')
                 .then((response) => {
-                    this.project = response.data
+                    this.volunteers = response.data.data
+                });
+            },
+
+            getGroups() {
+                this.axios.get('/api/project/' + this.$route.params.projectID + '/groups')
+                .then((response) => {
+                    this.groups = response.data.data
                 });
             },
 
@@ -135,6 +165,9 @@
             this.$watch(() => this.errors.errors, (value) => {
                 bus.$emit('errors-changed', value);
             });
+
+            this.getVolunteers()
+            this.getGroups()
         },
 
         beforeDestroy() {

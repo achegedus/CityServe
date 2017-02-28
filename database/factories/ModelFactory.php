@@ -35,7 +35,7 @@ $factory->define(App\Models\Group::class, function (Faker\Generator $faker) {
         'name' => $faker->catchPhrase,
         'members' => $faker->numberBetween(3,20),
         'group_type_id' => $faker->numberBetween(1,5),
-        'person_id' => $faker->numberBetween(1,15),
+        'user_id' => $faker->numberBetween(1,15),
         'project_id' => $faker->numberBetween(1,10),
     ];
 });

@@ -14,14 +14,13 @@ class CreateVolunteersTable extends Migration
     public function up()
     {
         Schema::create('volunteers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('group_id')->nullable();
-            $table->integer('person_id');
             $table->integer('project_id');
-            $table->boolean('lead')->default(false);
-            $table->text('notes')->nullable();
-            $table->timestamps();
+            $table->integer('volunteer_id');
+            $table->string('volunteer_type');
+            $table->unique(['project_id', 'volunteer_id', 'volunteer_type']);
         });
+
+
     }
 
     /**

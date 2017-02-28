@@ -14,14 +14,14 @@ class GroupTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $availableIncludes = ['group_type'];
+    protected $availableIncludes = ['group_type', 'user'];
 
     /**
      * List of resources to automatically include
      *
      * @var array
      */
-    protected $defaultIncludes = [];
+    protected $defaultIncludes = ['user'];
 
     /**
      * Transform object into a generic array
@@ -36,13 +36,18 @@ class GroupTransformer extends TransformerAbstract
             'id' => (int) $resource->id,
 			'name' => $resource->name,
 			'number_of_people' => (int) $resource->members,
-			'group_type_id' => (int) $resource->group_type_id,
-			'person_id' => (int) $resource->person_id,
             'project_id' => (int) $resource->group_id,
-            'members' => (int) $resource->members,
 			'created_at' => $resource->created_at,
 			'updated_at' => $resource->updated_at,
         ];
+    }
+
+
+    public function includeUser($resource)
+    {
+        $user = $resource->user;
+
+        return $this->item($user, new UserTransformer());
     }
 
 
