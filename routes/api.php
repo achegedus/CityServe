@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'api'], function() {
     Route::get('/churches', 'ChurchController@index');
+    Route::get('/open-projects', 'ProjectController@open_projects');
 });
 
 
@@ -42,6 +43,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/project/{id}/groups', 'ProjectController@project_groups');
     Route::post('/project/{project_id}/group/{group_id}', 'ProjectController@store_project_group');
     Route::delete('/project/{project_id}/group/{group_id}', 'ProjectController@delete_project_group');
+
+    Route::get('/project-categories', 'ProjectCategoryController@index');
 
     // users
     Route::get('/users', 'UserController@index');

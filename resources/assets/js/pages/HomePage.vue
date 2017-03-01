@@ -20,6 +20,7 @@
 
         <churches></churches>
         <!--=== End Content ===-->
+
     </div>
 </template>
 
@@ -38,14 +39,11 @@
     import Testimonials from '../components/Testimonials.vue'
     import Gallery from '../components/Gallery.vue'
 
+
     import { mapState } from 'vuex'
 
     export default{
-        data(){
-            return{
-                msg:'hello vue'
-            }
-        },
+
 
         computed: {
             ...mapState({
@@ -80,6 +78,8 @@
 
                 // redirect
                 this.$router.push({name: 'home-page'})
+            }).catch((error) => {
+                console.log('Not logged in');
             })
         }
     }

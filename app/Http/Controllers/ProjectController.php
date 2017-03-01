@@ -43,11 +43,11 @@ class ProjectController extends ApiController
         // check if it exists
         if (!$project) {
             return response()->json([
-                'error' => [
-                    'message' => 'That project was not found.',
-                    'code' => 100
-                ]
-            ], 404);
+                                        'error' => [
+                                            'message' => 'That project was not found.',
+                                            'code' => 100
+                                        ]
+                                    ], 404);
         }
 
         // response
@@ -75,15 +75,15 @@ class ProjectController extends ApiController
         }
 
         // save church
-        if( $project->update($request->all())) {
+        if ($project->update($request->all())) {
             return Fractal::item($project, new ProjectTransformer());
         } else {
             return response()->json([
-                'error' => [
-                    'message' => 'Could not update project.',
-                    'code' => 100
-                ]
-            ], 500);
+                                        'error' => [
+                                            'message' => 'Could not update project.',
+                                            'code' => 100
+                                        ]
+                                    ], 500);
         }
     }
 
@@ -130,7 +130,7 @@ class ProjectController extends ApiController
         $project = Project::create($request->all());
 
         // save church
-        if($project) {
+        if ($project) {
             return Fractal::item($project, new ProjectTransformer());
         } else {
             $this->respondInternalError('Project was not created.');
@@ -259,5 +259,15 @@ class ProjectController extends ApiController
         }
 
         $project->groups()->detach($group);
+    }
+
+
+    public function open_projects()
+    {
+        // get all churches
+        $projects = Project::with('category')->where('approved', '=', 1)->get();
+
+        // return a collection of churches
+        return Fractal::includes(['project_category'])->collection($projects, new ProjectTransformer());
     }
 }

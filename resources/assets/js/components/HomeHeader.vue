@@ -40,7 +40,7 @@
 
                             <!-- Pages -->
                             <li class="dropdown">
-                                <a href="#about">
+                                <a href="/#about">
                                     About
                                 </a>
                             </li>
@@ -48,7 +48,7 @@
 
                             <!-- Blog -->
                             <li class="dropdown">
-                                <a href="#faq">
+                                <a href="/#faq">
                                     FAQ
                                 </a>
                             </li>
@@ -56,7 +56,7 @@
 
                             <!-- Blog -->
                             <li class="dropdown">
-                                <a href="#churches">
+                                <a href="/#churches">
                                     Churches
                                 </a>
                             </li>
@@ -80,13 +80,13 @@
 
                             <!-- Login -->
                             <li class="dropdown" v-if="!loggedIn">
-                                <a href="/login">Login</a>
+                                <a href="#" @click.prevent="showLogin">Login</a>
                             </li>
                             <!-- End Login -->
 
                             <!-- Register -->
                             <li v-if="!loggedIn">
-                                <a href="/register">Register</a>
+                                <a href="#" @click.prevent="showRegister">Register</a>
                             </li>
 
                             <!-- Logout -->
@@ -121,6 +121,7 @@
 
 <script>
     import { mapState } from 'vuex'
+    import bus from '../bus.js'
 
     export default{
         data(){
@@ -161,7 +162,15 @@
             handleLogout() {
                 this.$store.dispatch('clearAuthUser')
                 window.localStorage.removeItem('authUser')
-                this.$router.push({name: 'home-page'})
+                location.href = '/log_out';
+            },
+
+            showLogin() {
+                bus.$emit('show-login-modal');
+            },
+
+            showRegister() {
+                bus.$emit('show-register-modal');
             }
         }
     }

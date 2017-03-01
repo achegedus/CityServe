@@ -93,7 +93,7 @@
                     approved: this.project.approved,
                     assigned: this.project.assigned,
                     evaluator_id: this.project.evaluator_id,
-                    category_id: this.project.category_id,
+                    category_id: this.project.category_id.id,
                     volunteers_needed: this.project.volunteers_needed,
                     notes: this.project.notes,
                     coordinator_id: this.project.coordinator_id,

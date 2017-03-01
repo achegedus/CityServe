@@ -58,9 +58,16 @@
 
                 <div class="form-group" :class="{'has-error': errors.has('project.category_id') }" >
                     <label for="time">Category</label>
-                    <select name="category_id" class="form-control" v-validate data-vv-rules="required">
-                        <option>Select One</option>
-                    </select>
+                    <multiselect
+                        v-model="project.category_id"
+                        :options="project_categories"
+                        :searchable="false"
+                        :close-on-select="false"
+                        track-by="id"
+                        label="name"
+                        :show-labels="false"
+                        placeholder="Pick a category">
+                    </multiselect>
                     <span v-show="errors.has('category_id')">{{ errors.first('category_id') }}</span>
                 </div>
 
@@ -126,7 +133,8 @@
                 volunteers: [],
                 groups: [],
                 all_volunteers: [],
-                all_groups: []
+                all_groups: [],
+                project_categories: []
             }
         },
 
@@ -200,7 +208,10 @@
             },
 
             getCategories() {
-
+                this.axios.get('/api/project-categories')
+                .then((response) => {
+                    this.project_categories = response.data.data
+                });
             }
         },
 
@@ -214,6 +225,7 @@
             this.getAssignedGroups()
             this.getAllVolunteers()
             this.getAllGroups()
+            this.getCategories()
         },
 
         beforeDestroy() {

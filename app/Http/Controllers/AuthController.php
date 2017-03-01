@@ -23,7 +23,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         // Go back to login page
-        return redirect()->route('login')
+        return redirect('/')
 
             // Delete the passport authentication token
             ->withCookie(Cookie::forget(Passport::cookie()));

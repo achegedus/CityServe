@@ -21,7 +21,7 @@ class ProjectTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $defaultIncludes = [];
+    protected $defaultIncludes = ['project_category'];
 
     /**
      * Transform object into a generic array
