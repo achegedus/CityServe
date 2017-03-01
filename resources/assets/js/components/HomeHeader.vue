@@ -64,29 +64,29 @@
 
                             <!-- Portfolio -->
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                <router-link :to="{ name: 'serve' }">
                                     Serve
-                                </a>
+                                </router-link>
                             </li>
                             <!-- End Portfolio -->
 
                             <!-- Portfolio -->
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                <router-link :to="{ name: 'request-project' }">
                                     Request a Project
-                                </a>
+                                </router-link>
                             </li>
                             <!-- End Portfolio -->
 
                             <!-- Login -->
                             <li class="dropdown" v-if="!loggedIn">
-                                <router-link :to="{ name: 'login' }">Login</router-link>
+                                <a href="/login">Login</a>
                             </li>
                             <!-- End Login -->
 
                             <!-- Register -->
                             <li v-if="!loggedIn">
-                                <router-link :to="{ name: 'register' }">Register</router-link>
+                                <a href="/register">Register</a>
                             </li>
 
                             <!-- Logout -->

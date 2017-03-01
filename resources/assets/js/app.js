@@ -10,11 +10,12 @@ require('./bootstrap');
 var VueRouter = require('vue-router');
 var VueAxios = require('vue-axios');
 var VeeValidate = require('vee-validate');
+var VueCookie = require('vue-cookie');
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 Vue.use(VeeValidate);
-
+Vue.use(VueCookie);
 
 import App from './Application.vue'
 Vue.component('app', App)
@@ -28,8 +29,8 @@ Vue.component('Multiselect', VueMultiselect.default)
 
 import HomePage from './pages/HomePage.vue';
 
-import LoginPage from './pages/admin/LoginPage.vue';
-import RegisterPage from './components/Register.vue';
+import ServePage from './pages/ServePage.vue';
+import RequestProjectPage from './pages/RequestProjectPage.vue';
 import DashboardPage from './pages/admin/DashboardPage.vue';
 
 import ChurchesPage from './pages/admin/churches/ChurchesPage.vue';
@@ -57,8 +58,8 @@ import store from './store';
 
 const routes = [
     {path: '/', component: HomePage, name: 'home-page'},
-    {path: '/login', component: LoginPage, name: 'login'},
-    {path: '/register', component: RegisterPage, name: 'register'},
+    {path: '/serve', component: ServePage, name: 'serve'},
+    {path: '/request', component: RequestProjectPage, name: 'request-project'},
 
     {path: '/admin', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
 
@@ -92,8 +93,8 @@ router.beforeEach((to, from, next) => {
     if (to.meta.requiresAuth) {
         const authUser = JSON.parse(window.localStorage.getItem('authUser'));
         if (authUser && authUser.access_token) {
-            const tokenData = JSON.parse(window.localStorage.getItem('authUser'));
-            Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + tokenData.access_token;
+            // const tokenData = JSON.parse(window.localStorage.getItem('authUser'));
+            // Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + tokenData.access_token;
             next()
         }
         else {

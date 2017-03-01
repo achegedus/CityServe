@@ -91,7 +91,8 @@
             handleLogout() {
                 this.$store.dispatch('clearAuthUser')
                 window.localStorage.removeItem('authUser')
-                this.$router.push({name: 'home-page'})
+                //this.$router.push({name: 'home-page'})
+                location.href = '/log_out';
             }
         }
     }

@@ -11,6 +11,10 @@
 |
 */
 
+Auth::routes();
+
+Route::get('/log_out', 'AuthController@logout');
+
 # Vue
 Route::any('{all}', function () {
     return view('welcome');
@@ -29,5 +33,5 @@ Route::any('{all}', function () {
 //Route::get('/admin/{catchall?}', function () {
 //    return response()->view('welcome');
 //})->where('catchall', '(.*)');
-////Auth::routes();
+////
 
