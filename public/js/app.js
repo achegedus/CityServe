@@ -26482,7 +26482,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.axios.post('/api/submit-project', postData).then(response => {
                 console.log('Updated');
-                self.$router.push({ name: 'project-submit-success' });
+                this.project = {};
+                this.$swal('Thank you!', 'Thank you for submitting a project for CityServe 2016. You should receive an email confirmation shortly.', 'success');
             }).catch(error => {
                 console.log('An error occurred');
                 console.log(error);
