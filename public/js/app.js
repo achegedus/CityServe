@@ -25403,6 +25403,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     data() {
@@ -25418,80 +25432,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -25718,6 +25658,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bus_js__ = __webpack_require__(4);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -26398,6 +26348,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_projects_components_ProjectForm_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_projects_components_ProjectForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__admin_projects_components_ProjectForm_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bus_js__ = __webpack_require__(4);
+//
 //
 //
 //
@@ -28843,7 +28794,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -29025,7 +28976,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -29123,7 +29074,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51302,7 +51253,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "cbp-caption-defaultWrap"
   }, [_c('img', {
     attrs: {
-      "src": "assets/img/main/img3.jpg",
+      "src": "/images/IMG_1846.jpg",
       "alt": ""
     }
   })]), _vm._v(" "), _c('div', {
@@ -51314,283 +51265,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('ul', {
     staticClass: "link-captions"
   }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "portfolio_single_item.html"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-link"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
     staticClass: "cbp-lightbox",
     attrs: {
-      "href": "assets/img/main/img3.jpg",
+      "href": "/images/IMG_1846.jpg",
       "data-title": "Design Object"
     }
   }, [_c('i', {
     staticClass: "rounded-x fa fa-search"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-title"
-  }, [_vm._v("Design Object 01")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-desc"
-  }, [_vm._v("Web Design")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-item web-design logos"
-  }, [_c('div', {
-    staticClass: "cbp-caption"
-  }, [_c('div', {
-    staticClass: "cbp-caption-defaultWrap"
-  }, [_c('img', {
-    attrs: {
-      "src": "assets/img/main/img8.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-caption-activeWrap"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-alignCenter"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-body"
-  }, [_c('ul', {
-    staticClass: "link-captions"
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "portfolio_single_item.html"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-link"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "cbp-lightbox",
-    attrs: {
-      "href": "assets/img/main/img8.jpg",
-      "data-title": "Design Object"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-search"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-title"
-  }, [_vm._v("Design Object 02")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-desc"
-  }, [_vm._v("Web Design")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-item graphic logos"
-  }, [_c('div', {
-    staticClass: "cbp-caption"
-  }, [_c('div', {
-    staticClass: "cbp-caption-defaultWrap"
-  }, [_c('img', {
-    attrs: {
-      "src": "assets/img/main/img9.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-caption-activeWrap"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-alignCenter"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-body"
-  }, [_c('ul', {
-    staticClass: "link-captions"
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "portfolio_single_item.html"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-link"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "cbp-lightbox",
-    attrs: {
-      "href": "assets/img/main/img9.jpg",
-      "data-title": "Design Object"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-search"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-title"
-  }, [_vm._v("Design Object 03")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-desc"
-  }, [_vm._v("Web Design")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-item web-design graphic"
-  }, [_c('div', {
-    staticClass: "cbp-caption"
-  }, [_c('div', {
-    staticClass: "cbp-caption-defaultWrap"
-  }, [_c('img', {
-    attrs: {
-      "src": "assets/img/main/img10.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-caption-activeWrap"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-alignCenter"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-body"
-  }, [_c('ul', {
-    staticClass: "link-captions"
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "portfolio_single_item.html"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-link"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "cbp-lightbox",
-    attrs: {
-      "href": "assets/img/main/img10.jpg",
-      "data-title": "Design Object"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-search"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-title"
-  }, [_vm._v("Design Object 04")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-desc"
-  }, [_vm._v("Web Design")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-item identity web-design"
-  }, [_c('div', {
-    staticClass: "cbp-caption"
-  }, [_c('div', {
-    staticClass: "cbp-caption-defaultWrap"
-  }, [_c('img', {
-    attrs: {
-      "src": "assets/img/main/img11.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-caption-activeWrap"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-alignCenter"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-body"
-  }, [_c('ul', {
-    staticClass: "link-captions"
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "portfolio_single_item.html"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-link"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "cbp-lightbox",
-    attrs: {
-      "href": "assets/img/main/img11.jpg",
-      "data-title": "Design Object"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-search"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-title"
-  }, [_vm._v("Design Object 05")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-desc"
-  }, [_vm._v("Web Design")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-item identity web-design"
-  }, [_c('div', {
-    staticClass: "cbp-caption"
-  }, [_c('div', {
-    staticClass: "cbp-caption-defaultWrap"
-  }, [_c('img', {
-    attrs: {
-      "src": "assets/img/main/img12.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-caption-activeWrap"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-alignCenter"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-body"
-  }, [_c('ul', {
-    staticClass: "link-captions"
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "portfolio_single_item.html"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-link"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "cbp-lightbox",
-    attrs: {
-      "href": "assets/img/main/img12.jpg",
-      "data-title": "Design Object"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-search"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-title"
-  }, [_vm._v("Design Object 06")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-desc"
-  }, [_vm._v("Web Design")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-item web-design identity"
-  }, [_c('div', {
-    staticClass: "cbp-caption"
-  }, [_c('div', {
-    staticClass: "cbp-caption-defaultWrap"
-  }, [_c('img', {
-    attrs: {
-      "src": "assets/img/main/img18.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-caption-activeWrap"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-alignCenter"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-body"
-  }, [_c('ul', {
-    staticClass: "link-captions"
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "portfolio_single_item.html"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-link"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "cbp-lightbox",
-    attrs: {
-      "href": "assets/img/main/img18.jpg",
-      "data-title": "Design Object"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-search"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-title"
-  }, [_vm._v("Design Object 07")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-desc"
-  }, [_vm._v("Web Design")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-item identity logo"
-  }, [_c('div', {
-    staticClass: "cbp-caption"
-  }, [_c('div', {
-    staticClass: "cbp-caption-defaultWrap"
-  }, [_c('img', {
-    attrs: {
-      "src": "assets/img/main/img19.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-caption-activeWrap"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-alignCenter"
-  }, [_c('div', {
-    staticClass: "cbp-l-caption-body"
-  }, [_c('ul', {
-    staticClass: "link-captions"
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "portfolio_single_item.html"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-link"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "cbp-lightbox",
-    attrs: {
-      "href": "assets/img/main/img19.jpg",
-      "data-title": "Design Object"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-search"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-title"
-  }, [_vm._v("Design Object 08")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-desc"
-  }, [_vm._v("Web Design")])])])])])]), _vm._v(" "), _c('div', {
+  })])])])])])])])]), _vm._v(" "), _c('div', {
     staticClass: "cbp-item graphic"
   }, [_c('div', {
     staticClass: "cbp-caption"
@@ -51598,7 +51280,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "cbp-caption-defaultWrap"
   }, [_c('img', {
     attrs: {
-      "src": "assets/img/main/img20.jpg",
+      "src": "/images/IMG_1834.jpg",
       "alt": ""
     }
   })]), _vm._v(" "), _c('div', {
@@ -51610,24 +51292,122 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('ul', {
     staticClass: "link-captions"
   }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "portfolio_single_item.html"
-    }
-  }, [_c('i', {
-    staticClass: "rounded-x fa fa-link"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
     staticClass: "cbp-lightbox",
     attrs: {
-      "href": "assets/img/main/img20.jpg",
+      "href": "/images/IMG_1834.jpg",
       "data-title": "Design Object"
     }
   }, [_c('i', {
     staticClass: "rounded-x fa fa-search"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-title"
-  }, [_vm._v("Design Object 09")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-l-grid-agency-desc"
-  }, [_vm._v("Web Design")])])])])])])])])])
+  })])])])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-item graphic"
+  }, [_c('div', {
+    staticClass: "cbp-caption"
+  }, [_c('div', {
+    staticClass: "cbp-caption-defaultWrap"
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/IMG_1850.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-caption-activeWrap"
+  }, [_c('div', {
+    staticClass: "cbp-l-caption-alignCenter"
+  }, [_c('div', {
+    staticClass: "cbp-l-caption-body"
+  }, [_c('ul', {
+    staticClass: "link-captions"
+  }, [_c('li', [_c('a', {
+    staticClass: "cbp-lightbox",
+    attrs: {
+      "href": "/images/IMG_1850.jpg",
+      "data-title": "Design Object"
+    }
+  }, [_c('i', {
+    staticClass: "rounded-x fa fa-search"
+  })])])])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-item graphic"
+  }, [_c('div', {
+    staticClass: "cbp-caption"
+  }, [_c('div', {
+    staticClass: "cbp-caption-defaultWrap"
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/IMG_1886.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-caption-activeWrap"
+  }, [_c('div', {
+    staticClass: "cbp-l-caption-alignCenter"
+  }, [_c('div', {
+    staticClass: "cbp-l-caption-body"
+  }, [_c('ul', {
+    staticClass: "link-captions"
+  }, [_c('li', [_c('a', {
+    staticClass: "cbp-lightbox",
+    attrs: {
+      "href": "/images/IMG_1886.jpg",
+      "data-title": "Design Object"
+    }
+  }, [_c('i', {
+    staticClass: "rounded-x fa fa-search"
+  })])])])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-item graphic"
+  }, [_c('div', {
+    staticClass: "cbp-caption"
+  }, [_c('div', {
+    staticClass: "cbp-caption-defaultWrap"
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/DSC_0964.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-caption-activeWrap"
+  }, [_c('div', {
+    staticClass: "cbp-l-caption-alignCenter"
+  }, [_c('div', {
+    staticClass: "cbp-l-caption-body"
+  }, [_c('ul', {
+    staticClass: "link-captions"
+  }, [_c('li', [_c('a', {
+    staticClass: "cbp-lightbox",
+    attrs: {
+      "href": "/images/DSC_0964.jpg",
+      "data-title": "Design Object"
+    }
+  }, [_c('i', {
+    staticClass: "rounded-x fa fa-search"
+  })])])])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-item graphic"
+  }, [_c('div', {
+    staticClass: "cbp-caption"
+  }, [_c('div', {
+    staticClass: "cbp-caption-defaultWrap"
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/IMG_1942.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-caption-activeWrap"
+  }, [_c('div', {
+    staticClass: "cbp-l-caption-alignCenter"
+  }, [_c('div', {
+    staticClass: "cbp-l-caption-body"
+  }, [_c('ul', {
+    staticClass: "link-captions"
+  }, [_c('li', [_c('a', {
+    staticClass: "cbp-lightbox",
+    attrs: {
+      "href": "/images/IMG_1942.jpg",
+      "data-title": "Design Object"
+    }
+  }, [_c('i', {
+    staticClass: "rounded-x fa fa-search"
+  })])])])])])])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -53161,7 +52941,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-body"
   }, [_vm._v("\n                                Absolutely! You can register on this site for as many projects as you would like.\n                            ")])])])])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
-  })])])])
+  }, [_c('div', {
+    staticClass: "row margin-bottom-50"
+  }, [_c('div', {
+    staticClass: "shadow-wrapper md-margin-bottom-40"
+  }, [_c('div', {
+    staticClass: "box-shadow shadow-effect-2"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/images/IMG_3669.jpg",
+      "alt": ""
+    }
+  })])])]), _vm._v(" "), _c('div', {
+    staticClass: "row margin-bottom-50"
+  }, [_c('div', {
+    staticClass: "shadow-wrapper md-margin-bottom-40"
+  }, [_c('div', {
+    staticClass: "box-shadow shadow-effect-2"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/images/IMG_9508.jpg",
+      "alt": ""
+    }
+  })])])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -53474,7 +53278,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "header-v6 header-white-transparent header-sticky"
+    staticClass: "header-v6 header-classic-white header-sticky"
   }, [_c('div', {
     staticClass: "navbar mega-menu",
     attrs: {
@@ -53510,15 +53314,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "menu-container"
   }, [_c('ul', {
     staticClass: "nav navbar-nav"
-  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('li', {
-    staticClass: "dropdown"
-  }, [_c('router-link', {
-    attrs: {
-      "to": {
-        name: 'serve'
-      }
-    }
-  }, [_vm._v("\n                                Serve\n                            ")])], 1), _vm._v(" "), _c('li', {
+  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('li', {
     staticClass: "dropdown"
   }, [_c('router-link', {
     attrs: {
@@ -53526,29 +53322,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         name: 'request-project'
       }
     }
-  }, [_vm._v("\n                                Request a Project\n                            ")])], 1), _vm._v(" "), (!_vm.loggedIn) ? _c('li', {
-    staticClass: "dropdown"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.showLogin($event)
-      }
-    }
-  }, [_vm._v("Login")])]) : _vm._e(), _vm._v(" "), (!_vm.loggedIn) ? _c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.showRegister($event)
-      }
-    }
-  }, [_vm._v("Register")])]) : _vm._e(), _vm._v(" "), (_vm.loggedIn) ? _c('li', {
+  }, [_vm._v("\n                                Request a Project\n                            ")])], 1), _vm._v(" "), (_vm.loggedIn) ? _c('li', {
     staticClass: "dropdown"
   }, [_c('a', {
     on: {
@@ -53585,7 +53359,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "dropdown"
   }, [_c('a', {
     attrs: {
-      "href": "/"
+      "href": "/#"
     }
   }, [_vm._v("\n                                Home\n                            ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -53604,14 +53378,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "/#faq"
     }
   }, [_vm._v("\n                                FAQ\n                            ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "dropdown"
-  }, [_c('a', {
-    attrs: {
-      "href": "/#churches"
-    }
-  }, [_vm._v("\n                                Churches\n                            ")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -53684,21 +53450,27 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('section', {
     attrs: {
       "id": "about"
     }
   }, [_c('div', {
     staticClass: "container content-md"
-  }, [_c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('p', {
+    staticClass: "lead"
+  }, [_vm._v("CityServe is a partnership of several local churches to bless our local community. It's an opportunity for the church to be the church through practical acts of kindness. We're looking forward to completing more than 150 projects using 1500 volunteers during the weekend of May 20 and 21! All types of projects will be requested - painting, yard work, cleaning and organizing, baking, home repair/construction, visiting with folks, hosting events and more. Want to request a project?")]), _vm._v(" "), _c('p', {
+    staticClass: "lead"
+  }, [_vm._v("Please do so "), _c('router-link', {
+    attrs: {
+      "to": {
+        name: 'request-project'
+      }
+    }
+  }, [_vm._v("here")]), _vm._v("! Want to serve? Please register for a project between April 1 and May 8. Volunteers can register as an individual or group.")], 1)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "headline"
-  }, [_c('h2', [_vm._v("About CityServe")])]), _vm._v(" "), _c('p', {
-    staticClass: "lead"
-  }, [_vm._v("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare magna neque, quis sodales ex luctus at. In feugiat finibus sem. Ut nisi est, cursus vitae risus non, sagittis auctor nisl. Aenean sit amet luctus ante. Phasellus pellentesque tempor libero nec rhoncus. Nam sed diam eget ante rhoncus volutpat vitae ac dui. Vestibulum massa velit, pretium pellentesque vestibulum et, pharetra at magna. Praesent sit amet arcu malesuada, malesuada dui et, fringilla neque. Integer sapien elit, gravida in malesuada consectetur, sagittis ac erat. Praesent vel vestibulum eros, ac interdum diam. Cras vitae massa neque. Duis dapibus auctor dui, eu pulvinar odio efficitur non. Sed quis nibh in risus gravida hendrerit.")]), _vm._v(" "), _c('p', {
-    staticClass: "lead"
-  }, [_vm._v("In volutpat tristique rutrum. Vestibulum sollicitudin at nulla sit amet pulvinar. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam dictum at diam eu commodo. Mauris vehicula sapien lectus, ac molestie mauris commodo sit amet. Aliquam non est leo. Mauris sagittis sagittis urna, in lacinia lectus efficitur in. Proin sollicitudin mattis sodales. Cras et faucibus neque, non ornare metus. Vestibulum id semper est. Maecenas vestibulum varius sapien, id elementum tellus euismod at. Vestibulum auctor ante a efficitur sagittis. Proin tempus lacus risus, quis dapibus nunc eleifend sit amet.")])])])
+  }, [_c('h2', [_vm._v("About CityServe")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -53713,7 +53485,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._m(0), _vm._v(" "), _c('about-us'), _vm._v(" "), _c('gallery'), _vm._v(" "), _c('testimonials'), _vm._v(" "), _c('faq'), _vm._v(" "), _c('churches')], 1)
+  return _c('div', [_vm._m(0), _vm._v(" "), _c('about-us'), _vm._v(" "), _c('gallery'), _vm._v(" "), _c('faq')], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "interactive-slider-v2 img-v1"

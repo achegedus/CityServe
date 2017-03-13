@@ -14,11 +14,11 @@
 
         <gallery></gallery>
 
-        <testimonials></testimonials>
+        <!--<testimonials></testimonials>-->
 
         <faq></faq>
 
-        <churches></churches>
+        <!--<churches></churches>-->
         <!--=== End Content ===-->
 
     </div>

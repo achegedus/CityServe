@@ -116,7 +116,21 @@
 
                 <!-- Popular Topics -->
                 <div class="col-md-4">
+                    <div class="row margin-bottom-50">
+                        <div class="shadow-wrapper md-margin-bottom-40">
+                            <div class="box-shadow shadow-effect-2">
+                                <img class="img-responsive" src="/images/IMG_3669.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="row margin-bottom-50">
+                        <div class="shadow-wrapper md-margin-bottom-40">
+                            <div class="box-shadow shadow-effect-2">
+                                <img class="img-responsive" src="/images/IMG_9508.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
                 </div><!--/col-md-6-->
                 <!-- End Popular Topics -->
             </div>

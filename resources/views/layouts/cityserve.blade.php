@@ -48,7 +48,7 @@
     </script>
 </head>
 
-<body class="header-fixed">
+<body class="header-fixed header-fixed-space">
 
 @yield('content')
 
@@ -61,7 +61,7 @@
 <!-- JS Implementing Plugins -->
 <script src="/assets/plugins/back-to-top.js"></script>
 <script src="/assets/plugins/smoothScroll.js"></script>
-
+<link rel="stylesheet" href="/assets/plugins/animate.css">
 <!-- JS Customization -->
 <script type="text/javascript" src="/assets/js/custom.js"></script>
 
@@ -77,8 +77,14 @@
 <script src="https://cdn.jsdelivr.net/vue.multiselect/2.0.0-beta.13/vue-multiselect.min.js"></script>
 <script src="/js/app.js"></script>
 
+<script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script>
+<script type="text/javascript" src="/assets/plugins/jquery.parallax.js"></script>
+
 <script type="text/javascript" src="/assets/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
 <script type="text/javascript" src="/assets/js/plugins/cube-portfolio/cube-portfolio-3.js"></script>
+
+<script type="text/javascript" src="/assets/js/custom.js"></script>
 
 <!--[if lt IE 9]>
 <script src="/assets/plugins/respond.js"></script>

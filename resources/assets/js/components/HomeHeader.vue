@@ -1,7 +1,7 @@
 <template>
 
     <!--=== Header v6 ===-->
-    <div class="header-v6 header-white-transparent header-sticky">
+    <div class="header-v6 header-classic-white header-sticky">
         <!-- Navbar -->
         <div class="navbar mega-menu" role="navigation">
             <div class="container">
@@ -32,7 +32,7 @@
                         <ul class="nav navbar-nav">
                             <!-- Home -->
                             <li class="dropdown">
-                                <a href="/">
+                                <a href="/#">
                                     Home
                                 </a>
                             </li>
@@ -55,39 +55,49 @@
                             <!-- End Blog -->
 
                             <!-- Blog -->
+                            <!--
                             <li class="dropdown">
                                 <a href="/#churches">
                                     Churches
                                 </a>
                             </li>
+                            -->
                             <!-- End Blog -->
 
                             <!-- Portfolio -->
+                            <!--
                             <li class="dropdown">
                                 <router-link :to="{ name: 'serve' }">
                                     Serve
                                 </router-link>
                             </li>
+                            -->
                             <!-- End Portfolio -->
 
                             <!-- Portfolio -->
+
                             <li class="dropdown">
                                 <router-link :to="{ name: 'request-project' }">
                                     Request a Project
                                 </router-link>
                             </li>
+
                             <!-- End Portfolio -->
 
                             <!-- Login -->
+                            <!--
                             <li class="dropdown" v-if="!loggedIn">
                                 <a href="#" @click.prevent="showLogin">Login</a>
                             </li>
+                            -->
                             <!-- End Login -->
 
                             <!-- Register -->
+                            <!--
                             <li v-if="!loggedIn">
                                 <a href="#" @click.prevent="showRegister">Register</a>
                             </li>
+                            -->
 
                             <!-- Logout -->
                             <li class="dropdown" v-if="loggedIn">
