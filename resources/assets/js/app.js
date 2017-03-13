@@ -11,11 +11,13 @@ var VueRouter = require('vue-router');
 var VueAxios = require('vue-axios');
 var VeeValidate = require('vee-validate');
 var VueCookie = require('vue-cookie');
+import VueSweetAlert from 'vue-sweetalert'
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 Vue.use(VeeValidate);
 Vue.use(VueCookie);
+Vue.use(VueSweetAlert);
 
 import App from './Application.vue'
 Vue.component('app', App)
@@ -53,6 +55,8 @@ import GroupsPage from './pages/admin/groups/GroupsPage.vue';
 import GroupEditPage from './pages/admin/groups/EditGroupPage.vue';
 import GroupNewPage from './pages/admin/groups/NewGroupPage.vue';
 
+import ProjectSubmitSuccess from './pages/ProjectSubmitSuccess.vue';
+
 import store from './store';
 
 
@@ -60,6 +64,7 @@ const routes = [
     {path: '/', component: HomePage, name: 'home-page'},
     {path: '/serve', component: ServePage, name: 'serve'},
     {path: '/request', component: RequestProjectPage, name: 'request-project'},
+    {path: '/project-submit-success', component: ProjectSubmitSuccess, name: 'project-submit-success'},
 
     {path: '/admin', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
 

@@ -1,26 +1,69 @@
 <template>
     <div>
-    <!--=== Slider ===-->
-    <div class="interactive-slider-v2 img-v1">
+        <!--=== Slider ===-->
+        <div class="interactive-slider-v2 img-v1">
+            <div class="container">
+                <h1>Request a Project</h1>
+                <p>Serving beyond our walls</p>
+            </div>
+        </div>
         <div class="container">
-            <h1>Request a Project</h1>
-            <p>Serving beyond our walls</p>
-        </div>
-    </div>
+            <div class="row" id="formcontainer">
+                <div class="col-sm-8">
+                    <div class="tag-box tag-box-v2 box-shadow shadow-effect-1">
+                        <h2>Have a project to request?</h2>
+                        <p>Please complete the project request form! If you're unable to complete the form, please call 814.238.0822 ext 20! All types of projects can be requested - painting, yard work, cleaning and organizing, baking, home repair/construction, visiting with folks, hosting events, roofing repairs and more.</p><p>While we strive to complete all requested projects, we can't commit to that. If you request a painting, home repair, roofing or construction project, you'll hear from a CityServe evaluator to schedule an appointment to learn more about your project. Evaluators will determine if your project is within the scope of what CityServe is able to complete. We'll notify project requestors at least one week prior to CityServe to confirm if we have volunteers for your project.</p>
+                    </div>
 
-    <div class="container">
-        <project-form :project="this.project"></project-form>
+                    <form class="sky-form" v-on:submit.prevent="submitForm" >
+                        <project-form :project="this.project"></project-form>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-error" @click="submitForm">Submit Project</button>
+                        <fieldset>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-error">Submit Project</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="row margin-bottom-50">
+                        <div class="shadow-wrapper md-margin-bottom-40">
+                            <div class="box-shadow shadow-effect-2">
+                                <img class="img-responsive" src="/images/IMG_3669.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row margin-bottom-50">
+                        <div class="shadow-wrapper md-margin-bottom-40">
+                            <div class="box-shadow shadow-effect-2">
+                                <img class="img-responsive" src="/images/IMG_1886.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
     </div>
 </template>
 
 
 <style>
+    .interactive-slider-v2.img-v1 {
+        background: url(/images/IMG_1995.jpg) no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
 
+    #formcontainer {
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
+
+    p {
+        padding-bottom: 10px;
+    }
 </style>
 
 
@@ -90,7 +133,7 @@
                 this.axios.post('/api/submit-project', postData)
                 .then((response) => {
                     console.log('Updated');
-                    self.$router.push({ name: '<project-submit-complete></project-submit-complete>'})
+                    self.$router.push({ name: 'project-submit-success'})
                 })
                 .catch((error) => {
                     console.log('An error occurred');

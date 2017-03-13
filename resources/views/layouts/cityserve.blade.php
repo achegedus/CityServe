@@ -36,7 +36,7 @@
     <!--[if lt IE 9]><link rel="stylesheet" href="/assets/plugins/sky-forms-pro/skyforms/css/sky-forms-ie8.css"><![endif]-->
 
     <!-- CSS Theme -->
-    <link rel="stylesheet" href="/assets/css/theme-colors/orange.css">
+    <link rel="stylesheet" href="/assets/css/theme-colors/blue.css">
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="/assets/css/custom.css">
