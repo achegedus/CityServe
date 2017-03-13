@@ -44,7 +44,7 @@
             validateBeforeSubmit(e) {
                 this.$validator.validateAll();
                 if (!this.errors.any()) {
-                    alert('hi');
+                    //alert('hi');
                     //this.saveProject()
                 }
             },
@@ -119,7 +119,7 @@
         },
 
         beforeDestroy() {
-            bus.$off('submit-project-response', this.saveChurch);
+            bus.$off('submit-project-response', this.saveProject);
         }
 
     }

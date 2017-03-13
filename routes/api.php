@@ -15,11 +15,21 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'api'], function() {
     Route::get('/churches', 'ChurchController@index');
+    Route::get('/contents', 'ContentController@index');
+    Route::get('/content/{id}', 'ContentController@show');
+
+    Route::post('submit-project','ProjectController@store');
     Route::get('/open-projects', 'ProjectController@open_projects');
 });
 
 
 Route::group(['middleware' => 'auth:api'], function() {
+    // content
+    Route::get('/content/{id}', 'ContentController@show');
+    Route::delete('content/{id}','ContentController@destroy');
+    Route::put('content/{id}','ContentController@update');
+    Route::post('content','ContentController@store');
+
     // churches
     Route::get('/church/{id}', 'ChurchController@show');
     Route::delete('church/{id}','ChurchController@destroy');

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "96f6dd8d304a97f1ffc685fac0fe8713",
-    "content-hash": "931cd772362c0a0db7dfcbab15f94898",
+    "hash": "32ac22f7e596e8be47928502bcd85819",
+    "content-hash": "0f5e925fa50142923938d6f92d9ec2f4",
     "packages": [
         {
             "name": "cyvelnet/laravel5-fractal",

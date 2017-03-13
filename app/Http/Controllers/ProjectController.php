@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ProjectCreated;
 use App\Models\Group;
 use App\Models\Project;
 use App\Models\User;
@@ -10,6 +11,7 @@ use App\Transformers\ProjectTransformer;
 use App\Transformers\UserTransformer;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class ProjectController
@@ -131,6 +133,9 @@ class ProjectController extends ApiController
 
         // save church
         if ($project) {
+            // send mail
+            Mail::to($project->requester_email)->send(new ProjectCreated($project));
+
             return Fractal::item($project, new ProjectTransformer());
         } else {
             $this->respondInternalError('Project was not created.');
