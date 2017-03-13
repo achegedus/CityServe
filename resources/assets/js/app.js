@@ -103,7 +103,7 @@ router.beforeEach((to, from, next) => {
             next()
         }
         else {
-            next({name: 'login'})
+            next({name: 'home-page'})
         }
     }
     next()

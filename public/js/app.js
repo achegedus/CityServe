@@ -24210,7 +24210,7 @@ router.beforeEach((to, from, next) => {
             // Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + tokenData.access_token;
             next();
         } else {
-            next({ name: 'login' });
+            next({ name: 'home-page' });
         }
     }
     next();
