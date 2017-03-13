@@ -26487,6 +26487,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(error => {
                 console.log('An error occurred');
                 console.log(error);
+                this.$swal('Oops!', 'Form submission errors, please fill out all required fields.', 'error');
             });
         }
     },
@@ -54250,6 +54251,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Description")]), _vm._v(" "), _c('textarea', {
     directives: [{
+      name: "validate",
+      rawName: "v-validate"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.project.description),
@@ -54290,6 +54294,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Directions")]), _vm._v(" "), _c('textarea', {
     directives: [{
+      name: "validate",
+      rawName: "v-validate"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.project.directions),
@@ -54330,6 +54337,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Parking")]), _vm._v(" "), _c('textarea', {
     directives: [{
+      name: "validate",
+      rawName: "v-validate"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.project.parking),
@@ -54338,7 +54348,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "name": "parking",
-      "type": "text"
+      "type": "text",
+      "data-vv-rules": "required",
+      "data-vv-as": "Parking instructions"
     },
     domProps: {
       "value": (_vm.project.parking)
@@ -54588,6 +54600,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("How Will Volunteers be Used")]), _vm._v(" "), _c('textarea', {
     directives: [{
+      name: "validate",
+      rawName: "v-validate"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.project.howUsed),
@@ -54628,6 +54643,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Skills Requested")]), _vm._v(" "), _c('textarea', {
     directives: [{
+      name: "validate",
+      rawName: "v-validate"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.project.skills),
@@ -54636,7 +54654,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "name": "skills",
-      "type": "text"
+      "type": "text",
+      "data-vv-rules": "required",
+      "data-vv-as": "Skills required"
     },
     domProps: {
       "value": (_vm.project.skills)
@@ -54666,6 +54686,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Materials Requester Will Provide ")]), _vm._v(" "), _c('textarea', {
     directives: [{
+      name: "validate",
+      rawName: "v-validate"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.project.materialsRequesterWill),
@@ -54674,6 +54697,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "name": "materialsRequesterWill",
+      "data-vv-rules": "required",
+      "data-vv-as": "Materials you will provide",
       "type": "text"
     },
     domProps: {
@@ -54704,6 +54729,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Materials Requester Will Not Provide ")]), _vm._v(" "), _c('textarea', {
     directives: [{
+      name: "validate",
+      rawName: "v-validate"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.project.materialsRequesterCannot),
@@ -54712,7 +54740,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "name": "materialsRequesterCannot",
-      "type": "text"
+      "data-vv-rules": "required",
+      "type": "text",
+      "data-vv-as": "Materials you can not provide"
     },
     domProps: {
       "value": (_vm.project.materialsRequesterCannot)

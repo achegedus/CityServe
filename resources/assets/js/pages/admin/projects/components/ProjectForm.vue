@@ -117,19 +117,19 @@
         <fieldset>
             <div class="form-group" :class="{'has-error': errors.has('project.description') }" >
                 <label for="description">Description</label>
-                <textarea name="description" type="text" class="form-control" data-vv-rules="required" data-vv-as="Project Description" v-model="project.description"></textarea>
+                <textarea name="description" type="text" class="form-control" v-validate data-vv-rules="required" data-vv-as="Project Description" v-model="project.description"></textarea>
                 <span class='note note-error' v-show="errors.has('description')">{{ errors.first('description') }}</span>
             </div>
 
             <div class="form-group" :class="{'has-error': errors.has('project.directions') }" >
                 <label for="directions">Directions</label>
-                <textarea name="directions" type="text" class="form-control" data-vv-rules="required" data-vv-as="Project Directions" v-model="project.directions"></textarea>
+                <textarea name="directions" type="text" class="form-control" v-validate data-vv-rules="required" data-vv-as="Project Directions" v-model="project.directions"></textarea>
                 <span class='note note-error' v-show="errors.has('directions')">{{ errors.first('directions') }}</span>
             </div>
 
             <div class="form-group" :class="{'has-error': errors.has('project.parking') }" >
                 <label for="parking">Parking</label>
-                <textarea name="parking" type="text" class="form-control" v-model="project.parking"></textarea>
+                <textarea name="parking" type="text" v-validate data-vv-rules="required" class="form-control" data-vv-as="Parking instructions" v-model="project.parking"></textarea>
                 <span class='note note-error' v-show="errors.has('parking')">{{ errors.first('parking') }}</span>
             </div>
 
@@ -180,25 +180,25 @@
 
             <div class="form-group" :class="{'has-error': errors.has('project.howUsed') }" >
                 <label for="howUsed">How Will Volunteers be Used</label>
-                <textarea name="howUsed" type="text" class="form-control"  data-vv-rules="required" data-vv-as="How will volunteers be used" v-model="project.howUsed"></textarea>
+                <textarea name="howUsed" type="text" v-validate class="form-control"  data-vv-rules="required" data-vv-as="How will volunteers be used" v-model="project.howUsed"></textarea>
                 <span class='note note-error' v-show="errors.has('howUsed')">{{ errors.first('howUsed') }}</span>
             </div>
 
             <div class="form-group" :class="{'has-error': errors.has('project.skills') }" >
                 <label for="skills">Skills Requested</label>
-                <textarea name="skills" type="text" class="form-control" v-model="project.skills"></textarea>
+                <textarea name="skills" type="text" v-validate data-vv-rules="required" data-vv-as="Skills required" class="form-control" v-model="project.skills"></textarea>
                 <span class='note note-error' v-show="errors.has('skills')">{{ errors.first('skills') }}</span>
             </div>
 
             <div class="form-group" :class="{'has-error': errors.has('project.materialsRequesterWill') }" >
                 <label for="materialsRequesterWill">Materials Requester Will Provide </label>
-                <textarea name="materialsRequesterWill" type="text" class="form-control" v-model="project.materialsRequesterWill"></textarea>
+                <textarea name="materialsRequesterWill" v-validate data-vv-rules="required" data-vv-as="Materials you will provide" type="text" class="form-control" v-model="project.materialsRequesterWill"></textarea>
                 <span class='note note-error' v-show="errors.has('materialsRequesterWill')">{{ errors.first('materialsRequesterWill') }}</span>
             </div>
 
             <div class="form-group" :class="{'has-error': errors.has('project.materialsRequesterCannot') }" >
                 <label for="materialsRequesterCannot">Materials Requester Will Not Provide </label>
-                <textarea name="materialsRequesterCannot" type="text" class="form-control" v-model="project.materialsRequesterCannot"></textarea>
+                <textarea name="materialsRequesterCannot" v-validate data-vv-rules="required" type="text" data-vv-as="Materials you can not provide" class="form-control" v-model="project.materialsRequesterCannot"></textarea>
                 <span class='note note-error' v-show="errors.has('materialsRequesterCannot')">{{ errors.first('materialsRequesterCannot') }}</span>
             </div>
         </fieldset>

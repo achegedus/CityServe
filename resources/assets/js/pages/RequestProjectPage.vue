@@ -140,6 +140,7 @@
                 .catch((error) => {
                     console.log('An error occurred');
                     console.log(error);
+                    this.$swal('Oops!', 'Form submission errors, please fill out all required fields.', 'error')
                 });
 
             }
