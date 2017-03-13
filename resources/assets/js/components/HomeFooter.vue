@@ -7,8 +7,8 @@
                     <ul class="list-unstyled">
                         <li><i class="fa fa-home"></i> 201 Harvest Fields Drive, Boalsburg, PA 16827</li>
                         <li><i class="fa fa-phone"></i> (814)238-0822 ext. 20</li>
-                        <li><i class="fa fa-envelope"></i> <a href="info@sc-cityserve.org">info@sc-cityserve.org</a></li>
-                        <li><i class="fa fa-globe"></i> <a href="http://htmlstream.com">www.sc-cityserve.org</a></li>
+                        <li><i class="fa fa-envelope"></i> <a href="mailto:info@sc-cityserve.org">info@sc-cityserve.org</a></li>
+                        <li><i class="fa fa-globe"></i> <a href="http://www.sc-cityserve.org">www.sc-cityserve.org</a></li>
                     </ul>
                 </div>
 

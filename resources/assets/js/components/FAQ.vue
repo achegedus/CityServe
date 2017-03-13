@@ -25,8 +25,8 @@
                             <div class="panel-collapse collapse in" id="collapse-One">
                                 <div class="panel-body">
                                     <ul>
-                                        <li>The list of service projects mentioned above will be posted on the website at www.sc-cityserve.org beginning on March 5. Review the list and identify the projects where you wish to serve. Then click on "Volunteer to Serve," complete the form and submit online or contact the CityServe Planning Team or call 814-238-0822, ext.20. Please sign up for all projects by March 28.</li>
-                                        <li>It is preferred that you register online, however if you are unable to do so, we will have cards available at Calvary worship gatherings during several weekends leading up to CityServe.</li>
+                                        <li>The list of service projects mentioned above will be posted on the website at www.sc-cityserve.org beginning on this website beginning on April 1. Review the list and identify the projects where you wish to serve. Then click on "Volunteer to Serve," complete the form and submit online or contact the CityServe Planning Team or call 814-238-0822, ext.20. Please sign up for all projects by May 8.</li>
+                                        <li>It is preferred that you register online, however if you are unable to do so, contact your local church representative.</li>
                                         <li>If you have problems or questions about registering, please contact us at info@sc-cityserve.org or 814-238-0822, ext. 20.</li>
                                     </ul>
                                 </div>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="panel-collapse collapse" id="collapse-Five">
                                 <div class="panel-body">
-                                    <p>Serving does not need to end April 9 & 10! Feel free to find a group of people and serve others with a project on a different day. You can also commit to pray that God would be made known in the Centre Region during CityServe weekend. For more information, please contact the CityServe Planning Team.</p>
+                                    <p>Serving does not need to end May 20 & 21! Feel free to find a group of people and serve others with a project on a different day. You can also commit to pray that God would be made known in the Centre Region during CityServe weekend. For more information, please contact the CityServe Planning Team.</p>
                                     <p>If you have any questions that have not been answered here, please submit your question to info@sc-cityserve.org or contact Kendra Gettig at 814-238-0822, ext 20.</p>
                                 </div>
                             </div>
