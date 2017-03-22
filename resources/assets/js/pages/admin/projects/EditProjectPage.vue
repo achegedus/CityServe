@@ -1,12 +1,15 @@
 <template>
     <div>
         <h3>Edit Project</h3>
-        <project-form :project="this.project"></project-form>
-        <approval-form :project="this.project"></approval-form>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-error" @click="submitForm">Update Project</button>
-        </div>
+        <form class="sky-form" v-on:submit.prevent="submitForm" >
+            <project-form :project="this.project"></project-form>
+            <approval-form :project="this.project"></approval-form>
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-error">Update Project</button>
+                </div>
+            </fieldset>
+        </form>
     </div>
 </template>
 <style>

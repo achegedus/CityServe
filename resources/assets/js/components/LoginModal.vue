@@ -2,7 +2,7 @@
     <div class="user-modal-container" :class="{ 'active': active }" id="login-modal" @click="close">
         <div class="user-modal">
             <ul class="form-switcher">
-                <li @click="active = 'register'"><a href="#" id="register-form">Register</a></li>
+                <!--<li @click="active = 'register'"><a href="#" id="register-form">Register</a></li>-->
                 <li @click="active = 'login'"><a href="#" id="login-form">Login</a></li>
             </ul>
             <div class="form-register" :class="{ 'active': active == 'register' }" id="form-register">

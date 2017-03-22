@@ -66,7 +66,7 @@ const routes = [
     {path: '/request', component: RequestProjectPage, name: 'request-project'},
     {path: '/project-submit-success', component: ProjectSubmitSuccess, name: 'project-submit-success'},
 
-    {path: '/admin', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
+    {path: '/admin/dashboard', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
 
     {path: '/admin/users', component: UsersPage, name: 'admin-users-page', meta: {requiresAuth: true }},
     {path: '/admin/user/new', component: UserNewPage, name: 'admin-user-new-page', meta: {requiresAuth: true }},

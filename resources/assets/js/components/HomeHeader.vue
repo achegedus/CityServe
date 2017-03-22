@@ -85,11 +85,9 @@
                             <!-- End Portfolio -->
 
                             <!-- Login -->
-                            <!--
                             <li class="dropdown" v-if="!loggedIn">
                                 <a href="#" @click.prevent="showLogin">Login</a>
                             </li>
-                            -->
                             <!-- End Login -->
 
                             <!-- Register -->
