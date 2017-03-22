@@ -36,6 +36,7 @@ class ProjectCreated extends Mailable
     public function build()
     {
         return $this->from('info@sc-cityserve.org')
+                    ->bcc(['kendra@calvarysc.org','Shelby@calvarysc.org','beckieromig@gmail.com','leamanguate@gmail.com'])
                     ->markdown('email.project.created');
     }
 }

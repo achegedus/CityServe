@@ -27,31 +27,6 @@ class UsersTableSeeder extends Seeder
 
         ]);
 
-        DB::table('users')->insert([
-            'first_name' => 'Adam',
-            'last_name' => 'Hegedus',
-            'email' => 'adam@adamhegedus.com',
-            'password' => bcrypt('asdfasdf'),
-            'phone' => '8149338336',
-            'address' => '121 Kaywood Drive',
-            'city' => 'Boalsburg',
-            'state' => 'PA',
-            'zipcode' => '16827',
-            'church_id' => 2
-        ]);
-
-        DB::table('users')->insert([
-            'first_name' => 'Adam',
-            'last_name' => 'Hegedus',
-            'email' => 'achegedus@gmail.com',
-            'password' => bcrypt('asdfasdf'),
-            'phone' => '8149338336',
-            'address' => '121 Kaywood Drive',
-            'city' => 'Boalsburg',
-            'state' => 'PA',
-            'zipcode' => '16827',
-            'church_id' => 3
-        ]);
 
         DB::table('role_user')->truncate();
 
@@ -60,14 +35,5 @@ class UsersTableSeeder extends Seeder
             'role_id' => 1
         ]);
 
-        DB::table('role_user')->insert([
-            'user_id' => 2,
-            'role_id' => 2
-        ]);
-
-        DB::table('role_user')->insert([
-            'user_id' => 3,
-            'role_id' => 4
-        ]);
     }
 }
