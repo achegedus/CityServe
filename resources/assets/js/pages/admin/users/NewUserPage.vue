@@ -1,12 +1,14 @@
 <template>
     <div>
-        <h3>Create User</h3>
-        <form @submit.prevent="validateBeforeSubmit">
+        <form class="sky-form" v-on:submit.prevent="validateBeforeSubmit" >
+            <header>Create User</header>
             <user-form :user="this.user"></user-form>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-error">Create User</button>
-            </div>
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-error">Create User</button>
+                </div>
+            </fieldset>
         </form>
     </div>
 </template>
@@ -19,6 +21,7 @@
 
 <script>
     import UserForm from './components/UserForm.vue'
+    import bus from '../../../bus.js'
 
     export default{
         data(){
@@ -34,9 +37,8 @@
         methods: {
 
             validateBeforeSubmit(e) {
-                this.$validator.validateAll();
-                if (!this.errors.any()) {
-                    this.saveUser()
+                if (this.user.password != "" && this.user.password != null) {
+                    bus.$emit('user_validate');
                 }
             },
 
@@ -52,10 +54,14 @@
                     state: this.user.state,
                     zipcode: this.user.zipcode,
                     email: this.user.email,
-                    password: this.user.password,
                     phone: this.user.phone,
                     church_id: this.user.church_id,
-                    other_church: this.user.other_church
+                    other_church: this.user.other_church,
+                    roles: this.user.selected_roles
+                }
+
+                if (this.user.password != "" && this.user.password != null) {
+                    postData.password = this.user.password
                 }
 
                 this.axios.post('/api/user', postData)
@@ -69,6 +75,21 @@
                 });
 
             }
+        },
+
+        created() {
+            bus.$on('errors-changed', (errors) => {
+                this.errors.clear();
+                errors.forEach(e => {
+                    this.errors.add(e.field, e.msg, e.rule, e.scope);
+                });
+            });
+
+            bus.$on('submit-user-response', this.saveUser);
+        },
+
+        beforeDestroy() {
+            bus.$off('submit-user-response', this.saveUser);
         }
 
     }

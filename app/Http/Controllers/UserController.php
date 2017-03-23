@@ -93,8 +93,23 @@ class UserController extends ApiController
             return $this->respondNotAuthorized();
         }
 
+        $this->validate($request, [
+            'first_name' => 'required|max:64',
+            'last_name' => 'required|max:64',
+            'address' => 'required',
+            'city' => 'required|max:64',
+            'state' => 'required|max:2',
+            'zipcode' => 'required|max:9',
+            'phone' => 'required'
+        ]);
+
         // save church
         if($user->update($request->all())) {
+            if ($request->password != null && $request->password != "") {
+                $user->password = bcrypt($request->password);
+                $user->save();
+            }
+
             if ($roles = $request->input('roles')) {
                 $listRoles = array_pluck($roles, 'id');
                 $user->roles()->sync($listRoles);
@@ -136,12 +151,19 @@ class UserController extends ApiController
         }
 
         $this->validate($request, [
-            'name' => 'required|max:64',
+            'first_name' => 'required|max:64',
+            'last_name' => 'required|max:64',
             'address' => 'required',
             'city' => 'required|max:64',
             'state' => 'required|max:2',
-            'zipcode' => 'required|max:9'
+            'zipcode' => 'required|max:9',
+            'phone' => 'required',
+            'password' => 'required'
         ]);
+
+        if ($request->password != null && $request->password != "") {
+            $request->password = bcrypt($request->password);
+        }
 
         $user = User::create($request->all());
 

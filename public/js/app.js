@@ -28355,6 +28355,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_UserForm_vue__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_UserForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_UserForm_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bus_js__ = __webpack_require__(4);
 //
 //
 //
@@ -28374,6 +28375,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
 
 
 
@@ -28397,23 +28401,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         validateBeforeSubmit(e) {
-            this.$validator.validateAll();
-            if (!this.errors.any()) {
-                this.saveUser();
-            }
+            __WEBPACK_IMPORTED_MODULE_1__bus_js__["a" /* default */].$emit('user_validate');
         },
 
         saveUser: function () {
             var self = this;
 
             const postData = {
-                name: this.user.name,
+                first_name: this.user.first_name,
+                last_name: this.user.last_name,
+                address: this.user.address,
+                secondary_address: this.user.secondary_address,
+                city: this.user.city,
+                state: this.user.state,
+                zipcode: this.user.zipcode,
                 email: this.user.email,
-                password: this.user.password,
                 phone: this.user.phone,
                 church_id: this.user.church_id,
+                other_church: this.user.other_church,
                 roles: this.user.selected_roles
             };
+
+            if (this.user.password != "" && this.user.password != null) {
+                postData.password = this.user.password;
+            }
 
             this.axios.put('/api/user/' + this.$route.params.userID, postData).then(response => {
                 console.log('Updated');
@@ -28427,6 +28438,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted: function () {
         this.fetchUser();
+    },
+
+    created() {
+        __WEBPACK_IMPORTED_MODULE_1__bus_js__["a" /* default */].$on('errors-changed', errors => {
+            this.errors.clear();
+            errors.forEach(e => {
+                this.errors.add(e.field, e.msg, e.rule, e.scope);
+            });
+        });
+
+        __WEBPACK_IMPORTED_MODULE_1__bus_js__["a" /* default */].$on('submit-user-response', this.saveUser);
+    },
+
+    beforeDestroy() {
+        __WEBPACK_IMPORTED_MODULE_1__bus_js__["a" /* default */].$off('submit-user-response', this.saveUser);
     }
 
 };
@@ -28439,6 +28465,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_UserForm_vue__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_UserForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_UserForm_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bus_js__ = __webpack_require__(4);
 //
 //
 //
@@ -28458,6 +28485,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
 
 
 
@@ -28475,9 +28505,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
 
         validateBeforeSubmit(e) {
-            this.$validator.validateAll();
-            if (!this.errors.any()) {
-                this.saveUser();
+            if (this.user.password != "" && this.user.password != null) {
+                __WEBPACK_IMPORTED_MODULE_1__bus_js__["a" /* default */].$emit('user_validate');
             }
         },
 
@@ -28493,11 +28522,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 state: this.user.state,
                 zipcode: this.user.zipcode,
                 email: this.user.email,
-                password: this.user.password,
                 phone: this.user.phone,
                 church_id: this.user.church_id,
-                other_church: this.user.other_church
+                other_church: this.user.other_church,
+                roles: this.user.selected_roles
             };
+
+            if (this.user.password != "" && this.user.password != null) {
+                postData.password = this.user.password;
+            }
 
             this.axios.post('/api/user', postData).then(response => {
                 console.log('Updated');
@@ -28507,6 +28540,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(error);
             });
         }
+    },
+
+    created() {
+        __WEBPACK_IMPORTED_MODULE_1__bus_js__["a" /* default */].$on('errors-changed', errors => {
+            this.errors.clear();
+            errors.forEach(e => {
+                this.errors.add(e.field, e.msg, e.rule, e.scope);
+            });
+        });
+
+        __WEBPACK_IMPORTED_MODULE_1__bus_js__["a" /* default */].$on('submit-user-response', this.saveUser);
+    },
+
+    beforeDestroy() {
+        __WEBPACK_IMPORTED_MODULE_1__bus_js__["a" /* default */].$off('submit-user-response', this.saveUser);
     }
 
 };
@@ -28592,6 +28640,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bus_js__ = __webpack_require__(4);
 //
 //
 //
@@ -28693,6 +28742,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = {
     props: ['user'],
@@ -28708,6 +28760,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {},
 
     methods: {
+        onValidate() {
+            this.$validator.validateAll();
+            if (this.errors.errors.length == 0) {
+                __WEBPACK_IMPORTED_MODULE_0__bus_js__["a" /* default */].$emit('submit-user-response');
+            } else {
+                this.$swal('Oops!', 'Form submission errors, please fill out all required fields.', 'error');
+            }
+        },
+
         fetchChurches: function () {
             this.axios.get('/api/churches').then(response => {
                 this.churches = response.data.data;
@@ -28724,6 +28785,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function () {
         this.fetchChurches();
         this.fetchRoles();
+    },
+
+    created() {
+        __WEBPACK_IMPORTED_MODULE_0__bus_js__["a" /* default */].$on('user_validate', this.onValidate);
+        this.$watch(() => this.errors.errors, value => {
+            __WEBPACK_IMPORTED_MODULE_0__bus_js__["a" /* default */].$emit('errors-changed', value);
+        });
+    },
+
+    beforeDestroy() {
+        __WEBPACK_IMPORTED_MODULE_0__bus_js__["a" /* default */].$off('user_validate', this.onValidate);
     }
 };
 
@@ -28845,7 +28917,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -28957,7 +29029,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -29293,7 +29365,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50938,27 +51010,28 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h3', [_vm._v("Create User")]), _vm._v(" "), _c('form', {
+  return _c('div', [_c('form', {
+    staticClass: "sky-form",
     on: {
       "submit": function($event) {
         $event.preventDefault();
         _vm.validateBeforeSubmit($event)
       }
     }
-  }, [_c('user-form', {
+  }, [_c('header', [_vm._v("Create User")]), _vm._v(" "), _c('user-form', {
     attrs: {
       "user": this.user
     }
   }), _vm._v(" "), _vm._m(0)], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('fieldset', [_c('div', {
     staticClass: "form-group"
   }, [_c('button', {
     staticClass: "btn btn-error",
     attrs: {
       "type": "submit"
     }
-  }, [_vm._v("Create User")])])
+  }, [_vm._v("Create User")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -51774,6 +51847,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('h3', [_vm._v("Update User")]), _vm._v(" "), _c('form', {
+    staticClass: "sky-form",
     on: {
       "submit": function($event) {
         $event.preventDefault();
@@ -51786,14 +51860,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _vm._m(0)], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('fieldset', [_c('div', {
     staticClass: "form-group"
   }, [_c('button', {
     staticClass: "btn btn-error",
     attrs: {
       "type": "submit"
     }
-  }, [_vm._v("Update User")])])
+  }, [_vm._v("Update User")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -55038,7 +55112,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
+  return _c('div', [_c('fieldset', [_c('div', {
     staticClass: "form-group",
     class: {
       'has-error': _vm.errors.has('user.first_name')
@@ -55061,6 +55135,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "name": "first_name",
       "data-vv-rules": "required",
+      "data-vv-as": "First name",
       "type": "text"
     },
     domProps: {
@@ -55078,7 +55153,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('first_name')),
       expression: "errors.has('first_name')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('first_name')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
@@ -55102,6 +55178,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "name": "last_name",
       "data-vv-rules": "required",
+      "data-vv-as": "Last name",
       "type": "text"
     },
     domProps: {
@@ -55119,7 +55196,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('last_name')),
       expression: "errors.has('last_name')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('last_name')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
@@ -55143,6 +55221,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "name": "email",
       "data-vv-rules": "required|email",
+      "data-vv-as": "Email",
       "type": "text"
     },
     domProps: {
@@ -55160,7 +55239,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('email')),
       expression: "errors.has('email')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('email')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
@@ -55184,6 +55264,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "name": "address",
       "data-vv-rules": "required",
+      "data-vv-as": "Address",
       "type": "text"
     },
     domProps: {
@@ -55201,7 +55282,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('address')),
       expression: "errors.has('address')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('address')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
@@ -55235,7 +55317,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('secondary_address')),
       expression: "errors.has('secondary_address')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('secondary_address')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
@@ -55256,6 +55339,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "name": "city",
       "data-vv-rules": "required",
+      "data-vv-as": "City",
       "type": "text"
     },
     domProps: {
@@ -55273,7 +55357,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('city')),
       expression: "errors.has('city')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('city')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
@@ -55294,6 +55379,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "name": "state",
       "data-vv-rules": "required",
+      "data-vv-as": "State",
       "type": "text"
     },
     domProps: {
@@ -55311,7 +55397,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('state')),
       expression: "errors.has('state')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('state')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
@@ -55332,6 +55419,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "name": "zipcode",
       "data-vv-rules": "required",
+      "data-vv-as": "Zipcode",
       "type": "text"
     },
     domProps: {
@@ -55349,7 +55437,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('zipcode')),
       expression: "errors.has('zipcode')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('zipcode')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
@@ -55358,6 +55447,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Phone")]), _vm._v(" "), _c('input', {
     directives: [{
+      name: "validate",
+      rawName: "v-validate"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.user.phone),
@@ -55366,7 +55458,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "name": "phone",
-      "type": "text"
+      "type": "text",
+      "data-vv-rules": "required",
+      "data-vv-as": "Phone Number"
     },
     domProps: {
       "value": (_vm.user.phone)
@@ -55383,7 +55477,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('phone')),
       expression: "errors.has('phone')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('phone')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
@@ -55421,14 +55516,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       domProps: {
         "value": church.id
       }
-    }, [_vm._v("\n                " + _vm._s(church.name) + "\n            ")])
+    }, [_vm._v("\n                    " + _vm._s(church.name) + "\n                ")])
   })], 2), _vm._v(" "), _c('span', {
     directives: [{
       name: "show",
       rawName: "v-show",
       value: (_vm.errors.has('church_id')),
       expression: "errors.has('church_id')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('church_id')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
@@ -55458,7 +55554,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('roles')),
       expression: "errors.has('roles')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('roles')))])], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
@@ -55466,7 +55563,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('label', {
     attrs: {
-      "for": "email"
+      "for": "password"
     }
   }, [_vm._v("Password")]), _vm._v(" "), _c('input', {
     directives: [{
@@ -55480,9 +55577,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     attrs: {
-      "name": "email",
-      "data-vv-rules": "required",
-      "type": "text"
+      "name": "password",
+      "data-vv-rules": "confirmed:pw_confirm",
+      "type": "password"
     },
     domProps: {
       "value": (_vm.user.password)
@@ -55499,7 +55596,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.errors.has('password')),
       expression: "errors.has('password')"
-    }]
+    }],
+    staticClass: "note note-error"
   }, [_vm._v(_vm._s(_vm.errors.first('password')))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
@@ -55507,41 +55605,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('label', {
     attrs: {
-      "for": "email"
+      "for": "pw_confirm"
     }
   }, [_vm._v("Password")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "validate",
       rawName: "v-validate"
-    }, {
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.user.password),
-      expression: "user.password"
     }],
     staticClass: "form-control",
     attrs: {
-      "name": "email",
-      "data-vv-rules": "required",
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.user.password)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.user.password = $event.target.value
-      }
+      "name": "pw_confirm",
+      "type": "password"
     }
   }), _vm._v(" "), _c('span', {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.errors.has('password')),
-      expression: "errors.has('password')"
-    }]
-  }, [_vm._v(_vm._s(_vm.errors.first('password')))])])])
+      value: (_vm.errors.has('pw_confirm')),
+      expression: "errors.has('pw_confirm')"
+    }],
+    staticClass: "note note-error"
+  }, [_vm._v(_vm._s(_vm.errors.first('pw_confirm')))])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
