@@ -169,6 +169,13 @@ class UserController extends ApiController
 
         // save user
         if($user) {
+            if ($roles = $request->input('roles')) {
+                $listRoles = array_pluck($roles, 'id');
+                $user->roles()->sync($listRoles);
+            } else {
+                $user->roles()->detach();
+            }
+
             return Fractal::item($user, new UserTransformer());
         } else {
             return $this->respondWithError('Could not create user.');
