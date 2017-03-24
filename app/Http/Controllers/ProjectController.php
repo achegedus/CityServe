@@ -144,6 +144,23 @@ class ProjectController extends ApiController
 
 
     /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy($id) {
+        $project = Project::find($id);
+
+        if ($project->approved) {
+            $this->respondWithError('Project is approved, can not be deleted');
+        } else if ($project) {
+            $project->delete();
+        } else {
+            $this->respondNotFound('Project not found.');
+        }
+    }
+
+
+    /**
      * @param $project_id
      * @return mixed
      */

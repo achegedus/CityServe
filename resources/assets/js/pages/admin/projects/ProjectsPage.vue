@@ -12,6 +12,7 @@
                 <th>Phone</th>
                 <th>Day</th>
                 <th>Volunteers</th>
+                <th></th>
             </tr>
             </thead>
 
@@ -23,6 +24,7 @@
                 <td>{{ project.requester_phone | phone }}</td>
                 <td>{{ project.day | capitalize }}</td>
                 <td>{{ project.volunteers + "/" + project.numVolunteers}}</td>
+                <td><button v-on:click="deleteProject(project.id)">Delete</button></td>
             </tr>
             </tbody>
         </table>
@@ -67,7 +69,29 @@
                     this.projects = response.data.data
                 })
 
+            },
+
+            deleteProject: function(projectID) {
+                var self = this;
+                self.$swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!'
+                }).then(function () {
+
+                    self.axios.delete('/api/project/' + projectID).then((response) => {
+                        self.$swal(
+                            'Deleted!',
+                            'Project has been deleted.',
+                            'success'
+                        );
+                        self.getProjects();
+                    })
+                })
             }
+
         },
 
         mounted: function() {
