@@ -35,7 +35,7 @@
 
             <div class="form-group" :class="{'has-error': errors.has('project.requester_state') }" >
                 <label for="requester_state">State</label>
-                <input name="requester_state" v-validate data-vv-rules="required" data-vv-as="Requester State" type="text" class="form-control" v-model="project.requester_state">
+                <input name="requester_state" v-validate data-vv-rules="required|max:2" data-vv-as="Requester State" type="text" class="form-control" v-model="project.requester_state">
                 <span class='note note-error' v-show="errors.has('requester_state')">{{ errors.first('requester_state') }}</span>
             </div>
 
@@ -47,13 +47,13 @@
 
             <div class="form-group" :class="{'has-error': errors.has('project.requester_phone') }" >
                 <label for="requester_phone">Phone</label>
-                <input name="requester_phone" type="text" data-vv-rules="required" data-vv-as="Requester Phone Number" class="form-control" v-model="project.requester_phone">
+                <input name="requester_phone" type="text" v-validate data-vv-rules="required|digits:10" data-vv-as="Requester Phone Number" class="form-control" v-model="project.requester_phone">
                 <span class='note note-error' v-show="errors.has('requester_phone')">{{ errors.first('requester_phone') }}</span>
             </div>
 
             <div class="form-group" :class="{'has-error': errors.has('project.requester_church') }" >
                 <label for="requester_church">Church</label>
-                <input name="requester_church" type="text" class="form-control" data-vv-as="Requester Church" v-model="project.requester_church">
+                <input name="requester_church" type="text" v-validate data-vv-rules="required" class="form-control" data-vv-as="Requester Church" v-model="project.requester_church">
                 <span class='note note-error' v-show="errors.has('requester_church')">{{ errors.first('requester_church') }}</span>
             </div>
         </fieldset>
@@ -68,7 +68,7 @@
 
             <div class="form-group" :class="{'has-error': errors.has('project.event_contact_phone') }" >
                 <label for="event_contact_phone">Event Contact Phone Number</label>
-                <input name="event_contact_phone" v-validate data-vv-rules="required" data-vv-as="Event Contact Phone Number" type="text" class="form-control" v-model="project.event_contact_phone">
+                <input name="event_contact_phone" v-validate data-vv-rules="required|digits:10" data-vv-as="Event Contact Phone Number" type="text" class="form-control" v-model="project.event_contact_phone">
                 <span class='note note-error' v-show="errors.has('event_contact_phone')">{{ errors.first('event_contact_phone') }}</span>
             </div>
         </fieldset>
@@ -95,7 +95,7 @@
 
             <div class="form-group" :class="{'has-error': errors.has('project.event_state') }" >
                 <label for="event_state">State</label>
-                <input name="event_state" v-validate data-vv-rules="required" data-vv-as="Project Location State" type="text" class="form-control" v-model="project.event_state">
+                <input name="event_state" v-validate data-vv-rules="required|max:2" data-vv-as="Project Location State" type="text" class="form-control" v-model="project.event_state">
                 <span class='note note-error' v-show="errors.has('event_state')">{{ errors.first('event_state') }}</span>
             </div>
 
@@ -107,7 +107,7 @@
 
             <div class="form-group" :class="{'has-error': errors.has('project.event_phone') }" >
                 <label for="event_phone">Phone Number</label>
-                <input name="event_phone" v-validate type="text" class="form-control" v-model="project.event_phone">
+                <input name="event_phone" v-validate data-vv-rules="digits:10" type="text" class="form-control" v-model="project.event_phone">
                 <span class='note note-error' v-show="errors.has('event_phone')">{{ errors.first('event_phone') }}</span>
             </div>
         </fieldset>
