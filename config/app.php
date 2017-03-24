@@ -180,6 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         Cyvelnet\Laravel5Fractal\Laravel5FractalServiceProvider::class,
+        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
     ],
 
     /*
@@ -227,7 +228,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Fractal' => Cyvelnet\Laravel5Fractal\Facades\Fractal::class
+        'Fractal' => Cyvelnet\Laravel5Fractal\Facades\Fractal::class,
+        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
     ],
 
 ];

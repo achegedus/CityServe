@@ -12,7 +12,8 @@
         "laravel/dusk": "^1.0",
         "cyvelnet/laravel5-fractal": "^2.0",
         "laravel/browser-kit-testing": "^1.0",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "sentry/sentry-laravel": "^0.6.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

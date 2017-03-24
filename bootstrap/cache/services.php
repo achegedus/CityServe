@@ -30,6 +30,7 @@
     26 => 'App\\Providers\\RouteServiceProvider',
     27 => 'Laravel\\Tinker\\TinkerServiceProvider',
     28 => 'Cyvelnet\\Laravel5Fractal\\Laravel5FractalServiceProvider',
+    29 => 'Sentry\\SentryLaravel\\SentryLaravelServiceProvider',
   ),
   'eager' => 
   array (
@@ -49,6 +50,7 @@
     13 => 'App\\Providers\\EventServiceProvider',
     14 => 'App\\Providers\\RouteServiceProvider',
     15 => 'Cyvelnet\\Laravel5Fractal\\Laravel5FractalServiceProvider',
+    16 => 'Sentry\\SentryLaravel\\SentryLaravelServiceProvider',
   ),
   'deferred' => 
   array (

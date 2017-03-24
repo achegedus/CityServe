@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 
+
     <!-- CSS Header and Footer -->
     <link rel="stylesheet" href="/assets/css/headers/header-v6.css">
     <link rel="stylesheet" href="/assets/css/footers/footer-v7.css">
@@ -41,7 +42,7 @@
     <!-- CSS Customization -->
     <link rel="stylesheet" href="/assets/css/custom.css">
 
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
     <script>
         window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token()]); ?>
@@ -75,7 +76,7 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/vue.multiselect/2.0.0-beta.13/vue-multiselect.min.js"></script>
-<script src="/js/app.js"></script>
+<script src="{{ mix('/js/app.js') }}"></script>
 
 <script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
 <script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script>
