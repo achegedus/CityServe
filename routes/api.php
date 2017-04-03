@@ -20,6 +20,7 @@ Route::group(['middleware' => 'api'], function() {
 
     Route::post('submit-project','ProjectController@store');
     Route::get('/open-projects', 'ProjectController@open_projects');
+    Route::get('/project-categories', 'ProjectCategoryController@index');
 });
 
 
@@ -54,7 +55,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('/project/{project_id}/group/{group_id}', 'ProjectController@store_project_group');
     Route::delete('/project/{project_id}/group/{group_id}', 'ProjectController@delete_project_group');
 
-    Route::get('/project-categories', 'ProjectCategoryController@index');
+//    Route::get('/project-categories', 'ProjectCategoryController@index');
 
     // users
     Route::get('/users', 'UserController@index');

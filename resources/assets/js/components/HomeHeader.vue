@@ -38,23 +38,23 @@
                             </li>
                             <!-- End Home -->
 
-                            <!-- Pages -->
+                            <!-- About -->
                             <li class="dropdown">
                                 <a href="/#about">
                                     About
                                 </a>
                             </li>
-                            <!-- End Pages -->
+                            <!-- End About -->
 
-                            <!-- Blog -->
+                            <!-- Faq -->
                             <li class="dropdown">
                                 <a href="/#faq">
                                     FAQ
                                 </a>
                             </li>
-                            <!-- End Blog -->
+                            <!-- End Faq -->
 
-                            <!-- Blog -->
+                            <!-- Churches -->
                             <!--
                             <li class="dropdown">
                                 <a href="/#churches">
@@ -62,27 +62,23 @@
                                 </a>
                             </li>
                             -->
-                            <!-- End Blog -->
+                            <!-- End Churches -->
 
-                            <!-- Portfolio -->
-                            <!--
+                            <!-- Serve -->
                             <li class="dropdown">
                                 <router-link :to="{ name: 'serve' }">
                                     Serve
                                 </router-link>
                             </li>
-                            -->
-                            <!-- End Portfolio -->
+                            <!-- End Serve -->
 
-                            <!-- Portfolio -->
-
+                            <!-- Projects -->
                             <li class="dropdown">
                                 <router-link :to="{ name: 'request-project' }">
                                     Request a Project
                                 </router-link>
                             </li>
-
-                            <!-- End Portfolio -->
+                            <!-- End Projects -->
 
                             <!-- Login -->
                             <li class="dropdown" v-if="!loggedIn">
@@ -91,11 +87,9 @@
                             <!-- End Login -->
 
                             <!-- Register -->
-                            <!--
                             <li v-if="!loggedIn">
                                 <a href="#" @click.prevent="showRegister">Register</a>
                             </li>
-                            -->
 
                             <!-- Logout -->
                             <li class="dropdown" v-if="loggedIn">

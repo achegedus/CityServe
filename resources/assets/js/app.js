@@ -11,13 +11,15 @@ var VueRouter = require('vue-router');
 var VueAxios = require('vue-axios');
 var VeeValidate = require('vee-validate');
 var VueCookie = require('vue-cookie');
-import VueSweetAlert from 'vue-sweetalert'
+import VueSweetAlert from 'vue-sweetalert';
+import VueMasonryPlugin from 'vue-masonry';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 Vue.use(VeeValidate);
 Vue.use(VueCookie);
 Vue.use(VueSweetAlert);
+Vue.use(VueMasonryPlugin);
 
 import App from './Application.vue'
 Vue.component('app', App)

@@ -284,10 +284,17 @@ class ProjectController extends ApiController
     }
 
 
-    public function open_projects()
+    public function open_projects(Request $request)
     {
-        // get all churches
-        $projects = Project::with('category')->where('approved', '=', 1)->get();
+        $category_id = $request->input('category', 'all');
+
+        if ($category_id == "all") {
+            // get all churches
+            $projects = Project::with('category')->where('approved', '=', 1)->get();
+        } else {
+            // get all churches
+            $projects = Project::with('category')->where('approved', '=', 1)->where('category_id', '=', $category_id)->get();
+        }
 
         // return a collection of churches
         return Fractal::includes(['project_category'])->collection($projects, new ProjectTransformer());
