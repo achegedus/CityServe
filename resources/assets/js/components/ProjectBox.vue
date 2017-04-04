@@ -88,7 +88,8 @@
                 if (this.userStore.authUser) {
                     return true
                 } else {
-                    bus.$emit('show-register-modal');
+                    //bus.$emit('show-register-modal');
+                    location.href = '/login';
                 }
             },
 

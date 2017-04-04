@@ -6,20 +6,23 @@
                 <li @click="active = 'login'"><a href="#" id="login-form">Login</a></li>
             </ul>
             <div class="form-register" :class="{ 'active': active == 'register' }" id="form-register">
-                <p>Register or <a href="#" @click="active = 'login'">Login</a> to register to serve.</p>
-                <div class="error-message" v-text="registerError"></div>
-                <input type="text" name="name" placeholder="Name" v-model="registerName">
-                <input type="email" name="email" placeholder="Email" v-model="registerEmail">
-                <input type="text" name="address" placeholder="Address" v-model="registerAddress">
-                <input type="text" name="city" placeholder="City" v-model="registerCity">
-                <input type="text" name="state" placeholder="State" v-model="registerState">
-                <input type="text" name="zipcode" placeholder="Zipcode" v-model="registerZipcode">
-                <input type="text" name="phone" placeholder="phone" v-model="registerPhone">
-                <input type="password" name="password" placeholder="Password" v-model="registerPassword">
-                <input type="submit" :class="{ 'disabled': submitted == 'register' }" @click="submit('register', $event)" id="registerSubmit" value="Register">
-                <div class="links"> <a href="" @click.prevent="active = 'login'">Already have an account?</a>
-
-                </div>
+                <form ref="registerForm" role="form" method="POST" action="/register">
+                    <p>Register or <a href="#" @click="active = 'login'">Login</a> to register to serve.</p>
+                    <div class="error-message" v-text="registerError"></div>
+                    <input type="hidden" name="_token" :value="csrfToken">
+                    <input type="text" name="name" placeholder="Name" v-model="registerName">
+                    <input type="email" name="email" placeholder="Email" v-model="registerEmail">
+                    <input type="text" name="address" placeholder="Address" v-model="registerAddress">
+                    <input type="text" name="city" placeholder="City" v-model="registerCity">
+                    <input type="text" name="state" placeholder="State" v-model="registerState">
+                    <input type="text" name="zipcode" placeholder="Zipcode" v-model="registerZipcode">
+                    <input type="text" name="phone" placeholder="phone" v-model="registerPhone">
+                    <input type="password" name="password" placeholder="Password" v-model="registerPassword">
+                    <input type="submit" :class="{ 'disabled': submitted == 'register' }" @click="submit('register', $event)" id="registerSubmit" value="Register">
+                    <div class="links">
+                        <a href="" @click.prevent="active = 'login'">Already have an account?</a>
+                    </div>
+                </form>
             </div>
             <div class="form-login" :class="{ 'active': active == 'login' }" id="form-login">
                 <form ref="loginform" role="form" method="POST" action="/login">
