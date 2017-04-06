@@ -12,8 +12,8 @@
                         <li><i class="fa-fw fa fa-users"></i> Volunteers needed: {{project.volunteers_neededf}}</li>
                     </ul>
                     <h5>Register to serve:</h5>
-                    <button type="submit" class="btn btn-error signupButton" @click="groupButtonClicked">Individual</button>
-                    <button type="submit" class="btn btn-error signupButton" @click="indivButtonClicked">Group</button>
+                    <button type="submit" class="btn btn-error signupButton" @click="indivButtonClicked">Individual</button>
+                    <button type="submit" class="btn btn-error signupButton" @click="groupButtonClicked">Group</button>
                 </div>
                 <div class="col-md-8">
                     <h5>Description:</h5>
@@ -86,18 +86,17 @@
         methods: {
             groupButtonClicked: function () {
                 if (this.userStore.authUser) {
-                    return true
+                    this.$router.push({ name: 'volunteer-group', params: { projectID: this.project.id }})
                 } else {
-                    //bus.$emit('show-register-modal');
                     location.href = '/login';
                 }
             },
 
             indivButtonClicked: function() {
                 if (this.userStore.authUser) {
-                    return true
+                    this.$router.push({ name: 'volunteer-individual', params: { projectID: this.project.id }})
                 } else {
-                    bus.$emit('show-register-modal');
+                    location.href = '/login';
                 }
             }
         }

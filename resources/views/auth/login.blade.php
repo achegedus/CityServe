@@ -1,14 +1,14 @@
-@extends('layouts.cityserve')
+@extends('layouts.cityserve-small')
 
 @section('content')
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="margin-top: 40px">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+                    <form class="skyform form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -60,6 +60,8 @@
                                 </a>
                             </div>
                         </div>
+
+                        <p style="width: 100%; text-align: center; margin-top: 30px">Don't have an account yet? <a href="/register">Click here to register</a>.</p>
                     </form>
                 </div>
             </div>

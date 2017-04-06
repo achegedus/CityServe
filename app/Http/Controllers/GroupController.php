@@ -89,10 +89,8 @@ class GroupController extends ApiController
 
         $this->validate($request, [
             'name' => 'required|max:64',
-            'address' => 'required',
-            'city' => 'required|max:64',
-            'state' => 'required|max:2',
-            'zipcode' => 'required|max:9'
+            'members' => 'required|numeric',
+            'group_type_id' => 'required',
         ]);
 
         $group = new Group();
@@ -100,7 +98,7 @@ class GroupController extends ApiController
         $group->name = $request->input('name');
         $group->members = $request->input('members');
         $group->group_type_id = $request->input('group_type_id');
-        $group->person_id = $request->input('person_id');
+        $group->user_id = $request->input('user_id');
 
         // save group
         if($group->save()) {

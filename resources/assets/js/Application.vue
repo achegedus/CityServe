@@ -15,7 +15,6 @@
             </div>
         </div>
 
-        <login-modal :initialActive="showModal"></login-modal>
     </div>
 
 </template>
@@ -34,7 +33,6 @@
 
     import HomeHeader from './components/HomeHeader.vue'
     import HomeFooter from './components/HomeFooter.vue'
-    import LoginModal from './components/LoginModal.vue'
     import bus from './bus.js'
 
     export default {
@@ -46,7 +44,7 @@
         },
 
         components: {
-            TopMenu, HomeHeader, HomeFooter, LoginModal
+            TopMenu, HomeHeader, HomeFooter
         },
 
         computed: {
@@ -56,26 +54,26 @@
         },
 
         methods: {
-            showLogin() {
-                this.showModal = 'login'
-            },
+            //showLogin() {
+            //    this.showModal = 'login'
+            //},
 
-            showRegister() {
-                this.showModal = 'register'
-            },
+            //showRegister() {
+            //    this.showModal = 'register'
+            //},
 
-            closeModal() {
-                this.showModal = null
-            }
+            //closeModal() {
+            //    this.showModal = null
+           // }
         },
 
         created() {
             const userObj = JSON.parse(window.localStorage.getItem('authUser'))
             this.$store.dispatch('setUserObject', userObj)
 
-            bus.$on('show-login-modal', this.showLogin);
-            bus.$on('show-register-modal', this.showRegister);
-            bus.$on('close-modal', this.closeModal);
+            //bus.$on('show-login-modal', this.showLogin);
+            //bus.$on('show-register-modal', this.showRegister);
+            //bus.$on('close-modal', this.closeModal);
         }
 
     }

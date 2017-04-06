@@ -181,4 +181,11 @@ class UserController extends ApiController
             return $this->respondWithError('Could not create user.');
         }
     }
+
+
+    public function getProjects(Request $request)
+    {
+        $user = $request->user();
+    }
+
 }

@@ -11,6 +11,7 @@ use App\Transformers\ProjectTransformer;
 use App\Transformers\UserTransformer;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 /**
@@ -181,21 +182,22 @@ class ProjectController extends ApiController
      * @param $user_id
      * @return mixed
      */
-    public function store_project_volunteer($project_id, $user_id)
+    public function store_project_volunteer(Request $request, $project_id)
     {
         $project = Project::find($project_id);
 
         if (!$project) {
             return $this->respondNotFound('Project does not exist.');
         }
-
-        $user = User::find($user_id);
+        $user = $request->user();
 
         if (!$user) {
             return $this->respondNotFound('User does not exist.');
         }
 
-        $project->users()->save($user);
+        $project->users()->save($user, ['leader' => $request->willLead]);
+
+        $this->respondOk('Project saved');
     }
 
 
@@ -257,7 +259,7 @@ class ProjectController extends ApiController
             return $this->respondNotFound('Group does not exist.');
         }
 
-        $project->groups()->save($group);
+        $project->groups()->save($group, ['number_of_volunteers' => $group->members, 'group_id' => $group->id]);
     }
 
 

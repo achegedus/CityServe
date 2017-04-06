@@ -168,11 +168,11 @@
             },
 
             showLogin() {
-                bus.$emit('show-login-modal');
+                location.href = '/login';
             },
 
             showRegister() {
-                bus.$emit('show-register-modal');
+                location.href = '/register';
             }
         }
     }
