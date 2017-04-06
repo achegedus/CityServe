@@ -22,7 +22,8 @@
                 </div>
 
             <div v-masonry transition-duration="0.3s" item-selector=".grid-item">
-                <project-box v-masonry-tile class="grid-item" v-for="project in projects" :project="project"></project-box>
+                <project-box v-masonry-tile class="grid-item" v-for="project in my_projects" :project="project" :assigned="true"></project-box>
+                <project-box v-masonry-tile class="grid-item" v-for="project in projects" :project="project" :assigned="false"></project-box>
             </div>
         </div>
 
@@ -43,18 +44,26 @@
 <script>
 
     import ProjectBox from '../components/ProjectBox.vue'
+    import { mapState } from 'vuex'
 
     export default{
         data(){
             return{
                 projects: [],
                 categories: [],
-                selected_category: 'all'
+                selected_category: 'all',
+                my_projects: []
             }
         },
 
         components:{
             ProjectBox
+        },
+
+        computed: {
+            ...mapState({
+                userStore: state => state.userStore
+            })
         },
 
         methods: {
@@ -68,12 +77,19 @@
                 this.axios.get('/api/project-categories').then((response) => {
                     this.categories = response.data.data
                 })
+            },
+
+            getMyProjects() {
+                this.axios.get('/api/projects/serving').then((response) => {
+                    this.my_projects = response.data.data
+                })
             }
         },
 
         created: function() {
             this.getOpenProjects();
             this.getCategories();
+            this.getMyProjects();
         }
     }
 

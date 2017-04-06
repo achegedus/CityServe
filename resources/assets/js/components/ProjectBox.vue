@@ -1,6 +1,6 @@
 <template>
     <div class="projectbox">
-        <div class="funny-boxes funny-boxes-top-sea">
+        <div :class="boxStyle">
             <div class="row">
                 <div class="col-md-4 funny-boxes-img">
                     <h5>Details:</h5>
@@ -11,9 +11,14 @@
                         <li><i class="fa-fw fa fa-clock-o"></i> {{ project.time }}</li>
                         <li><i class="fa-fw fa fa-users"></i> Volunteers needed: {{project.volunteers_neededf}}</li>
                     </ul>
-                    <h5>Register to serve:</h5>
-                    <button type="submit" class="btn btn-error signupButton" @click="indivButtonClicked">Individual</button>
-                    <button type="submit" class="btn btn-error signupButton" @click="groupButtonClicked">Group</button>
+                    <div v-if="!assigned">
+                        <h5>Register to serve:</h5>
+                        <button type="submit" class="btn btn-error signupButton" @click="indivButtonClicked">Individual</button>
+                        <button type="submit" class="btn btn-error signupButton" @click="groupButtonClicked">Group</button>
+                    </div>
+                    <div v-else>
+                        <h5>You are signed up for this project!</h5>
+                    </div>
                 </div>
                 <div class="col-md-8">
                     <h5>Description:</h5>
@@ -64,7 +69,7 @@
     import { mapState } from 'vuex'
 
     export default{
-        props: ['project'],
+        props: ['project', 'assigned'],
 
         data(){
             return{
@@ -80,7 +85,15 @@
 
             ...mapState({
                 userStore: state => state.userStore
-            })
+            }),
+
+            boxStyle: function() {
+                if (this.assigned) {
+                    return "funny-boxes funny-boxes-top-red"
+                } else {
+                    return "funny-boxes funny-boxes-top-sea";
+                }
+            }
         },
 
         methods: {

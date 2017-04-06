@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
-use App\Group;
+use App\Models\User;
+use App\Models\Group;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class GroupPolicy
@@ -13,8 +13,8 @@ class GroupPolicy
     /**
      * Determine whether the user can view the group.
      *
-     * @param  \App\User  $user
-     * @param  \App\Group  $group
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Group  $group
      * @return mixed
      */
     public function view(User $user, Group $group)
@@ -31,6 +31,10 @@ class GroupPolicy
     public function create(User $user)
     {
         //
+        if ($user)
+            return true;
+        else
+            return false;
     }
 
     /**

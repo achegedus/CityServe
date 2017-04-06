@@ -44,15 +44,10 @@ class GroupController extends ApiController
 
     public function update(Group $group, Request $request)
     {
-        try {
-            $this->authorize('update', $group);
-        } catch (\Exception $ex) {
-            return response()->json([
-                'error' => [
-                    'message' => 'Not authorized to update a group.',
-                    'code' => 100
-                ]
-            ], 500);
+        $user = $request->user();
+
+        if (!$user->can('update', Group::class)) {
+            $this->respondNotAuthorized('Not authorized to update a group.');
         }
 
         $group->name = $request->input('name');
@@ -76,15 +71,10 @@ class GroupController extends ApiController
 
     public function store(Request $request)
     {
-        try {
-            $this->authorize('create');
-        } catch (\Exception $ex) {
-            return response()->json([
-                'error' => [
-                    'message' => 'Not authorized to create a group.',
-                    'code' => 100
-                ]
-            ], 500);
+        $user = $request->user();
+
+        if (!$user->can('create', Group::class)) {
+            $this->respondNotAuthorized('Not authorized to create a group.');
         }
 
         $this->validate($request, [
@@ -97,19 +87,15 @@ class GroupController extends ApiController
 
         $group->name = $request->input('name');
         $group->members = $request->input('members');
-        $group->group_type_id = $request->input('group_type_id');
-        $group->user_id = $request->input('user_id');
+        $group->group_type_id = $request->input('group_type_id')['id'];
+        $group->user_id = $user->id;
+        $group->project_id = $request->input('project_id');
 
         // save group
         if($group->save()) {
-            return Fractal::collection($group, new GroupTransformer());
+            return Fractal::item($group, new GroupTransformer());
         } else {
-            return response()->json([
-                'error' => [
-                    'message' => 'Could not create group.',
-                    'code' => 100
-                ]
-            ], 500);
+            $this->respondInternalError('Could not create group.');
         }
     }
 }

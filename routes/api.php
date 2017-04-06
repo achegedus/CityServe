@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::delete('project/{id}','ProjectController@destroy');
     Route::put('project/{id}','ProjectController@update');
     Route::post('project','ProjectController@store');
+    Route::get('projects/serving', 'ProjectController@myProjects');
 
     // Project Volunteers
     Route::get('/user/projects', 'UserController@getProjects');

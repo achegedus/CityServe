@@ -13,6 +13,7 @@ use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
 /**
  * Class ProjectController
@@ -297,6 +298,22 @@ class ProjectController extends ApiController
             // get all churches
             $projects = Project::with('category')->where('approved', '=', 1)->where('category_id', '=', $category_id)->get();
         }
+
+        // return a collection of churches
+        return Fractal::includes(['project_category'])->collection($projects, new ProjectTransformer());
+    }
+
+
+    public function myProjects(Request $request)
+    {
+        $user = $request->user();
+
+        if (!$user) {
+            return $this->respondNotFound('User does not exist.');
+        }
+
+        // get all churches
+        $projects = $user->projects;
 
         // return a collection of churches
         return Fractal::includes(['project_category'])->collection($projects, new ProjectTransformer());

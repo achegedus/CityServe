@@ -25,7 +25,7 @@
                         <h4>Skills needed</h4>
                         <p>{{project.skills}}</p>
 
-                        <form class="sky-form" v-on:submit.prevent="signup">
+                        <form class="sky-form" v-on:submit.prevent="saveGroup">
 
                             <div class="form-group" :class="{'has-error': errors.has('group.name') }" >
                                 <label for="group_name">Group Name</label>
@@ -41,12 +41,15 @@
 
                             <div class="form-group" :class="{'has-error': errors.has('group.members') }" >
                                 <label for="group_members">Type of group</label>
-                                <select name="group_members" v-validate data-vv-rules="required" data-vv-as="Group type" type="text" class="form-control" v-model="group.group_type_id">
-                                    <option></option>
-                                </select>
+                                <multiselect
+                                        v-model="group.group_type_id"
+                                        :options="group_types"
+                                        label="name"
+                                        :multiple="false"
+                                        track-by="id">
+                                </multiselect>
                                 <span class='note note-error' v-show="errors.has('group.members')">{{ errors.first('group.members') }}</span>
                             </div>
-
 
                             <div class="checkbox">
                                 <label>
@@ -57,12 +60,7 @@
 
                             <button type="submit" class="btn btn-info">Sign up my group for this project</button>
                         </form>
-
-
                     </div>
-
-
-
                 </div>
             </div>
         </div>
@@ -71,13 +69,12 @@
 
 
 <style>
-
-</style>
-
     #groupServeBox {
         margin-top: 30px;
         margin-bottom: 100px;
     }
+</style>
+
 
 <script>
     import { mapState } from 'vuex'
@@ -87,7 +84,8 @@
             return{
                 project: {},
                 group: {},
-                willLead: false
+                willLead: false,
+                group_types: []
             }
         },
 
@@ -110,16 +108,25 @@
                 });
             },
 
+            getGroupTypes: function() {
+                var self = this
+                this.axios.get('/api/group_types')
+                .then((response) => {
+                    self.group_types = response.data.data
+                });
+            },
+
             saveGroup: function() {
                 var self = this;
 
                 const groupPostData = {
                     name: self.group.name,
                     members: self.group.members,
-                    group_type_id: self.group.group_type_id
+                    group_type_id: self.group.group_type_id,
+                    project_id: self.$route.params.projectID
                 }
 
-                self.axios.post('/api/group', postData)
+                self.axios.post('/api/group', groupPostData)
                 .then((response) => {
                     const postData = {
                         willLead: self.willLead,
@@ -141,8 +148,9 @@
                 location.href = '/serve';
             } else {
                 this.getProject();
-
             }
+
+            this.getGroupTypes();
         },
     }
 </script>
