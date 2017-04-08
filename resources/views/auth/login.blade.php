@@ -8,6 +8,8 @@
             <div class="panel panel-default" style="margin-top: 40px">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
+                    <h4 style="width: 100%; text-align: center; margin-top: 20px; margin-bottom: 40px;">You must be logged in to sign up to volunteer.<br />If you do not have an account yet, please <a href="/register">register, here</a>.</h4>
+
                     <form class="skyform form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -60,8 +62,6 @@
                                 </a>
                             </div>
                         </div>
-
-                        <p style="width: 100%; text-align: center; margin-top: 30px">Don't have an account yet? <a href="/register">Click here to register</a>.</p>
                     </form>
                 </div>
             </div>

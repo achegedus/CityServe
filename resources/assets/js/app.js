@@ -70,6 +70,7 @@ const routes = [
     {path: '/serve', component: ServePage, name: 'serve'},
     {path: '/request', component: RequestProjectPage, name: 'request-project'},
     {path: '/project-submit-success', component: ProjectSubmitSuccess, name: 'project-submit-success'},
+
     {path: '/project/:projectID/volunteer/individual', component: VolunteerIndividualPage, name: 'volunteer-individual', meta: {requiresAuth: true }},
     {path: '/project/:projectID/volunteer/group', component: VolunteerGroupPage, name: 'volunteer-group', meta: {requiresAuth: true }},
 
@@ -104,6 +105,8 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     if (to.meta.requiresAuth) {
         const authUser = JSON.parse(window.localStorage.getItem('authUser'));
+        console.log(authUser);
+
         if (authUser && authUser.access_token) {
             // const tokenData = JSON.parse(window.localStorage.getItem('authUser'));
             // Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + tokenData.access_token;

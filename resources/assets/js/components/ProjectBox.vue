@@ -10,12 +10,12 @@
                         <li><i class="fa-fw fa fa-map-marker"></i> {{ project.event_city }}</li>
                         <li><i class="fa-fw fa fa-calendar"></i> {{ project.day | capitalize }}</li>
                         <li><i class="fa-fw fa fa-clock-o"></i> {{ project.time | timeformat }}</li>
-                        <li><i class="fa-fw fa fa-users"></i> Volunteers needed: {{project.volunteers_needed}}</li>
+                        <li><i class="fa-fw fa fa-users"></i> Volunteers needed: {{project.numVolunteers}}</li>
                     </ul>
                     <div v-if="!assigned">
                         <h5>Register to serve:</h5>
-                        <button type="submit" class="btn btn-error signupButton" @click="indivButtonClicked">Individual</button>
-                        <button type="submit" class="btn btn-error signupButton" @click="groupButtonClicked">Group</button>
+                        <button class="btn btn-error signupButton" @click="indivButtonClicked">Individual</button>
+                        <button class="btn btn-error signupButton" @click="groupButtonClicked">Group</button>
                     </div>
                     <div v-else>
                         <h5>You are signed up for this project!</h5>
@@ -84,7 +84,7 @@
                 return this.project.project_category.name
             },
 
-            userStore() {
+            authUser() {
                 return this.$store.getters.authUser
             },
 

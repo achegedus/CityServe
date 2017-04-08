@@ -7,6 +7,8 @@
             <div class="panel panel-default" style="margin-top: 40px">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
+                    <h4 style="width: 100%; text-align: center; margin-top: 20px; margin-bottom: 40px;">You must be logged in to sign up to volunteer.<br />If you already have an account yet, please <a href="/login">click here</a> to login.</h4>
+
                     <form class=" form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -179,8 +181,6 @@
                                 </button>
                             </div>
                         </div>
-
-                        <p style="width: 100%; text-align: center; margin-top: 30px">Already have an account? <a href="/login">Click here to login</a>.</p>
                     </form>
                 </div>
             </div>

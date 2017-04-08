@@ -90,7 +90,7 @@
         },
 
         computed: {
-            userStore() {
+            authUser() {
                 return this.$store.getters.authUser
             }
         },

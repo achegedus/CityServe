@@ -28,6 +28,10 @@ Route::group(['middleware' => 'api'], function() {
 
 
 Route::group(['middleware' => 'auth:api'], function() {
+
+    // stats
+    Route::get('/stats', 'ContentController@stats');
+
     // content
     Route::get('/content/{id}', 'ContentController@show');
     Route::delete('content/{id}','ContentController@destroy');

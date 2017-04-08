@@ -3,7 +3,7 @@
     <div>
         <h3>Projects <router-link class="small" :to="{ name: 'admin-project-new-page' }">Create new</router-link></h3>
 
-        <table class="table">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th>ID</th>
@@ -17,15 +17,15 @@
             </thead>
 
             <tbody>
-            <tr v-for="project in this.projects" v-bind:class="{ success: project.volunteers == project.numVolunteers }">
-                <td><router-link :to="{ name: 'admin-project-edit-page', params: {projectID: project.id }}">{{ project.id }}</router-link></td>
+            <router-link v-for="project in this.projects" :to="{ name: 'admin-project-edit-page', params: {projectID: project.id }}" tag="tr" v-bind:class="{ success: project.volunteers == project.numVolunteers }">
+                <td>{{ project.id }}</td>
                 <td>{{ project.event_address }}</td>
                 <td>{{ project.requester_contact_name }}</td>
                 <td>{{ project.requester_phone | phone }}</td>
                 <td>{{ project.day | capitalize }}</td>
                 <td>{{ project.volunteers + " of " + project.numVolunteers}}</td>
-                <td><button v-on:click="deleteProject(project.id)">Delete</button></td>
-            </tr>
+                <td><button v-on:click.prevent="deleteProject(project.id)">Delete</button></td>
+            </router-link>
             </tbody>
         </table>
 

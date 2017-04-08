@@ -7,10 +7,10 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Work Requests</h3>
+                        <h3 class="panel-title">Volunteers Needed</h3>
                     </div>
                     <div class="panel-body">
-                        Panel content
+                        <h1 style="text-align: center">{{stats.total_volunteers_needed}}</h1>
                     </div>
                 </div>
             </div>
@@ -18,10 +18,10 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Volunteers Signups</h3>
+                        <h3 class="panel-title">Volunteer Signups</h3>
                     </div>
                     <div class="panel-body">
-                        Panel content
+                        <h1 style="text-align: center">{{stats.total_volunteers_registered}}</h1>
                     </div>
                 </div>
             </div>
@@ -31,14 +31,14 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Church Involvement</h3>
+                        <h3 class="panel-title">Projects Requested</h3>
                     </div>
                     <div class="panel-body">
-                        Panel content
+                        <h1 style="text-align: center">{{stats.project_count}}</h1>
                     </div>
                 </div>
             </div>
-
+<!--
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -49,7 +49,9 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
+
     </div>
 
 </template>
@@ -66,12 +68,24 @@
     export default{
         data(){
             return{
-                msg:'hello vue'
+                stats: []
             }
         },
 
         components:{
 
+        },
+
+        methods: {
+            getStats: function() {
+                this.axios.get('/api/stats').then((response) => {
+                    this.stats = response.data
+                })
+            }
+        },
+
+        mounted: function() {
+            this.getStats();
         }
     }
 

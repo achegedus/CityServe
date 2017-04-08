@@ -6,6 +6,29 @@
             <div class="col-md-6">
                 <header>Administrative Review</header>
                 <fieldset>
+                    <div class="form-group" :class="{'has-error': errors.has('project.category_id') }" >
+                        <label for="time">Category</label>
+                        <multiselect
+                                v-model="project.category_id"
+                                :options="project_categories"
+                                :searchable="false"
+                                :close-on-select="false"
+                                track-by="id"
+                                label="name"
+                                :show-labels="false"
+                                placeholder="Pick a category">
+                        </multiselect>
+                        <span v-show="errors.has('category_id')">{{ errors.first('category_id') }}</span>
+                    </div>
+
+                    <div class="form-group" :class="{'has-error': errors.has('project.evaluator_id') }" >
+                        <label for="time">Evaluator</label>
+                        <select name="evaluator_id" class="form-control" v-validate data-vv-rules="required">
+                            <option>Select One</option>
+                        </select>
+                        <span v-show="errors.has('evaluator_id')">{{ errors.first('evaluator_id') }}</span>
+                    </div>
+
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" v-model="project.evaluated">
@@ -16,26 +39,20 @@
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" v-model="project.approved">
-                            <i></i>Project has been approved
-                        </label>
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" v-model="project.assigned">
-                            <i></i>Project has been assigned
-                        </label>
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" v-model="project.volunteers_needed">
-                            <i></i>Volunteers still needed
+                            <i></i>Project has been approved (*Will be live on website)
                         </label>
                     </div>
 
                     <div class="form-group" :class="{'has-error': errors.has('project.coordinator_id') }" >
                         <label for="time">Coordinator</label>
+                        <select name="coordinator_id" class="form-control" v-validate data-vv-rules="required">
+                            <option>Select One</option>
+                        </select>
+                        <span v-show="errors.has('coordinator_id')">{{ errors.first('coordinator_id') }}</span>
+                    </div>
+
+                    <div class="form-group" :class="{'has-error': errors.has('project.coordinator_id') }" >
+                        <label for="time">Project Leader</label>
                         <select name="coordinator_id" class="form-control" v-validate data-vv-rules="required">
                             <option>Select One</option>
                         </select>
@@ -49,28 +66,7 @@
                         </label>
                     </div>
 
-                    <div class="form-group" :class="{'has-error': errors.has('project.evaluator_id') }" >
-                        <label for="time">Evaluator</label>
-                        <select name="evaluator_id" class="form-control" v-validate data-vv-rules="required">
-                            <option>Select One</option>
-                        </select>
-                        <span v-show="errors.has('evaluator_id')">{{ errors.first('evaluator_id') }}</span>
-                    </div>
 
-                    <div class="form-group" :class="{'has-error': errors.has('project.category_id') }" >
-                        <label for="time">Category</label>
-                        <multiselect
-                            v-model="project.category_id"
-                            :options="project_categories"
-                            :searchable="false"
-                            :close-on-select="false"
-                            track-by="id"
-                            label="name"
-                            :show-labels="false"
-                            placeholder="Pick a category">
-                        </multiselect>
-                        <span v-show="errors.has('category_id')">{{ errors.first('category_id') }}</span>
-                    </div>
 
                     <div class="form-group" :class="{'has-error': errors.has('project.notes') }" >
                         <label for="notes">Notes</label>
@@ -80,7 +76,7 @@
 
                     <div class="form-group" :class="{'has-error': errors.has('project.short_description') }" >
                         <label for="short_description">Short Description</label>
-                        <textarea name="short_description" v-validate data-vv-rules="required" type="text" class="form-control" v-model="project.short_description"></textarea>
+                        <textarea name="short_description" type="text" class="form-control" v-model="project.short_description"></textarea>
                         <span v-show="errors.has('short_description')">{{ errors.first('short_description') }}</span>
                     </div>
                 </fieldset>
