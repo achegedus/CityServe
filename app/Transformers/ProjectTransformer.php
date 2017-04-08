@@ -76,7 +76,7 @@ class ProjectTransformer extends TransformerAbstract
 			'created_at' => $resource->created_at,
 			'updated_at' => $resource->updated_at,
 
-//            'volunteers' => $resource->volunteers()
+            'volunteers' => $resource->volunteers_registered()
         ];
     }
 

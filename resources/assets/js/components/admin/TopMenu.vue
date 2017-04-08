@@ -61,7 +61,7 @@
 
 <script>
 
-    import { mapState } from 'vuex'
+    //import { mapState } from 'vuex'
 
     export default{
         data(){
@@ -72,34 +72,34 @@
 
 
         computed: {
-            ...mapState({
-                userStore: state => state.userStore
-            }),
+            authUser() {
+                return this.$store.getters.authUser
+            },
 
             username() {
-                if (this.userStore.authUser)
-                    return this.userStore.authUser.name
+                if (this.authUser)
+                    return this.authUser.name
                 else
                     return false
             },
 
             loggedIn() {
-                if (this.userStore.authUser)
+                if (this.authUser)
                     return true
                 else
                     return false
             },
 
             isReviewer() {
-                if (this.userStore.authUser)
-                    return this.userStore.authUser.isReviewer
+                if (this.authUser)
+                    return this.authUser.isReviewer
                 else
                     return false
             },
 
             isSuperAdmin() {
-                if (this.userStore.authUser)
-                    return this.userStore.authUser.isSuperAdmin
+                if (this.authUser)
+                    return this.authUser.isSuperAdmin
                 else
                     return false
             }

@@ -20,7 +20,7 @@ class Project extends Model
 
     public function groups()
     {
-        return $this->morphedByMany('App\Models\Group', 'volunteer');
+        return $this->morphedByMany('App\Models\Group', 'volunteer')->withPivot('number_of_volunteers', 'leader');;
     }
 
     public function users()
@@ -30,16 +30,12 @@ class Project extends Model
 
     public function volunteers_registered()
     {
-        $users_count = DB::table('project_user')
-            ->select(DB::raw('sum (volunteer_count) as count'))
-            ->where('project_id', '=', $this->id)
-            ->first();
+        $users_count = 0;
 
-        return $query->with(['voters' => function($q)
-        {
-            return $q->select(DB::raw('count(votables_id) as number_of_votes'))->groupBy('votables_id');
-        }]);
+        foreach ($this->groups as $group) {
+            $users_count = $users_count + $group->pivot->number_of_volunteers;
+        }
 
-        return (int)$users_count->count;
+        return $users_count;
     }
 }

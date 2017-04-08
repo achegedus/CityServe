@@ -77,7 +77,7 @@
 
 
 <script>
-    import { mapState } from 'vuex'
+    //import { mapState } from 'vuex'
 
     export default{
         data(){
@@ -90,9 +90,9 @@
         },
 
         computed: {
-            ...mapState({
-                userStore: state => state.userStore
-            })
+            userStore() {
+                return this.$store.getters.authUser
+            }
         },
 
         components:{
@@ -144,7 +144,7 @@
         },
 
         mounted() {
-            if (!this.userStore.authUser) {
+            if (!this.authUser) {
                 location.href = '/serve';
             } else {
                 this.getProject();

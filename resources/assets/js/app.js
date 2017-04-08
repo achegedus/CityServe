@@ -62,7 +62,7 @@ import ProjectSubmitSuccess from './pages/ProjectSubmitSuccess.vue';
 import VolunteerIndividualPage from './pages/volunteerIndividualPage.vue';
 import VolunteerGroupPage from './pages/volunteerGroupPage.vue';
 
-import store from './store';
+import store from './store/store';
 
 
 const routes = [

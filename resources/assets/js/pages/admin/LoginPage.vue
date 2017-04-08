@@ -56,7 +56,7 @@
 
 <script>
 
-    import { mapState } from 'vuex'
+    //import { mapState } from 'vuex'
     import {loginUrl, userUrl, getHeader} from '../../config'
     import {clientId, clientSecret} from '../../env'
 
@@ -71,9 +71,9 @@
         },
 
         computed: {
-            ...mapState({
-                userStore: state => state.userStore
-            })
+            userStore() {
+                return this.$store.getters.userStore
+            }
         },
 
         methods: {

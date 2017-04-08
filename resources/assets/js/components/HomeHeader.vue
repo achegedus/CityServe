@@ -122,7 +122,7 @@
 
 
 <script>
-    import { mapState } from 'vuex'
+    //import { mapState } from 'vuex'
     import bus from '../bus.js'
 
     export default{
@@ -133,26 +133,26 @@
         },
 
         computed: {
-            ...mapState({
-                userStore: state => state.userStore
-            }),
+            authUser() {
+                return this.$store.getters.authUser
+            },
 
             username() {
-                if (this.userStore.authUser)
-                    return this.userStore.authUser.name
+                if (this.authUser)
+                    return this.authUser.name
                 else
                     return false
             },
 
             isAdmin() {
-                if (this.userStore.authUser)
-                    return this.userStore.authUser.isSuperAdmin
+                if (this.authUser)
+                    return this.authUser.isSuperAdmin
                 else
                     return false
             },
 
             loggedIn() {
-                if (this.userStore.authUser)
+                if (this.authUser)
                     return true
                 else
                     return false

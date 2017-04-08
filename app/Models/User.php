@@ -43,6 +43,19 @@ class User extends Authenticatable
         return $this->morphToMany('App\Models\Project', 'volunteer');
     }
 
+    public function all_projects()
+    {
+        $projects = $this->projects;
+
+        $groups = $this->groups;
+
+        foreach ($groups as $group) {
+            $projects[] = $group->projects;
+        }
+
+        return $projects;
+    }
+
     public function selected_roles()
     {
         $out = [];

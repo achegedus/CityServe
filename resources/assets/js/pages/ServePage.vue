@@ -44,7 +44,7 @@
 <script>
 
     import ProjectBox from '../components/ProjectBox.vue'
-    import { mapState } from 'vuex'
+    //import { mapState } from 'vuex'
 
     export default{
         data(){
@@ -61,9 +61,9 @@
         },
 
         computed: {
-            ...mapState({
-                userStore: state => state.userStore
-            })
+            userStore() {
+                return this.$store.getters.authUser
+            }
         },
 
         methods: {

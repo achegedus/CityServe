@@ -40,15 +40,19 @@
     import Gallery from '../components/Gallery.vue'
 
 
-    import { mapState } from 'vuex'
+    //import { mapState } from 'vuex'
 
     export default{
 
 
         computed: {
-            ...mapState({
-                userStore: state => state.userStore
-            })
+            //...mapState({
+            //    userStore: state => state.userStore
+            //})
+
+            userStore() {
+                return this.$store.getters.userStore
+            }
         },
 
         components: {

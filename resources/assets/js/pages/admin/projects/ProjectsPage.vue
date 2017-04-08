@@ -17,13 +17,13 @@
             </thead>
 
             <tbody>
-            <tr v-for="project in this.projects">
+            <tr v-for="project in this.projects" v-bind:class="{ success: project.volunteers == project.numVolunteers }">
                 <td><router-link :to="{ name: 'admin-project-edit-page', params: {projectID: project.id }}">{{ project.id }}</router-link></td>
                 <td>{{ project.event_address }}</td>
                 <td>{{ project.requester_contact_name }}</td>
                 <td>{{ project.requester_phone | phone }}</td>
                 <td>{{ project.day | capitalize }}</td>
-                <td>{{ project.volunteers + "/" + project.numVolunteers}}</td>
+                <td>{{ project.volunteers + " of " + project.numVolunteers}}</td>
                 <td><button v-on:click="deleteProject(project.id)">Delete</button></td>
             </tr>
             </tbody>

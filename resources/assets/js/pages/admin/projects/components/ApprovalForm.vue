@@ -45,7 +45,7 @@
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" v-model="project.confirmed">
-                            <i></i>Confirmed
+                            <i></i>Project has been confirmed
                         </label>
                     </div>
 
@@ -87,7 +87,7 @@
             </div>
 
             <div class="col-md-6">
-                <header>Volunteers ( of {{ project.numVolunteers }})</header>
+                <header>Volunteers ({{ project.volunteers }} of {{ project.numVolunteers }})</header>
                 <fieldset>
                     <h3>People</h3>
                     <multiselect

@@ -1,7 +1,7 @@
 <template>
 
     <div v-on:>
-        <div v-if="$route.name.indexOf('admin') == -1">
+        <div v-if="this.$route.fullPath.indexOf('admin') == -1">
             <home-header></home-header>
 
                 <router-view></router-view>
@@ -22,15 +22,13 @@
 
 <style>
 
-
 </style>
 
 
 <script>
 
-    import { mapState } from 'vuex'
+    //import { mapState } from 'vuex'
     import TopMenu from './components/admin/TopMenu.vue'
-
     import HomeHeader from './components/HomeHeader.vue'
     import HomeFooter from './components/HomeFooter.vue'
     import bus from './bus.js'
@@ -48,9 +46,9 @@
         },
 
         computed: {
-            ...mapState({
-                userStore: state => state.userStore
-            })
+            authUser() {
+                return this.$store.getters.authUser
+            }
         },
 
         methods: {
