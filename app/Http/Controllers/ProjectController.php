@@ -318,7 +318,7 @@ class ProjectController extends ApiController
         $user = $request->user();
 
         if (!$user) {
-            return $this->respondNotFound('User does not exist.');
+            return $this->respondOk('User does not exist.');
         }
 
         // get all churches
