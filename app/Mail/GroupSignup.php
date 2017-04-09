@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Group;
+use App\Models\Project;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -17,10 +18,6 @@ class GroupSignup extends Mailable
      */
     public $project;
     /*
-     * @var user
-     */
-    public $user;
-    /*
      * @var group;
      */
     public $group;
@@ -30,11 +27,10 @@ class GroupSignup extends Mailable
      *
      * @return void
      */
-    public function __construct(Project $project, User $user, Group $group)
+    public function __construct(Project $project, Group $group)
     {
         //
         $this->project = $project;
-        $this->user = $user;
         $this->group = $group;
     }
 

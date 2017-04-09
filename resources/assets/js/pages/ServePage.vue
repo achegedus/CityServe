@@ -11,23 +11,23 @@
 
         <div class="container content-md">
 
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare magna neque, quis sodales ex luctus at. In feugiat finibus sem. Ut nisi est, cursus vitae risus non, sagittis auctor nisl. Aenean sit amet luctus ante. Phasellus pellentesque tempor libero nec rhoncus. Nam sed diam eget ante rhoncus volutpat vitae ac dui. Vestibulum massa velit, pretium pellentesque vestibulum et, pharetra at magna. Praesent sit amet arcu malesuada, malesuada dui et, fringilla neque. Integer sapien elit, gravida in malesuada consectetur, sagittis ac erat. Praesent vel vestibulum eros, ac interdum diam. Cras vitae massa neque. Duis dapibus auctor dui, eu pulvinar odio efficitur non. Sed quis nibh in risus gravida hendrerit.</p>
+            <p class="lead">Thank you for wanting to serve our community! Below, you'll find a list of all projects that are available for service projects.  Click the links to sign up to serve as an individual or as a leader of a group.  </p>
 
-                <div class="form-group">
+            <div class="row">
+                <div class="form-group col-md-4">
                     <label>Filter by category:</label>
                     <select class="form-control" v-model="selected_category" @change="getOpenProjects()">
                         <option value="all">All Categories</option>
                         <option v-for="cat in categories" :value="cat.id">{{cat.name}}</option>
                     </select>
                 </div>
+            </div>
 
             <div v-masonry transition-duration="0.3s" item-selector=".grid-item">
                 <project-box v-masonry-tile class="grid-item" v-for="project in my_projects" :project="project" :assigned="true"></project-box>
                 <project-box v-masonry-tile class="grid-item" v-for="project in projects" :project="project" :assigned="false"></project-box>
             </div>
         </div>
-
-
     </div>
 </template>
 
@@ -67,9 +67,15 @@
         },
 
         methods: {
-            getOpenProjects() {
-                this.axios.get('/api/open-projects?category=' + this.selected_category).then((response) => {
-                    this.projects = response.data.data
+            getProjects() {
+                this.axios.get('/api/projects/serving').then((response) => {
+                    this.my_projects = response.data.data
+
+                    this.axios.get('/api/open-projects?category=' + this.selected_category).then((response) => {
+                        this.projects = response.data.data
+
+                        this.projects = _.differenceWith(this.projects, this.my_projects, _.isEqual);
+                    })
                 })
             },
 
@@ -80,16 +86,13 @@
             },
 
             getMyProjects() {
-                this.axios.get('/api/projects/serving').then((response) => {
-                    this.my_projects = response.data.data
-                })
+
             }
         },
 
         created: function() {
-            this.getOpenProjects();
             this.getCategories();
-            this.getMyProjects();
+            this.getProjects();
         }
     }
 

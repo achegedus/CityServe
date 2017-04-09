@@ -10,23 +10,29 @@
                         <li><i class="fa-fw fa fa-map-marker"></i> {{ project.event_city }}</li>
                         <li><i class="fa-fw fa fa-calendar"></i> {{ project.day | capitalize }}</li>
                         <li><i class="fa-fw fa fa-clock-o"></i> {{ project.time | timeformat }}</li>
-                        <li><i class="fa-fw fa fa-users"></i> Volunteers needed: {{project.numVolunteers}}</li>
+                        <li><i class="fa-fw fa fa-users"></i> Volunteers needed: {{project.numVolunteers - project.volunteers}}</li>
                     </ul>
                     <div v-if="!assigned">
                         <h5>Register to serve:</h5>
                         <button class="btn btn-error signupButton" @click="indivButtonClicked">Individual</button>
                         <button class="btn btn-error signupButton" @click="groupButtonClicked">Group</button>
                     </div>
-                    <div v-else>
-                        <h5>You are signed up for this project!</h5>
-                    </div>
                 </div>
                 <div class="col-md-8">
-                    <h5>Description:</h5>
-                    <p>{{ project.description }}</p>
+                    <div v-if="!assigned">
+                        <h5>Description:</h5>
+                        <p>{{ project.description }}</p>
 
-                    <h5>Skills Requested:</h5>
-                    <p>{{ project.skills }}</p>
+                        <h5>Skills Requested:</h5>
+                        <p>{{ project.skills }}</p>
+                    </div>
+
+                    <div v-else>
+                        <h5>Description:</h5>
+                        <p>{{ project.description }}</p>
+
+                        <h5>You are signed up for this project!</h5>
+                    </div>
                 </div>
             </div>
 
@@ -60,9 +66,7 @@
         margin-top: 10px;
     }
 
-    .funny-boxes {
-        min-height: 300px;
-    }
+
 </style>
 
 <script>

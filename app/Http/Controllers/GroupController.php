@@ -80,14 +80,14 @@ class GroupController extends ApiController
         $this->validate($request, [
             'name' => 'required|max:64',
             'members' => 'required|numeric',
-            'group_type_id' => 'required',
+            'group_type_id' => 'required|numeric',
         ]);
 
         $group = new Group();
 
         $group->name = $request->input('name');
         $group->members = $request->input('members');
-        $group->group_type_id = $request->input('group_type_id')['id'];
+        $group->group_type_id = $request->input('group_type_id');
         $group->user_id = $user->id;
         $group->project_id = $request->input('project_id');
 

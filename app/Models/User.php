@@ -47,10 +47,9 @@ class User extends Authenticatable
     {
         $projects = $this->projects;
 
-        $groups = $this->groups;
-
-        foreach ($groups as $group) {
-            $projects[] = $group->projects;
+        foreach ($this->groups as $group) {
+            $this_project = Project::find($group->project_id);
+            $projects[] = $this_project;
         }
 
         return $projects;
@@ -75,6 +74,18 @@ class User extends Authenticatable
     public function church()
     {
         return $this->belongsTo('App\Models\Church');
+    }
+
+    public function group_projects()
+    {
+        $projects = [];
+
+        foreach ($this->groups as $group) {
+            $this_project = Project::find($group->project_id);
+            $projects[] = $this_project;
+        }
+
+        return $projects;
     }
 
 

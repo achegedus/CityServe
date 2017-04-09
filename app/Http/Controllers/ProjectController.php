@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\GroupSignup;
+use App\Mail\IndividualSignup;
 use App\Mail\ProjectCreated;
 use App\Models\Group;
 use App\Models\Project;
@@ -198,6 +200,8 @@ class ProjectController extends ApiController
 
         $project->users()->save($user, ['leader' => $request->willLead]);
 
+        Mail::to($user->email)->send(new IndividualSignup($project, $user));
+
         $this->respondOk('Project saved');
     }
 
@@ -260,7 +264,12 @@ class ProjectController extends ApiController
             return $this->respondNotFound('Group does not exist.');
         }
 
-        $project->groups()->save($group, ['number_of_volunteers' => $group->members, 'group_id' => $group->id]);
+        if ($project->groups()->save($group, ['number_of_volunteers' => $group->members, 'group_id' => $group->id])) {
+            // send email
+            Mail::to($group->user->email)->send(new GroupSignup($project, $group));
+
+            $this->respondOk('Project saved');
+        }
     }
 
 
@@ -313,7 +322,7 @@ class ProjectController extends ApiController
         }
 
         // get all churches
-        $projects = $user->projects;
+        $projects = $user->all_projects();
 
         // return a collection of churches
         return Fractal::includes(['project_category'])->collection($projects, new ProjectTransformer());

@@ -30,7 +30,8 @@ class Project extends Model
 
     public function volunteers_registered()
     {
-        $users_count = 0;
+
+        $users_count = $this->users->count();
 
         foreach ($this->groups as $group) {
             $users_count = $users_count + $group->pivot->number_of_volunteers;

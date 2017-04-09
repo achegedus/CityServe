@@ -7,11 +7,12 @@
                     <div class="col-md-3">
                         <h3>Details</h3>
                         <ul class="list-unstyled">
-                            <li><i class="fa-fw fa fa-paint-brush"></i> {{ project.project_category.name }}</li>
+                            <li><i class="fa-fw fa fa-hashtag"></i> Project {{ project.id }}</li>
+                            <li><i class="fa-fw fa fa-paint-brush"></i> {{ category_name }}</li>
                             <li><i class="fa-fw fa fa-map-marker"></i> {{ project.event_city }}</li>
-                            <li><i class="fa-fw fa fa-calendar"></i> {{ project.day }}</li>
-                            <li><i class="fa-fw fa fa-clock-o"></i> {{ project.time }}</li>
-                            <li><i class="fa-fw fa fa-users"></i> Volunteers needed: {{project.volunteers_neededf}}</li>
+                            <li><i class="fa-fw fa fa-calendar"></i> {{ project.day | capitalize }}</li>
+                            <li><i class="fa-fw fa fa-clock-o"></i> {{ project.time | timeformat }}</li>
+                            <li><i class="fa-fw fa fa-users"></i> Volunteers needed: {{project.numVolunteers}}</li>
                         </ul>
                     </div>
 
@@ -77,11 +78,34 @@
         computed: {
             authUser() {
                 return this.$store.getters.authUser
+            },
+
+            category_name: function () {
+                // `this` points to the vm instance
+                return this.project.project_category.name
             }
         },
 
         components:{
 
+        },
+
+        filters: {
+            timeformat: function (value) {
+                if (!value) return ''
+                if (value < 13) {
+                    return value + ':00 AM'
+                } else {
+                    var time = value - 12;
+                    return time + ':00 PM'
+                }
+            },
+
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            }
         },
 
         methods: {
@@ -102,6 +126,8 @@
 
                 this.axios.post('/api/project/'+ this.$route.params.projectID +'/volunteer', postData)
                 .then((response) => {
+
+                    self.$router.push({ name: 'serve'})
 
                 });
             }

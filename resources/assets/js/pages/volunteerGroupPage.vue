@@ -7,11 +7,12 @@
                     <div class="col-md-3">
                         <h3>Details</h3>
                         <ul class="list-unstyled">
-                            <li><i class="fa-fw fa fa-paint-brush"></i> {{ project.project_category.name }}</li>
+                            <li><i class="fa-fw fa fa-hashtag"></i> Project {{ project.id }}</li>
+                            <li><i class="fa-fw fa fa-paint-brush"></i> {{ category_name }}</li>
                             <li><i class="fa-fw fa fa-map-marker"></i> {{ project.event_city }}</li>
-                            <li><i class="fa-fw fa fa-calendar"></i> {{ project.day }}</li>
-                            <li><i class="fa-fw fa fa-clock-o"></i> {{ project.time }}</li>
-                            <li><i class="fa-fw fa fa-users"></i> Volunteers needed: {{project.volunteers_neededf}}</li>
+                            <li><i class="fa-fw fa fa-calendar"></i> {{ project.day | capitalize }}</li>
+                            <li><i class="fa-fw fa fa-clock-o"></i> {{ project.time | timeformat }}</li>
+                            <li><i class="fa-fw fa fa-users"></i> Volunteers needed: {{project.numVolunteers}}</li>
                         </ul>
                     </div>
 
@@ -27,28 +28,33 @@
 
                         <form class="sky-form" v-on:submit.prevent="saveGroup">
 
-                            <div class="form-group" :class="{'has-error': errors.has('group.name') }" >
+                            <div class="form-group" :class="{'has-error': errors.has('group_name') }" >
                                 <label for="group_name">Group Name</label>
-                                <input name="group_name" v-validate data-vv-rules="required|max:2" data-vv-as="Group name" type="text" class="form-control" v-model="group.name">
-                                <span class='note note-error' v-show="errors.has('group.name')">{{ errors.first('group.name') }}</span>
+                                <input name="group_name" v-validate data-vv-rules="required" data-vv-as="Group name" type="text" class="form-control" v-model="group_name">
+                                <span class='note note-error' v-show="errors.has('group_name')">{{ errors.first('group_name') }}</span>
                             </div>
 
-                            <div class="form-group" :class="{'has-error': errors.has('group.members') }" >
+                            <div class="form-group" :class="{'has-error': errors.has('group_members') }" >
                                 <label for="group_members">Number of people</label>
-                                <input name="group_members" v-validate data-vv-rules="required|numeric" data-vv-as="Group members" type="text" class="form-control" v-model="group.members">
-                                <span class='note note-error' v-show="errors.has('group.members')">{{ errors.first('group.members') }}</span>
+                                <input name="group_members" v-validate data-vv-rules="required|numeric" data-vv-as="Group members" type="text" class="form-control" v-model="group_members">
+                                <span class='note note-error' v-show="errors.has('group_members')">{{ errors.first('group_members') }}</span>
                             </div>
 
-                            <div class="form-group" :class="{'has-error': errors.has('group.members') }" >
+                            <div class="form-group" :class="{'has-error': errors.has('group_type_id') }" >
+                                <input type="hidden"
+                                       name="group_type_id_key"
+                                       v-model="group_type_id_key"
+                                       data-vv-as="Group type"
+                                       v-validate data-vv-rules="required|numeric">
                                 <label for="group_members">Type of group</label>
                                 <multiselect
-                                        v-model="group.group_type_id"
+                                        v-model="group_type_id"
                                         :options="group_types"
                                         label="name"
                                         :multiple="false"
                                         track-by="id">
                                 </multiselect>
-                                <span class='note note-error' v-show="errors.has('group.members')">{{ errors.first('group.members') }}</span>
+                                <span class='note note-error' v-show="errors.has('group_type_id_key')">{{ errors.first('group_type_id_key') }}</span>
                             </div>
 
                             <div class="checkbox">
@@ -85,13 +91,47 @@
                 project: {},
                 group: {},
                 willLead: false,
-                group_types: []
+                group_types: [],
+
+                group_name: '',
+                group_type_id: null,
+                group_members: null
             }
         },
 
         computed: {
             authUser() {
                 return this.$store.getters.authUser
+            },
+
+            category_name: function () {
+                // `this` points to the vm instance
+                return this.project.project_category.name
+            },
+
+            group_type_id_key: function() {
+                if (this.group_type_id)
+                    return this.group_type_id.id
+                else
+                    return null
+            }
+        },
+
+        filters: {
+            timeformat: function (value) {
+                if (!value) return ''
+                if (value < 13) {
+                    return value + ':00 AM'
+                } else {
+                    var time = value - 12;
+                    return time + ':00 PM'
+                }
+            },
+
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
             }
         },
 
@@ -119,26 +159,28 @@
             saveGroup: function() {
                 var self = this;
 
-                const groupPostData = {
-                    name: self.group.name,
-                    members: self.group.members,
-                    group_type_id: self.group.group_type_id,
-                    project_id: self.$route.params.projectID
-                }
-
-                self.axios.post('/api/group', groupPostData)
-                .then((response) => {
-                    const postData = {
-                        willLead: self.willLead,
+                this.$validator.validateAll().then(() => {
+                    const groupPostData = {
+                        name: self.group_name,
+                        members: self.group_members,
+                        group_type_id: self.group_type_id.id,
+                        project_id: self.$route.params.projectID
                     }
 
-                    self.axios.post('/api/project/'+ self.$route.params.projectID +'/group/' + response.data.id, postData)
+                    self.axios.post('/api/group', groupPostData)
                     .then((response) => {
+                        const postData = {
+                            willLead: self.willLead,
+                        }
 
+                        self.axios.post('/api/project/'+ self.$route.params.projectID +'/group/' + response.data.id, postData)
+                        .then((response) => {
+                            self.$router.push({ name: 'serve'})
+                        });
                     });
+                }).catch(() => {
+                    // eslint-disable-next-line
                 });
-
-
 
             }
         },
