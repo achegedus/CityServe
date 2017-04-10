@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Church;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -22,12 +23,30 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $churches = Church::pluck('name', 'id');
+
+        $list = [null => 'Select one'];
+        $list = array_merge($list, $churches->toArray());
+
+        return view('auth.register', ['churches' => $list]);
+    }
+
+
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -55,6 +74,7 @@ class RegisterController extends Controller
             'address' => 'required',
             'city' => 'required',
             'state' => 'required|max:2',
+            'church_id' => 'required|integer',
             'zipcode' => 'required|digits:5'
         ]);
     }
@@ -77,6 +97,7 @@ class RegisterController extends Controller
             'zipcode' =>  $data['zipcode'],
             'church_id' =>  $data['church_id'],
             'other_church' =>  $data['other_church'],
+            'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
         ]);
     }

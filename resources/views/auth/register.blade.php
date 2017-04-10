@@ -128,7 +128,7 @@
                             <label for="church_id" class="col-md-4 control-label">Church</label>
 
                             <div class="col-md-6">
-                                <input id="church_id" type="text" class="form-control" name="church_id" value="{{ old('church_id') }}" autofocus>
+                                {!! Form::select('church_id', $churches, old('church_id'),['class' => 'form-control']) !!}
 
                                 @if ($errors->has('church_id'))
                                     <span class="help-block">
