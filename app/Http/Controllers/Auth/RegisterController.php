@@ -34,7 +34,8 @@ class RegisterController extends Controller
         $churches = Church::pluck('name', 'id');
 
         $list = [null => 'Select one'];
-        $list = array_merge($list, $churches->toArray());
+        $last = [99 => 'Other'];
+        $list = array_merge($list, $churches->toArray(), $last);
 
         return view('auth.register', ['churches' => $list]);
     }
