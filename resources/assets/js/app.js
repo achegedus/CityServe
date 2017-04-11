@@ -70,28 +70,21 @@ const routes = [
     {path: '/serve', component: ServePage, name: 'serve'},
     {path: '/request', component: RequestProjectPage, name: 'request-project'},
     {path: '/project-submit-success', component: ProjectSubmitSuccess, name: 'project-submit-success'},
-
     {path: '/project/:projectID/volunteer/individual', component: VolunteerIndividualPage, name: 'volunteer-individual', meta: {requiresAuth: true }},
     {path: '/project/:projectID/volunteer/group', component: VolunteerGroupPage, name: 'volunteer-group', meta: {requiresAuth: true }},
-
     {path: '/admin/dashboard', component: DashboardPage, name: 'admin-dashboard', meta: {requiresAuth: true }},
-
     {path: '/admin/users', component: UsersPage, name: 'admin-users-page', meta: {requiresAuth: true }},
     {path: '/admin/user/new', component: UserNewPage, name: 'admin-user-new-page', meta: {requiresAuth: true }},
     {path: '/admin/user/:userID/edit', component: UserEditPage, name: 'admin-user-edit-page', meta: {requiresAuth: true }},
-
     {path: '/admin/churches', component: ChurchesPage, name: 'admin-churches-page', meta: {requiresAuth: true }},
     {path: '/admin/church/new', component: ChurchNewPage, name: 'admin-church-new-page', meta: {requiresAuth: true }},
     {path: '/admin/church/:churchID/edit', component: ChurchEditPage, name: 'admin-church-edit-page', meta: {requiresAuth: true }},
-
     {path: '/admin/people', component: PeoplePage, name: 'admin-people-page', meta: {requiresAuth: true }},
     {path: '/admin/person/new', component: PersonNewPage, name: 'admin-person-new-page', meta: {requiresAuth: true }},
     {path: '/admin/person/:personID/edit', component: PersonEditPage, name: 'admin-person-edit-page', meta: {requiresAuth: true }},
-
     {path: '/admin/projects', component: ProjectsPage, name: 'admin-projects-page', meta: {requiresAuth: true }},
     {path: '/admin/project/new', component: ProjectNewPage, name: 'admin-project-new-page', meta: {requiresAuth: true }},
     {path: '/admin/project/:projectID/edit', component: ProjectEditPage, name: 'admin-project-edit-page', meta: {requiresAuth: true }},
-
     {path: '/admin/groups', component: GroupsPage, name: 'admin-groups-page', meta: {requiresAuth: true }},
     {path: '/admin/group/new', component: GroupNewPage, name: 'admin-group-new-page', meta: {requiresAuth: true }},
     {path: '/admin/group/:groupID/edit', component: GroupEditPage, name: 'admin-group-edit-page', meta: {requiresAuth: true }}
