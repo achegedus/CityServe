@@ -124,7 +124,7 @@
                 if (this.authUser) {
                     this.$router.push({ name: 'volunteer-group', params: { projectID: this.project.id }})
                 } else {
-                    location.href = '/login';
+                    location.href = '/register';
                 }
             },
 
@@ -132,7 +132,7 @@
                 if (this.authUser) {
                     this.$router.push({ name: 'volunteer-individual', params: { projectID: this.project.id }})
                 } else {
-                    location.href = '/login';
+                    location.href = '/register';
                 }
             }
         }

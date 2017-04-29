@@ -23,9 +23,17 @@
 
                     <div class="form-group" :class="{'has-error': errors.has('project.evaluator_id') }" >
                         <label for="time">Evaluator</label>
-                        <select name="evaluator_id" class="form-control" v-validate data-vv-rules="required">
-                            <option>Select One</option>
-                        </select>
+                        <multiselect
+                                v-model="project.evaluator"
+                                :options="evaluators"
+                                :searchable="false"
+                                :close-on-select="false"
+                                track-by="id"
+                                label="name"
+                                :show-labels="false"
+                                placeholder="Pick an Evaluator">
+                        </multiselect>
+
                         <span v-show="errors.has('evaluator_id')">{{ errors.first('evaluator_id') }}</span>
                     </div>
 
@@ -45,9 +53,16 @@
 
                     <div class="form-group" :class="{'has-error': errors.has('project.coordinator_id') }" >
                         <label for="time">Coordinator</label>
-                        <select name="coordinator_id" class="form-control" v-validate data-vv-rules="required">
-                            <option>Select One</option>
-                        </select>
+                        <multiselect
+                                v-model="project.coordinator"
+                                :options="coordinators"
+                                :searchable="false"
+                                :close-on-select="false"
+                                track-by="id"
+                                label="name"
+                                :show-labels="false"
+                                placeholder="Pick a coordinator">
+                        </multiselect>
                         <span v-show="errors.has('coordinator_id')">{{ errors.first('coordinator_id') }}</span>
                     </div>
 
@@ -133,7 +148,9 @@
                 groups: [],
                 all_volunteers: [],
                 all_groups: [],
-                project_categories: []
+                project_categories: [],
+                evaluators: [],
+                coordinators: []
             }
         },
 
@@ -211,6 +228,20 @@
                 .then((response) => {
                     this.project_categories = response.data.data
                 });
+            },
+
+            getCoordinators() {
+                this.axios.get('/api/coordinators')
+                .then((response) => {
+                    this.coordinators = response.data.data
+                });
+            },
+
+            getEvaluators() {
+                this.axios.get('/api/evaluators')
+                .then((response) => {
+                    this.evaluators = response.data.data
+                });
             }
         },
 
@@ -225,6 +256,8 @@
             this.getAllVolunteers()
             this.getAllGroups()
             this.getCategories()
+            this.getEvaluators()
+            this.getCoordinators()
         },
 
         beforeDestroy() {

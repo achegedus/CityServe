@@ -24,7 +24,6 @@ Route::group(['middleware' => 'api'], function() {
 
     Route::get('/project/{id}', 'ProjectController@show');
     Route::get('projects/serving', 'ProjectController@myProjects');
-
 });
 
 
@@ -88,6 +87,12 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::delete('group_type/{id}','GroupTypeController@destroy');
     Route::put('group_type/{id}','GroupTypeController@update');
     Route::post('group_types','GroupTypeController@store');
+
+    // evaluators
+    Route::get('/evaluators', 'EvaluatorController@index');
+
+    // coordinators
+    Route::get('/coordinators', 'CoordinatorController@index');
 
     // roles
     Route::get('/roles', 'RoleController@index');

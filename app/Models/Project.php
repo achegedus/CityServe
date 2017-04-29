@@ -28,6 +28,16 @@ class Project extends Model
         return $this->morphedByMany('App\Models\User', 'volunteer');
     }
 
+    public function coordinator()
+    {
+        return $this->belongsTo('App\Models\Coordinator');
+    }
+
+    public function evaluator()
+    {
+        return $this->belongsTo('App\Models\Evaluator');
+    }
+
     public function volunteers_registered()
     {
 

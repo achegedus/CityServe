@@ -14,14 +14,14 @@ class ProjectTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $availableIncludes = ['project_category'];
+    protected $availableIncludes = ['project_category', 'coordinator', 'evaluator'];
 
     /**
      * List of resources to automatically include
      *
      * @var array
      */
-    protected $defaultIncludes = ['project_category'];
+    protected $defaultIncludes = ['project_category', 'coordinator', 'evaluator'];
 
     /**
      * Transform object into a generic array
@@ -88,6 +88,22 @@ class ProjectTransformer extends TransformerAbstract
     {
         if ($cat = $resource->category) {
             return $this->item($cat, new ProjectCategoryTransformer());
+        }
+    }
+
+
+    public function includeCoordinator($resource)
+    {
+        if ($cat = $resource->coordinator) {
+            return $this->item($cat, new CoordinatorTransformer());
+        }
+    }
+
+
+    public function includeEvaluator($resource)
+    {
+        if ($cat = $resource->evaluator) {
+            return $this->item($cat, new EvaluatorTransformer());
         }
     }
 }

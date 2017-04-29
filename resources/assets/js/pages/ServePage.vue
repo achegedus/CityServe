@@ -11,12 +11,13 @@
 
         <div class="container content-md">
 
-            <p class="lead">Thank you for wanting to serve our community! Below, you'll find a list of all projects that are available for service projects.  Click the links to sign up to serve as an individual or as a leader of a group.  </p>
+            <p class="lead">Thank you for wanting to serve our community! Below, you'll find a list of all projects that are available for service projects.  Click the links to sign up to serve as an individual or as a leader of a group.</p>
+            <p class="lead"><strong>To sign up for a project, you must register first, you can do that <a href="/register">here</a>.<br />If you have already registered, click <a href="/login">here</a> to Login.</strong></p>
 
             <div class="row">
                 <div class="form-group col-md-4">
                     <label>Filter by category:</label>
-                    <select class="form-control" v-model="selected_category" @change="getOpenProjects()">
+                    <select class="form-control" v-model="selected_category" @change="getProjects()">
                         <option value="all">All Categories</option>
                         <option v-for="cat in categories" :value="cat.id">{{cat.name}}</option>
                     </select>
