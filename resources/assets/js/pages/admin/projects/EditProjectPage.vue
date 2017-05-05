@@ -61,6 +61,16 @@
 
             saveProject: function() {
                 var self = this;
+                var evaluator = null
+                var coordinator = null
+
+                if (this.project.evaluator) {
+                    evaluator = this.project.evaluator.id
+                }
+
+                if (this.project.coordinator) {
+                    evaluator = this.project.coordinator.id
+                }
 
                 const postData = {
                     requester_org_name: this.project.requester_org_name,
@@ -95,11 +105,11 @@
                     evaluated: this.project.evaluated,
                     approved: this.project.approved,
                     assigned: this.project.assigned,
-                    evaluator_id: this.project.evaluator.id,
+                    evaluator_id: evaluator,
                     category_id: this.project.category_id.id,
                     volunteers_needed: this.project.volunteers_needed,
                     notes: this.project.notes,
-                    coordinator_id: this.project.coordinator.id,
+                    coordinator_id: coordinator,
                     confirmed: this.project.confirmed,
                     short_description: this.project.short_description
                 }

@@ -76,6 +76,8 @@
                         this.projects = response.data.data
 
                         this.projects = _.differenceWith(this.projects, this.my_projects, _.isEqual);
+
+                        //this.projects = _.pullAllWith(this.projects, [{ 'volunteers_needed': 0  }], _.isEqual);
                     })
                 })
             },
