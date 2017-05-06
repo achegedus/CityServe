@@ -30,13 +30,13 @@
 
                             <div class="form-group" :class="{'has-error': errors.has('group_name') }" >
                                 <label for="group_name">Group Name</label>
-                                <input name="group_name" v-validate data-vv-rules="required" data-vv-as="Group name" type="text" class="form-control" v-model="group_name">
+                                <input name="group_name" v-validate="'required'" data-vv-as="Group name" type="text" class="form-control" v-model="group_name">
                                 <span class='note note-error' v-show="errors.has('group_name')">{{ errors.first('group_name') }}</span>
                             </div>
 
                             <div class="form-group" :class="{'has-error': errors.has('group_members') }" >
                                 <label for="group_members">Number of people</label>
-                                <input name="group_members" v-validate data-vv-rules="required|numeric" data-vv-as="Group members" type="text" class="form-control" v-model="group_members">
+                                <input name="group_members" v-validate="'required|numeric|max_vols'" data-vv-as="Group members" type="text" class="form-control" v-model="group_members">
                                 <span class='note note-error' v-show="errors.has('group_members')">{{ errors.first('group_members') }}</span>
                             </div>
 
@@ -84,6 +84,7 @@
 
 <script>
     //import { mapState } from 'vuex'
+    import { Validator } from 'vee-validate';
 
     export default{
         data(){
@@ -105,8 +106,10 @@
             },
 
             category_name: function () {
-                // `this` points to the vm instance
-                return this.project.project_category.name
+                if (this.project.project_category)
+                    return this.project.project_category.name
+                else
+                    return null
             },
 
             group_type_id_key: function() {
@@ -193,6 +196,17 @@
             }
 
             this.getGroupTypes();
-        },
+
+            Validator.extend('max_vols', {
+                getMessage: (field) => `This project doesn't need that many volunteers.`,
+                validate: (value) => new Promise(resolve => {
+                    resolve({
+                        valid: value <= this.project.numVolunteers
+                    });
+                })
+            });
+        }
+
+
     }
 </script>

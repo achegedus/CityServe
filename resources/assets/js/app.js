@@ -9,10 +9,10 @@ require('./bootstrap');
 
 var VueRouter = require('vue-router');
 var VueAxios = require('vue-axios');
-var VeeValidate = require('vee-validate');
 var VueCookie = require('vue-cookie');
 import VueSweetAlert from 'vue-sweetalert';
 import VueMasonryPlugin from 'vue-masonry';
+import VeeValidate from 'vee-validate';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
