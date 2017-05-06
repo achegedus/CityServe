@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="form-group col-md-4">
                     <label>Filter by category:</label>
-                    <select class="form-control" v-model="selected_category" @change="getProjects()">
+                    <select class="form-control" v-model="selected_category" @change="getOpenProjects()">
                         <option value="all">All Categories</option>
                         <option v-for="cat in categories" :value="cat.id">{{cat.name}}</option>
                     </select>
@@ -68,7 +68,7 @@
         },
 
         methods: {
-            getProjects() {
+            getOpenProjects() {
                 this.axios.get('/api/projects/serving').then((response) => {
                     this.my_projects = response.data.data
 
@@ -77,7 +77,7 @@
 
                         this.projects = _.differenceWith(this.projects, this.my_projects, _.isEqual);
 
-                        //this.projects = _.pullAllWith(this.projects, [{ 'volunteers_needed': 0  }], _.isEqual);
+                        //this.projects = _.filter(this.projects, function(o) { if((o.volunteers_needed - o.volunteers) > 0) return o;});
                     })
                 })
             },
@@ -95,7 +95,7 @@
 
         created: function() {
             this.getCategories();
-            this.getProjects();
+            this.getOpenProjects();
         }
     }
 

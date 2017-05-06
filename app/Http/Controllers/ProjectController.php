@@ -303,9 +303,15 @@ class ProjectController extends ApiController
         if ($category_id == "all") {
             // get all churches
             $projects = Project::with('category')->where('approved', '=', 1)->get();
+            $projects = $projects->reject(function($proj) {
+                return ($proj->numVolunteers - $proj->volunteers_registered()) == 0;
+            });
         } else {
             // get all churches
             $projects = Project::with('category')->where('approved', '=', 1)->where('category_id', '=', $category_id)->get();
+            $projects = $projects->reject(function($proj) {
+                return ($proj->numVolunteers - $proj->volunteers_registered()) == 0;
+            });
         }
 
         // return a collection of churches
