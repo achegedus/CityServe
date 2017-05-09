@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use SebastianBergmann\CodeCoverage\Report\Xml\Report;
+use Barryvdh\DomPDF\Facade as PDF;
 
 /**
  * Class ProjectController
@@ -332,5 +333,20 @@ class ProjectController extends ApiController
 
         // return a collection of churches
         return Fractal::includes(['project_category'])->collection($projects, new ProjectTransformer());
+    }
+
+
+    public function printProjectSheets()
+    {
+
+        $projects = Project::with('category', 'groups', 'groups.user', 'groups.user.church', 'users', 'users.church')->get();
+
+
+        $pdf = PDF::loadView('pdf.project_sheets', ['projects'=>$projects]);
+        $pdf->setPaper('a4', 'landscape');
+        $pdf->setOptions(['dpi' => 96, 'defaultFont' => 'sans-serif']);
+
+        return $pdf->stream('projectSheets.pdf');
+
     }
 }

@@ -15,11 +15,15 @@ Auth::routes();
 
 Route::get('/log_out', 'AuthController@logout');
 
+Route::get('/projectsheets', 'ProjectController@printProjectSheets');
+
 # Vue
 Route::any('{all}', function () {
     return view('welcome');
 })
     ->where(['all' => '.*']);
+
+
 
 
 //Route::get('/', function() {

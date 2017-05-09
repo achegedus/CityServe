@@ -14,7 +14,8 @@
         "laravel/browser-kit-testing": "^1.0",
         "guzzlehttp/guzzle": "^6.2",
         "sentry/sentry-laravel": "^0.6.1",
-        "laravelcollective/html": "^5.3.0"
+        "laravelcollective/html": "^5.3.0",
+        "barryvdh/laravel-dompdf": "^0.8.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
