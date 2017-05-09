@@ -100,9 +100,9 @@
                 <td>{{ $vol->first_name . " " . $vol->last_name }}</td>
                 <td>{{ $vol->phone }}</td>
                 <td>{{ $vol->email }}</td>
-                <td>{{ $vol->pivot->number_of_volunteers }}</td>
+                <td>1</td>
                 <td></td>
-                <td>{{ $vol->church->name }}</td>
+                <td>{{ $vol->church->name || "Other" }}</td>
                 <td>{{ $vol->pivot->leader == 1? 'YES' : 'NO' }}</td>
             </tr>
         @endforeach

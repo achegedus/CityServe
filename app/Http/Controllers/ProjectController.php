@@ -349,4 +349,18 @@ class ProjectController extends ApiController
         return $pdf->stream('projectSheets.pdf');
 
     }
+
+    public function printSingleProjectSheet($id)
+    {
+
+        $projects = Project::with('category', 'groups', 'groups.user', 'groups.user.church', 'users', 'users.church')->where('id','=',$id)->get();
+
+
+        $pdf = PDF::loadView('pdf.project_sheets', ['projects'=>$projects]);
+        $pdf->setPaper('a4', 'landscape');
+        $pdf->setOptions(['dpi' => 96, 'defaultFont' => 'sans-serif']);
+
+        return $pdf->stream('projectSheets.pdf');
+
+    }
 }

@@ -16,6 +16,7 @@ Auth::routes();
 Route::get('/log_out', 'AuthController@logout');
 
 Route::get('/projectsheets', 'ProjectController@printProjectSheets');
+Route::get('/projectsheet/{id}', 'ProjectController@printSingleProjectSheet');
 
 # Vue
 Route::any('{all}', function () {
