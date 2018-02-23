@@ -17,8 +17,8 @@
                     <!-- Navbar Brand -->
                     <div class="navbar-brand">
                         <router-link :to="{ name: 'home-page' }">
-                            <img class="default-logo" src="/CITY_SERVE_2017a.png" alt="Logo">
-                            <img class="shrink-logo" src="/CITY_SERVE_2017a.png" alt="Logo">
+                            <img class="default-logo" src="/CITY_SERVE_2018.png" alt="Logo">
+                            <img class="shrink-logo" src="/CITY_SERVE_2018.png" alt="Logo">
                         </router-link>
                     </div>
                     <!-- ENd Navbar Brand -->
@@ -65,11 +65,13 @@
                             <!-- End Churches -->
 
                             <!-- Serve -->
+                            <!--
                             <li class="dropdown">
                                 <router-link :to="{ name: 'serve' }">
                                     Serve
                                 </router-link>
                             </li>
+                            -->
                             <!-- End Serve -->
 
                             <!-- Projects -->

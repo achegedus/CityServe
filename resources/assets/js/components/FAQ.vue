@@ -88,7 +88,7 @@
                             </div>
                             <div class="panel-collapse collapse" id="collapse-Five">
                                 <div class="panel-body">
-                                    <p>Serving does not need to end May 20 & 21! Feel free to find a group of people and serve others with a project on a different day. You can also commit to pray that God would be made known in the Centre Region during CityServe weekend. For more information, please contact the CityServe Planning Team.</p>
+                                    <p>Serving does not need to end April 28 & 29! Feel free to find a group of people and serve others with a project on a different day. You can also commit to pray that God would be made known in the Centre Region during CityServe weekend. For more information, please contact the CityServe Planning Team.</p>
                                     <p>If you have any questions that have not been answered here, please submit your question to info@sc-cityserve.org or contact Kendra Gettig at 814-238-0822, ext 20.</p>
                                 </div>
                             </div>

@@ -2,7 +2,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-    <title>CityServe 2017</title>
+    <title>CityServe 2018</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -68,8 +68,8 @@
                 <!-- Navbar Brand -->
                 <div class="navbar-brand">
                     <a href="/">
-                        <img class="default-logo" src="/CITY_SERVE_2017a.png" alt="Logo">
-                        <img class="shrink-logo" src="/CITY_SERVE_2017a.png" alt="Logo">
+                        <img class="default-logo" src="/CITY_SERVE_2018.png" alt="Logo">
+                        <img class="shrink-logo" src="/CITY_SERVE_2018.png" alt="Logo">
                     </a>
                 </div>
                 <!-- ENd Navbar Brand -->
