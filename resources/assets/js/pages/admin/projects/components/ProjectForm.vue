@@ -226,7 +226,8 @@
         methods: {
             onValidate() {
                 this.$validator.validateAll();
-                if (this.errors.errors.length == 0) {
+                console.log(this.errors);
+                if (!this.errors.any()) {
                     bus.$emit('submit-project-response');
                 } else {
                     this.$swal('Oops!', 'Form submission errors, please fill out all required fields.', 'error')
