@@ -137,8 +137,8 @@
                 <label for="day">Day</label>
                 <select name="day" class="form-control" v-validate data-vv-rules="required" v-model="project.day">
                     <option>Select One</option>
-                    <option value="Saturday">Saturday, May 20th</option>
-                    <option value="Sunday">Sunday, May 21st</option>
+                    <option value="Saturday">Saturday, April 28th</option>
+                    <option value="Sunday">Sunday, April 29th</option>
                 </select>
                 <span class='note note-error' v-show="errors.has('day')">{{ errors.first('day') }}</span>
             </div>

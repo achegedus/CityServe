@@ -25,7 +25,7 @@
                             <div class="panel-collapse collapse in" id="collapse-One">
                                 <div class="panel-body">
                                     <ul>
-                                        <li>The list of service projects mentioned above will be posted on the website at www.sc-cityserve.org beginning on this website beginning on April 1. Review the list and identify the projects where you wish to serve. Then click on "Volunteer to Serve," complete the form and submit online or contact the CityServe Planning Team or call 814-238-0822, ext.20. Please sign up for all projects by May 8.</li>
+                                        <li>The list of service projects mentioned above will be posted on the website at www.sc-cityserve.org beginning on this website beginning on March 17. Review the list and identify the projects where you wish to serve. Then click on "Volunteer to Serve," complete the form and submit online or contact the CityServe Planning Team or call 814-238-0822, ext.20. Please sign up for all projects by April 16.</li>
                                         <li>It is preferred that you register online, however if you are unable to do so, contact your local church representative.</li>
                                         <li>If you have problems or questions about registering, please contact us at info@sc-cityserve.org or 814-238-0822, ext. 20.</li>
                                     </ul>
