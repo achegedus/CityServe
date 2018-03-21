@@ -67,7 +67,8 @@
 
             onValidate() {
                 this.$validator.validateAll();
-                if (this.errors.errors.length == 0) {
+                // if (this.errors.errors.length == 0) {
+                if (!this.errors.any()) {
                     bus.$emit('submit-group-response');
                 }
             }

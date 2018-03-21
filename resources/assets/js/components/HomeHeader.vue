@@ -65,13 +65,12 @@
                             <!-- End Churches -->
 
                             <!-- Serve -->
-                            <!--
                             <li class="dropdown">
                                 <router-link :to="{ name: 'serve' }">
                                     Serve
                                 </router-link>
                             </li>
-                            -->
+                            
                             <!-- End Serve -->
 
                             <!-- Projects -->

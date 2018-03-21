@@ -120,7 +120,8 @@
         methods: {
             onValidate() {
                 this.$validator.validateAll();
-                if (this.errors.errors.length == 0) {
+                // if (this.errors.errors.length == 0) {
+                if (!this.errors.any()) {
                     bus.$emit('submit-user-response');
                 } else {
                     this.$swal('Oops!', 'Form submission errors, please fill out all required fields.', 'error')
