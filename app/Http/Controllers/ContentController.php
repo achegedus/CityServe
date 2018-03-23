@@ -25,11 +25,16 @@ class ContentController extends ApiController
 
     public function stats()
     {
-        $firstofyear = Carbon::createFromDate(null, 1, 1);
+        // $firstofyear = Carbon::createFromDate(null, 1, 1);
 
-        $volunteers_needed_count = Project::where('created_at', '>', $firstofyear)->get()->sum('numVolunteers');
-        $volunteers_signed_up = DB::table('volunteers')->select(DB::raw('sum(number_of_volunteers) as totalVols'))->where('created_at', '>', $firstofyear)->first();
-        $project_count = Project::where('created_at', '>', $firstofyear)->get()->count();
+        // $volunteers_needed_count = Project::where('created_at', '>', $firstofyear)->get()->sum('numVolunteers');
+        // $volunteers_signed_up = DB::table('volunteers')->select(DB::raw('sum(number_of_volunteers) as totalVols'))->where('created_at', '>', $firstofyear)->first();
+        // $project_count = Project::where('created_at', '>', $firstofyear)->get()->count();
+
+        $volunteers_needed_count = Project::all()->sum('numVolunteers');
+        $volunteers_signed_up = DB::table('volunteers')->select(DB::raw('sum(number_of_volunteers) as totalVols'))->first();
+        $project_count = Project::all()->count();
+
 
         if (!$volunteers_signed_up->totalVols) {
             $volunteers_signed_up->totalVols = 0;

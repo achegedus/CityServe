@@ -31,10 +31,11 @@ class ProjectController extends ApiController
      */
     public function index()
     {
-        $firstofyear = Carbon::createFromDate(null, 1, 1);
+        // $firstofyear = Carbon::createFromDate(null, 1, 1);
 
         // get all churches
-        $projects = Project::with('category')->where('created_at', '>', $firstofyear)->get();
+        // $projects = Project::with('category')->where('created_at', '>', $firstofyear)->get();
+        $projects = Project::with('category')->get();
 
         // return a collection of churches
         return Fractal::includes(['project_category'])->collection($projects, new ProjectTransformer());
@@ -304,11 +305,11 @@ class ProjectController extends ApiController
     {
         $category_id = $request->input('category', 'all');
 
-        $firstofyear = Carbon::createFromDate(null, 1, 1);
+        // $firstofyear = Carbon::createFromDate(null, 1, 1);
 
         if ($category_id == "all") {
             // get all churches
-            $projects = Project::with('category')->where('approved', '=', 1)->where('created_at', '>', $firstofyear)->get();
+            $projects = Project::with('category')->where('approved', '=', 1)->get();//where('created_at', '>', $firstofyear)->get();
             $projects = $projects->reject(function($proj) {
                 return ($proj->numVolunteers - $proj->volunteers_registered()) == 0;
             });
