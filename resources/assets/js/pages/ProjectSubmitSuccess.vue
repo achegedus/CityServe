@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <p>Thank you for submitting a project for CityServe 2016. Your project request summary is listed below for your records. If anything is incorrect please contact us immediately. You will be hearing from us soon to schedule a time to evaluate your project or to confirm that a team of volunteers will be there. If you have any questions prior to hearing from us, please contact us at info@sc-cityserve.org or 814.238.0822 ext. 20.</p>
+        <p>Thank you for submitting a project for CityServe 2018. Your project request summary is listed below for your records. If anything is incorrect please contact us immediately. You will be hearing from us soon to schedule a time to evaluate your project or to confirm that a team of volunteers will be there. If you have any questions prior to hearing from us, please contact us at info@sc-cityserve.org or 814.238.0822 ext. 20.</p>
     </div>
 </template>
 
