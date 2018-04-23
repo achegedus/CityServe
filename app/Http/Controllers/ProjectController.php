@@ -291,7 +291,7 @@ class ProjectController extends ApiController
             return $this->respondNotFound('Project does not exist.');
         }
 
-        $group = User::find($group_id);
+        $group = Group::find($group_id);
 
         if (!$group) {
             return $this->respondNotFound('Group does not exist.');
