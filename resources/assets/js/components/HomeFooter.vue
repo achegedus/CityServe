@@ -21,7 +21,7 @@
         </div>
 
         <div class="copyright-section">
-            <p>2017 &copy; All Rights Reserved</p>
+            <p>{{new Date().getFullYear()}} &copy; All Rights Reserved</p>
             <ul class="social-icons">
                 <li><a href="#" data-original-title="Facebook" class="social_facebook rounded-x"></a></li>
                 <li><a href="#" data-original-title="Twitter" class="social_twitter rounded-x"></a></li>

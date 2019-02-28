@@ -135,7 +135,7 @@
                 .then((response) => {
                     console.log('Updated');
                     this.project = {};
-                    this.$swal('Thank you!', 'Thank you for submitting a project for CityServe 2018. You should receive an email confirmation shortly.', 'success');
+                    this.$swal('Thank you!', 'Thank you for submitting a project for CityServe 2019. You should receive an email confirmation shortly.', 'success');
                 })
                 .catch((error) => {
                     console.log('An error occurred');
