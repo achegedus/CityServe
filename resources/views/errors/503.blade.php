@@ -45,7 +45,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">CITYSERVE 2017</div>
+                <div class="title">CITYSERVE 2019</div>
                 <div>
                     <p>Check back on Monday, March 13 to register your projects.</p>
                 </div>
