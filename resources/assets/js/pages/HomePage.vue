@@ -3,8 +3,8 @@
         <!--=== Slider ===-->
         <div class="interactive-slider-v2 img-v1">
             <div class="container">
-                <h1>Welcome to CityServe</h1>
-                <p>Serving beyond our walls</p>
+                <h1>SERVING BEYOND OUR WALLS</h1>
+                <p>April 27 & 28, 2019</p>
             </div>
         </div>
         <!--=== End Slider ===-->
@@ -27,7 +27,7 @@
 
 <style>
     .bg-image-v2 {
-        background: url(/Community-Service.jpg) repeat fixed;
+        background: url(/images/cs3.jpg) repeat fixed;
     }
 </style>
 
