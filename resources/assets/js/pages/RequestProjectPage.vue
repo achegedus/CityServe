@@ -52,7 +52,7 @@
 
 <style>
     .interactive-slider-v2.img-v1 {
-        background: url(/images/cs1.jpg) no-repeat;
+        background: url(/images/cityserve1.jpg) no-repeat;
         background-size: cover;
         background-position: center center;
     }
