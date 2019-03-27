@@ -38,10 +38,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Role');
     }
 
-    public function projects()
-    {
-        return $this->morphToMany('App\Models\Project', 'volunteer');
-    }
+    // public function projects()
+    // {
+    //     return $this->morphToMany('App\Models\Project', 'volunteer');
+    // }
 
     public function all_projects()
     {

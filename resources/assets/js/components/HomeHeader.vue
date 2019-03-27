@@ -64,7 +64,7 @@
                             -->
                             <!-- End Churches -->
                             
-                            <li class="dropdown">
+                            <li class="dropdown" v-if="Date.now() >= new Date('2019-03-30')">
                                 <router-link :to="{ name: 'serve' }">
                                     Serve
                                 </router-link>
