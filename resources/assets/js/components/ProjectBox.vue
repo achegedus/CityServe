@@ -14,8 +14,8 @@
                     </ul>
                     <div v-if="!assigned">
                         <h5>Register to serve:</h5>
-                        <button class="btn btn-error signupButton" @click="indivButtonClicked">Individual</button>
-                        <button class="btn btn-error signupButton" @click="groupButtonClicked">Group</button>
+                        <button class="btn btn-error signupButton" @click="indivButtonClicked">Sign Up!</button>
+                        <!--<button class="btn btn-error signupButton" @click="groupButtonClicked">Group</button>-->
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -85,7 +85,10 @@
         computed: {
             category_name: function () {
                 // `this` points to the vm instance
-                return this.project.project_category.name
+                if (this.project.project_category)
+                    return this.project.project_category.name
+                else
+                    return null
             },
 
             authUser() {
@@ -129,11 +132,11 @@
             },
 
             indivButtonClicked: function() {
-                if (this.authUser) {
+                //if (this.authUser) {
                     this.$router.push({ name: 'volunteer-individual', params: { projectID: this.project.id }})
-                } else {
-                    location.href = '/register';
-                }
+                //} else {
+                //    location.href = '/register';
+                //}
             }
         }
     }

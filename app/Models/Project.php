@@ -18,14 +18,19 @@ class Project extends Model
         return $this->belongsTo('App\Models\ProjectCategory');
     }
 
-    public function groups()
-    {
-        return $this->morphedByMany('App\Models\Group', 'volunteer')->withPivot('number_of_volunteers', 'leader');;
-    }
+    // public function groups()
+    // {
+    //     return $this->morphedByMany('App\Models\Group', 'volunteer')->withPivot('number_of_volunteers', 'leader');;
+    // }
 
-    public function users()
+    // public function users()
+    // {
+    //     return $this->morphedByMany('App\Models\User', 'volunteer');
+    // }
+
+    public function servers()
     {
-        return $this->morphedByMany('App\Models\User', 'volunteer');
+        return $this->hasMany('App\Models\Server');
     }
 
     public function coordinator()
@@ -40,12 +45,17 @@ class Project extends Model
 
     public function volunteers_registered()
     {
-
-        $users_count = $this->users->count();
-
-        foreach ($this->groups as $group) {
-            $users_count = $users_count + $group->pivot->number_of_volunteers;
+        $users_count = 0;
+        foreach ($this->servers as $server)
+        {
+            $users_count = $users_count + $server->number_of_volunteers;
         }
+
+        // $users_count = $this->users->count();
+
+        // foreach ($this->groups as $group) {
+        //     $users_count = $users_count + $group->pivot->number_of_volunteers;
+        // }
 
         return $users_count;
     }

@@ -27,12 +27,47 @@
                         <p>{{project.skills}}</p>
 
                         <form class="sky-form" v-on:submit.prevent="signup">
+                            <input type="hidden" name="_token" :value="csrfToken">
+                            <div class="form-group" :class="{'has-error': errors.has('server.name') }" >
+                                <label for="name">Name</label>
+                                <input name="name" v-validate data-vv-rules="required" data-vv-as="Name" type="text" class="form-control" v-model="server.name">
+                                <span class='note note-error' v-show="errors.has('name')">{{ errors.first('name') }}</span>
+                            </div>
 
+                            <div class="form-group" :class="{'has-error': errors.has('server.email') }" >
+                                <label for="email">Email</label>
+                                <input name="email" v-validate data-vv-rules="required|email" data-vv-as="Email" type="text" class="form-control" v-model="server.email">
+                                <span class='note note-error' v-show="errors.has('email')">{{ errors.first('email') }}</span>
+                            </div>
+
+                            <div class="form-group" :class="{'has-error': errors.has('server.phone') }" >
+                                <label for="phone">Phone</label>
+                                <input name="phone" v-validate data-vv-rules="required" data-vv-as="Phone" type="text" class="form-control" v-model="server.phone">
+                                <span class='note note-error' v-show="errors.has('phone')">{{ errors.first('phone') }}</span>
+                            </div>
+
+                            <div class="form-group" :class="{'has-error': errors.has('user.church_id') }" >
+                                <label for="church_id">Church</label>
+                                <select class="form-control" name="church_id" id="church_id" v-model="server.church_id">
+                                    <option>Select One</option>
+                                    <option v-for="church in churches" v-bind:value="church.id">
+                                        {{ church.name }}
+                                    </option>
+                                </select>
+                                <span class='note note-error' v-show="errors.has('church_id')">{{ errors.first('church_id') }}</span>
+                            </div>
+
+
+                            <div class="form-group" :class="{'has-error': errors.has('server.number_of_volunteers') }" >
+                                <label for="number_of_volunteers">Number of Volunteers in your group</label>
+                                <input name="number_of_volunteers" v-validate data-vv-rules="required" data-vv-as="number_of_volunteers" type="text" class="form-control" v-model="server.number_of_volunteers">
+                                <span class='note note-error' v-show="errors.has('number_of_volunteers')">{{ errors.first('number_of_volunteers') }}</span>
+                            </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" v-model="willLead">
-                                    <i></i>I would like to lead this project
+                                    <input type="checkbox" v-model="server.willing_to_lead">
+                                    <i></i>I'm willing to lead this project
                                 </label>
                             </div>
 
@@ -71,18 +106,28 @@
         data(){
             return{
                 project: {},
-                willLead: false
+                willLead: false,
+                name: '',
+                email: '',
+                phone: '',
+                number_of_volunteers: 1,
+                server: {},
+                csrfToken: window.Laravel.csrfToken,
+                churches: []
             }
         },
 
         computed: {
-            authUser() {
-                return this.$store.getters.authUser
-            },
+            //authUser() {
+            //    return this.$store.getters.authUser
+            //},
 
             category_name: function () {
                 // `this` points to the vm instance
-                return this.project.project_category.name
+                if (this.project.project_category)
+                    return this.project.project_category.name
+                else
+                    return null
             }
         },
 
@@ -120,25 +165,30 @@
             signup: function() {
                 var self = this;
 
-                const postData = {
-                    willLead: this.willLead,
-                }
+                const postData = this.server;
 
-                this.axios.post('/api/project/'+ this.$route.params.projectID +'/volunteer', postData)
+                this.axios.post('/api/project/'+ this.$route.params.projectID +'/server', postData)
                 .then((response) => {
-
                     self.$router.push({ name: 'serve'})
-
                 });
-            }
+            },
+
+
+            fetchChurches: function() {
+                this.axios.get('/api/churches')
+                .then((response) => {
+                    this.churches = response.data.data
+                });
+            },
         },
 
         mounted() {
-            if (!this.authUser) {
-                location.href = '/serve';
-            } else {
+            //if (!this.authUser) {
+            //    location.href = '/serve';
+            //} else {
+                this.fetchChurches();
                 this.getProject();
-            }
+            //}
         },
     }
 </script>

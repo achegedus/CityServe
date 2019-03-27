@@ -32,7 +32,7 @@ class ContentController extends ApiController
         // $project_count = Project::where('created_at', '>', $firstofyear)->get()->count();
 
         $volunteers_needed_count = Project::all()->sum('numVolunteers');
-        $volunteers_signed_up = DB::table('volunteers')->select(DB::raw('sum(number_of_volunteers) as totalVols'))->first();
+        $volunteers_signed_up = DB::table('servers')->select(DB::raw('sum(number_of_volunteers) as totalVols'))->first();
         $project_count = Project::all()->count();
 
 

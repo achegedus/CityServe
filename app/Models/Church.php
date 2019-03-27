@@ -15,8 +15,8 @@ class Church extends Model
         return $this->hasMany('App\Models\User');
     }
 
-    public function people()
+    public function servers()
     {
-        return $this->hasMany('App\Models\Person');
+        return $this->hasMany('App\Models\Server');
     }
 }

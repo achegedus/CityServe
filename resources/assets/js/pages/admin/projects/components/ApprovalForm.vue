@@ -101,29 +101,10 @@
                 <header>Volunteers ({{ project.volunteers }} of {{ project.numVolunteers }})</header>
                 <fieldset>
                     <h3>People</h3>
-                    <multiselect
-                        v-model="volunteers"
-                        :options="all_volunteers"
-                        label="first_name"
-                        :custom-label="first_last_name"
-                        :multiple="true"
-                        @select="addVolunteer"
-                        placeholder="Select a volunteer"
-                        @remove="removeVolunteer"
-                        track-by="id">
-                    </multiselect>
-
-                    <h3>Groups</h3>
-                    <multiselect
-                        v-model="groups"
-                        :options="all_groups"
-                        label="name"
-                        :multiple="true"
-                        placeholder="Select a group"
-                        @select="addGroup"
-                        @remove="removeGroup"
-                        track-by="id">
-                    </multiselect>
+                    <ul>
+                        <li v-for="server in servers">{{ server.name}} ({{server.number_of_volunteers}}) - <a :href="'mailto:'+server.email">email</a> - <a v-on:click="removeVolunteer(server)">remove</a></li>
+                    </ul>
+                  
                 </fieldset>
             </div>
         </div>
@@ -144,7 +125,7 @@
 
         data(){
             return{
-                volunteers: [],
+                servers: [],
                 groups: [],
                 all_volunteers: [],
                 all_groups: [],
@@ -164,9 +145,9 @@
             },
 
             getAssignedVolunteers() {
-                this.axios.get('/api/project/' + this.$route.params.projectID + '/volunteers')
+                this.axios.get('/api/project/' + this.$route.params.projectID + '/servers')
                 .then((response) => {
-                    this.volunteers = response.data.data
+                    this.servers = response.data.data
                 });
             },
 
@@ -205,11 +186,15 @@
                 });
             },
 
-            removeVolunteer(user) {
-                this.axios.delete('/api/project/' + this.$route.params.projectID + '/volunteer/' + user.id)
-                .then((response) => {
+            removeVolunteer(server) {
+                if(confirm("Do you really want to delete?")){
+                    this.axios.delete('/api/project/' + this.$route.params.projectID + '/server/' + server.id)
+                    .then((response) => {
 
-                });
+                    });
+                } else {
+                    return false;
+                }
             },
 
             removeGroup(group) {
@@ -222,6 +207,10 @@
 
             first_last_name ({ first_name, last_name }) {
                 return `${first_name} ${last_name}`
+            },
+
+            name_number ({ name, number_of_volunteers }) {
+                return `${name} (${number_of_volunteers})`
             },
 
             getCategories() {

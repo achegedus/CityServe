@@ -8,9 +8,11 @@ use App\Mail\ProjectCreated;
 use App\Models\Group;
 use App\Models\Project;
 use App\Models\User;
+use App\Models\Server;
 use App\Transformers\GroupTransformer;
 use App\Transformers\ProjectTransformer;
 use App\Transformers\UserTransformer;
+use App\Transformers\ServerTransformer;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -184,6 +186,21 @@ class ProjectController extends ApiController
         return Fractal::collection($users, new UserTransformer());
     }
 
+    /**
+     * @param $project_id
+     * @return mixed
+     */
+    public function project_servers($project_id)
+    {
+        $users = Project::find($project_id)->servers;
+
+        if (!$users) {
+            return $this->respondNotFound('No servers found.');
+        }
+
+        return Fractal::collection($users, new ServerTransformer());
+    }
+
 
     /**
      * @param $project_id
@@ -210,13 +227,11 @@ class ProjectController extends ApiController
         $this->respondOk('Project saved');
     }
 
-
     /**
      * @param $project_id
-     * @param $user_id
      * @return mixed
      */
-    public function delete_project_volunteer($project_id, $user_id)
+    public function store_project_server(Request $request, $project_id)
     {
         $project = Project::find($project_id);
 
@@ -224,13 +239,42 @@ class ProjectController extends ApiController
             return $this->respondNotFound('Project does not exist.');
         }
 
-        $user = User::find($user_id);
+        $project->servers()->create([
+            'project_id' => $project_id,
+            'name' => $request->name, 
+            'email' => $request->email, 
+            'phone' => $request->phone, 
+            'number_of_volunteers' => $request->number_of_volunteers,
+            'willing_to_lead' => $request->willing_to_lead, 
+            'church_id' => $request->church_id, 
+            'willing_to_lead' => $request->willing_to_lead]);
 
-        if (!$user) {
-            return $this->respondNotFound('User does not exist.');
+        //Mail::to($user->email)->send(new IndividualSignup($project, $user));
+
+        $this->respondOk('Project saved');
+    }
+
+
+    /**
+     * @param $project_id
+     * @param $user_id
+     * @return mixed
+     */
+    public function delete_project_server($project_id, $server_id)
+    {
+        $project = Project::find($project_id);
+
+        if (!$project) {
+            return $this->respondNotFound('Project does not exist.');
         }
 
-        $project->users()->detach($user);
+        $server = Server::find($server_id);
+
+        if (!$server) {
+            return $this->respondNotFound('Server does not exist.');
+        }
+
+        $server->delete();
     }
 
 

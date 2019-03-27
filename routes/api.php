@@ -24,6 +24,12 @@ Route::group(['middleware' => 'api'], function() {
 
     Route::get('/project/{id}', 'ProjectController@show');
     Route::get('projects/serving', 'ProjectController@myProjects');
+
+    Route::post('/project/{project_id}/server','ServerController@store');
+
+    Route::get('/project/{id}', 'ProjectController@show');
+
+    Route::post('/project/{project_id}/server', 'ProjectController@store_project_server');
 });
 
 
@@ -44,9 +50,13 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::put('church/{id}','ChurchController@update');
     Route::post('church','ChurchController@store');
 
+    // servers
+    Route::get('/server/{id}', 'ChurchController@show');
+    Route::delete('server/{id}','ChurchController@destroy');
+    Route::put('server/{id}','ChurchController@update');
+
     // projects
     Route::get('/projects', 'ProjectController@index');
-    Route::get('/project/{id}', 'ProjectController@show');
     Route::delete('project/{id}','ProjectController@destroy');
     Route::put('project/{id}','ProjectController@update');
     Route::post('project','ProjectController@store');
@@ -54,11 +64,11 @@ Route::group(['middleware' => 'auth:api'], function() {
     // Project Volunteers
     Route::get('/user/projects', 'UserController@getProjects');
     Route::get('/volunteers', 'UserController@getVolunteers');
-    Route::get('/project/{id}/volunteers', 'ProjectController@project_volunteers');
-    Route::delete('/project/{project_id}/volunteer/{user_id}', 'ProjectController@delete_project_volunteer');
+    Route::get('/project/{id}/servers', 'ProjectController@project_servers');
+    Route::delete('/project/{project_id}/server/{user_id}', 'ProjectController@delete_project_server');
 
-    Route::post('/project/{project_id}/volunteer', 'ProjectController@store_project_volunteer');
-    Route::post('/project/{project_id}/group/{group_id}', 'ProjectController@store_project_group');
+    //Route::post('/project/{project_id}/volunteer', 'ProjectController@store_project_volunteer');
+    //Route::post('/project/{project_id}/group/{group_id}', 'ProjectController@store_project_group');
 
     // Project Groups
     Route::get('/project/{id}/groups', 'ProjectController@project_groups');

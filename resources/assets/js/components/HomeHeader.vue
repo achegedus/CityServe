@@ -63,14 +63,13 @@
                             </li>
                             -->
                             <!-- End Churches -->
-<!--
                             
                             <li class="dropdown">
                                 <router-link :to="{ name: 'serve' }">
                                     Serve
                                 </router-link>
                             </li>
- -->                           
+
                             <!-- End Serve -->
 
                             <!-- Projects -->
@@ -82,15 +81,19 @@
                             <!-- End Projects -->
 
                             <!-- Login -->
+                            <!--
                             <li class="dropdown" v-if="!loggedIn">
                                 <a href="#" @click.prevent="showLogin">Login</a>
                             </li>
+                            -->
                             <!-- End Login -->
-
+                            
                             <!-- Register -->
+                            <!--
                             <li v-if="!loggedIn">
                                 <a href="#" @click.prevent="showRegister">Register</a>
                             </li>
+                            -->
 
                             <!-- Logout -->
                             <li class="dropdown" v-if="loggedIn">
