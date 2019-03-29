@@ -3,7 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Project;
-use App\Models\User;
+use App\Models\Server;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -20,18 +20,18 @@ class IndividualSignup extends Mailable
     /*
      * @var user
      */
-    public $user;
+    public $server;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Project $project, User $user)
+    public function __construct(Project $project, Server $server)
     {
         //
         $this->project = $project;
-        $this->user = $user;
+        $this->server = $server;
     }
 
     /**

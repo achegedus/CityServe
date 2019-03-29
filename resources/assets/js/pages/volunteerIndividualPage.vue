@@ -26,7 +26,7 @@
                         <h4>Skills needed</h4>
                         <p>{{project.skills}}</p>
 
-                        <form class="sky-form" v-on:submit.prevent="signup">
+                        <form class="sky-form" v-on:submit.prevent="onValidate">
                             <input type="hidden" name="_token" :value="csrfToken">
                             <div class="form-group" :class="{'has-error': errors.has('server.name') }" >
                                 <label for="name">Name</label>
@@ -154,6 +154,27 @@
         },
 
         methods: {
+
+            onValidate() {
+                this.$validator.validateAll();
+                console.log(this.errors);
+                if (!this.errors.any()) {
+                    console.log('hi');
+                    this.signup();
+                } else {
+                    console.log('there');
+                    this.$swal('Oops!', 'Form submission errors, please fill out all required fields.', 'error')
+                }
+            },
+
+            validateBeforeSubmit(e) {
+                this.$validator.validateAll();
+                if (!this.errors.all()) {
+                    //alert('hi');
+                    //this.saveProject()
+                }
+            },
+
             getProject: function() {
                 var self = this
                 this.axios.get('/api/project/' + this.$route.params.projectID)
@@ -169,6 +190,8 @@
 
                 this.axios.post('/api/project/'+ this.$route.params.projectID +'/server', postData)
                 .then((response) => {
+                    this.$swal('Thank you!!', 'You\'re all signed up!   ', 'info')
+
                     self.$router.push({ name: 'serve'})
                 });
             },

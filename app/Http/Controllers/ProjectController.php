@@ -239,7 +239,7 @@ class ProjectController extends ApiController
             return $this->respondNotFound('Project does not exist.');
         }
 
-        $project->servers()->create([
+        $server = $project->servers()->create([
             'project_id' => $project_id,
             'name' => $request->name, 
             'email' => $request->email, 
@@ -249,7 +249,7 @@ class ProjectController extends ApiController
             'church_id' => $request->church_id, 
             'willing_to_lead' => $request->willing_to_lead]);
 
-        //Mail::to($user->email)->send(new IndividualSignup($project, $user));
+        Mail::to($server->email)->send(new IndividualSignup($project, $server));
 
         $this->respondOk('Project saved');
     }
