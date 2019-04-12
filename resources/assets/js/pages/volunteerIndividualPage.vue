@@ -26,6 +26,9 @@
                         <h4>Skills needed</h4>
                         <p>{{project.skills}}</p>
 
+                        <h4>Need Childcare?</h4>
+                        <p>If you would need childcare during your CityServe project, click <a href="https://calvary.ccbchurch.com/goto/forms/455/responses/new" target="_blank">here</a> to register your kids.</p>
+
                         <form class="sky-form" v-on:submit.prevent="onValidate">
                             <input type="hidden" name="_token" :value="csrfToken">
                             <div class="form-group" :class="{'has-error': errors.has('server.name') }" >
