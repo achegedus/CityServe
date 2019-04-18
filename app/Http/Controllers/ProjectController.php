@@ -389,7 +389,7 @@ class ProjectController extends ApiController
     public function printProjectSheets()
     {
 
-        $projects = Project::with('category', 'groups', 'groups.user', 'groups.user.church', 'users', 'users.church')->get();
+        $projects = Project::with('category', 'servers', 'servers.church')->get();
 
 
         $pdf = PDF::loadView('pdf.project_sheets', ['projects'=>$projects]);

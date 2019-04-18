@@ -95,29 +95,18 @@
             <th>LEAD?</th>
         </tr>
 
-        @foreach($project->users as $vol)
+        @foreach($project->servers as $vol)
             <tr>
-                <td>{{ $vol->first_name . " " . $vol->last_name }}</td>
+                <td>{{ $vol->name }}</td>
                 <td>{{ $vol->phone }}</td>
                 <td>{{ $vol->email }}</td>
-                <td>1</td>
+                <td>{{ $vol->number_of_volunteers }}</td>
                 <td></td>
                 <td>{{ $vol->church->name || "Other" }}</td>
-                <td>{{ $vol->pivot->leader == 1? 'YES' : 'NO' }}</td>
+                <td>{{ $vol->willing_to_lead == 1? 'YES' : 'NO' }}</td>
             </tr>
         @endforeach
 
-        @foreach($project->groups as $group)
-            <tr>
-                <td>{{ $group->user->first_name . " " . $group->user->last_name }}</td>
-                <td>{{ $group->user->phone }}</td>
-                <td>{{ $group->user->email }}</td>
-                <td>{{ $group->pivot->number_of_volunteers }}</td>
-                <td></td>
-                <td>{{ $group->user->church->name }}</td>
-                <td>{{ $group->pivot->leader == 1? 'YES' : 'NO' }}</td>
-            </tr>
-        @endforeach
     </table>
 
     <div class="page-break"></div>
